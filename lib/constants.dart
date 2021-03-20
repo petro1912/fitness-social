@@ -4,6 +4,9 @@ const Color white = Colors.white;
 const Color primaryColor = Color(0xFF31A6E2);
 const Color secondaryColor = Color(0xFFF7B579);
 const Color textColor = Color(0xFF22242A);
+const Color greyTextColor = Color(0xFF8D92A3);
+const Color grayColor = Color(0xFFF7F8FA);
+
 //const Color primaryColor = Color(0xFF29B6F6);
 
 Text primaryText(String text, [double size, bool bold, bool center]) {
@@ -16,6 +19,10 @@ Text secondaryText(String text, [double size, bool bold, bool center]) {
 
 Text blackText(String text, [double size, bool bold, bool center]) {
   return getText(text, textColor, size, bold, center);
+}
+
+Text greyText(String text, [double size, bool bold, bool center]) {
+  return getText(text, greyTextColor, size, bold, center);
 }
 
 Text whiteText(String text, [double size, bool bold, bool center]) {

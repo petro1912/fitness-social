@@ -35,10 +35,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: blackText(strPhonNumberPlaceholder, 20, true, true),
               ),
               SizedBox(
-                height: 40,
+                height: 30,
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 40),
+                padding: EdgeInsets.symmetric(horizontal: 30),
                 child: TextFormField(
                   initialValue: '',
                   keyboardType: TextInputType.number,
@@ -59,7 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 24,
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 40),
+                padding: EdgeInsets.symmetric(horizontal: 30),
                 child: SizedBox(
                   width: double.infinity,
                   child: RoundedRaisedButton(

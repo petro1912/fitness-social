@@ -49,7 +49,7 @@ class _AccountScreenState extends State<AccountScreen> {
                 height: 30,
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 40),
+                padding: EdgeInsets.symmetric(horizontal: 30),
                 child: Column(
                   children: [
                     TextFormField(
@@ -170,7 +170,7 @@ class _AccountScreenState extends State<AccountScreen> {
                 height: 48,
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 40),
+                padding: EdgeInsets.symmetric(horizontal: 30),
                 child: SizedBox(
                   width: double.infinity,
                   child: RoundedRaisedButton(

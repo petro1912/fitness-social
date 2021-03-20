@@ -1,9 +1,9 @@
 import 'package:fitness/components/main_responsive_scaffold.dart';
 import 'package:fitness/components/rounded_raised_button.dart';
 import 'package:fitness/constants.dart';
-import 'package:fitness/data/string.dart';
-import 'package:fitness/utils/navigation_util.dart';
+import 'package:fitness/screens/workout/choose_goal.dart';
 import 'package:flutter/material.dart';
+import 'package:fitness/utils/navigation_util.dart';
 
 class FitnessInputScreen extends StatefulWidget {
   _FitnessInputScreenState createState() => _FitnessInputScreenState();
@@ -14,16 +14,17 @@ class _FitnessInputScreenState extends State<FitnessInputScreen> {
   int weight;
   int day, month, year;
 
-  void choosePlan(BuildContext context) {
-    // navPush(context, FitnessInputScreen());
+  void chooseGoal(BuildContext context) {
+    navPush(context, ChooseGoalScreen());
   }
 
   Widget build(BuildContext context) {
     return MainResponsiveScaffold(
       title: 'workout',
+      isMain: false,
       child: Expanded(
         child: Container(
-          margin: EdgeInsets.symmetric(horizontal: 40),
+          margin: EdgeInsets.symmetric(horizontal: 30),
           child: Column(
             children: [
               Expanded(
@@ -145,14 +146,13 @@ class _FitnessInputScreenState extends State<FitnessInputScreen> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(vertical: 40),
-                padding: EdgeInsets.symmetric(horizontal: 40),
+                margin: EdgeInsets.symmetric(vertical: 30),
                 child: SizedBox(
                   width: double.infinity,
                   child: RoundedRaisedButton(
                     label: 'Next',
                     filled: true,
-                    action: choosePlan,
+                    action: () => chooseGoal(context),
                     color: primaryColor,
                   ),
                 ),

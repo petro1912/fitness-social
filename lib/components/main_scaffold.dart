@@ -29,6 +29,7 @@ class MainScaffold extends StatelessWidget {
                 isMain: isMain,
               ),
               Container(
+                height: getWindowHeight(context) - 160,
                 child: this.child,
               ),
             ],
