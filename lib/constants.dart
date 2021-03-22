@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 
 const Color white = Colors.white;
 const Color primaryColor = Color(0xFF31A6E2);
+const Color lightPrimaryColor = Color(0xDD31A6E2);
+const Color lighterPrimaryColor = Color(0x3331A6E2);
 const Color secondaryColor = Color(0xFFF7B579);
+const Color thirdColor = Color(0xFF18CBAF);
 const Color textColor = Color(0xFF22242A);
+const Color lightTextColor = Color(0xAA22242A);
 const Color greyTextColor = Color(0xFF8D92A3);
 const Color grayColor = Color(0xFFF7F8FA);
 
@@ -11,6 +15,10 @@ const Color grayColor = Color(0xFFF7F8FA);
 
 Text primaryText(String text, [double size, bool bold, bool center]) {
   return getText(text, primaryColor, size, bold, center);
+}
+
+Text lightPrimaryText(String text, [double size, bool bold, bool center]) {
+  return getText(text, primaryColor.withOpacity(.6), size, bold, center);
 }
 
 Text secondaryText(String text, [double size, bool bold, bool center]) {

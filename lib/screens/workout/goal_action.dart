@@ -1,13 +1,15 @@
 import 'package:fitness/components/main_scaffold.dart';
 import 'package:fitness/constants.dart';
 import 'package:fitness/model/goal_action.dart';
+import 'package:fitness/screens/workout/goal_action_detail.dart';
+import 'package:fitness/utils/navigation_util.dart';
 import 'package:flutter/material.dart';
 
-class GoalScreen extends StatefulWidget {
-  _GoalScreenState createState() => _GoalScreenState();
+class GoalActionScreen extends StatefulWidget {
+  _GoalActionScreenState createState() => _GoalActionScreenState();
 }
 
-class _GoalScreenState extends State<GoalScreen> {
+class _GoalActionScreenState extends State<GoalActionScreen> {
   List<GoalAction> goalActionList = [];
   @override
   void initState() {
@@ -31,15 +33,35 @@ class _GoalScreenState extends State<GoalScreen> {
           members: 23,
           description:
               'Brief description for this activity description for this acti Brief descry iption .. '),
+      GoalAction(
+          imgUrl: "assets/images/Photo1.png",
+          title: 'Cardio Sessions',
+          members: 12,
+          description:
+              'Brief description for this activity description for this acti Brief descry iption .. '),
+      GoalAction(
+          imgUrl: "assets/images/Photo2.png",
+          title: 'Walking Team',
+          members: 10,
+          description:
+              'Brief description for this activity description for this acti Brief descry iption .. '),
+      GoalAction(
+          imgUrl: "assets/images/Photo3.png",
+          title: 'Learn Boxing ..',
+          members: 23,
+          description:
+              'Brief description for this activity description for this acti Brief descry iption .. '),
     ];
   }
 
-  void navGoalActionDetail() {}
+  void navGoalActionDetail(BuildContext context) {
+    navPush(context, GoalActionDetailScreen());
+  }
 
   Widget _buildGoalActionCard(BuildContext context, int index) {
     GoalAction action = goalActionList[index];
     return InkWell(
-      onTap: () => navGoalActionDetail(),
+      onTap: () => navGoalActionDetail(context),
       child: Container(
         margin: EdgeInsets.all(10),
         height: 100,
@@ -117,15 +139,13 @@ class _GoalScreenState extends State<GoalScreen> {
         margin: EdgeInsets.symmetric(
           horizontal: 30,
         ),
-        child: Expanded(
-          child: ListView.builder(
-            physics: BouncingScrollPhysics(),
-            scrollDirection: Axis.vertical,
-            itemCount: goalActionList.length,
-            itemBuilder: (context, index) {
-              return _buildGoalActionCard(context, index);
-            },
-          ),
+        child: ListView.builder(
+          physics: BouncingScrollPhysics(),
+          scrollDirection: Axis.vertical,
+          itemCount: goalActionList.length,
+          itemBuilder: (context, index) {
+            return _buildGoalActionCard(context, index);
+          },
         ),
       ),
     );

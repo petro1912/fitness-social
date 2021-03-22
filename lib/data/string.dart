@@ -15,4 +15,5 @@ List listSplashText = [
 
 String strPhonNumberPlaceholder = "To continue enter your\n phone number";
 String strVerifyCodePlaceholder = "Enter 4 digits for\n verification code";
+String strPaymentPlaceholder = 'Join Our Premium Membership For';
 String strNoPlan = "The is No Plan Now !";
