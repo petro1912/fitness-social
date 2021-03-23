@@ -22,11 +22,12 @@ class Header extends StatelessWidget {
             onTap: () {
               Navigator.pop(context);
             },
-            child: Icon(
-                (isMain != null && isMain)
-                    ? Icons.menu_open_sharp
-                    : Icons.chevron_left,
-                size: 36),
+            child: Image.asset(
+              (isMain != null && isMain)
+                  ? 'assets/icons/tab-icon.png'
+                  : 'assets/icons/arrow-left.png',
+              scale: 0.8,
+            ),
           ),
         ],
       ),

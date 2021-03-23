@@ -1,4 +1,4 @@
-import 'package:fitness/components/main_scaffold.dart';
+import 'package:fitness/components/main_responsive_scaffold.dart';
 import 'package:fitness/components/rounded_raised_button.dart';
 import 'package:fitness/constants.dart';
 import 'package:fitness/data/string.dart';
@@ -12,8 +12,9 @@ class WorkoutScreen extends StatelessWidget {
   }
 
   Widget build(BuildContext context) {
-    return MainScaffold(
+    return MainResponsiveScaffold(
       title: 'workout',
+      pageIndex: 1,
       isMain: true,
       child: Container(
         child: Column(

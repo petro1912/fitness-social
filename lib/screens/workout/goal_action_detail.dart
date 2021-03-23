@@ -34,6 +34,7 @@ class _GoalActionDetailScreenState extends State<GoalActionDetailScreen> {
   Widget build(BuildContext context) {
     return MainResponsiveScaffold(
       title: 'workout',
+      pageIndex: 1,
       child: Column(
         children: [
           Container(

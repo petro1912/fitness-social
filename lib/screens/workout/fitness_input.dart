@@ -21,6 +21,7 @@ class _FitnessInputScreenState extends State<FitnessInputScreen> {
   Widget build(BuildContext context) {
     return MainResponsiveScaffold(
       title: 'workout',
+      pageIndex: 1,
       isMain: false,
       child: Expanded(
         child: Container(

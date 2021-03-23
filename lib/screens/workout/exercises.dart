@@ -1,21 +1,18 @@
 import 'package:fitness/components/main_scaffold.dart';
 import 'package:fitness/constants.dart';
 import 'package:fitness/model/exercise.dart';
-import 'package:fitness/model/goal_action.dart';
-import 'package:fitness/screens/workout/goal_action_detail.dart';
-import 'package:fitness/utils/navigation_util.dart';
 import 'package:flutter/material.dart';
 
-class ExerciseScreen extends StatefulWidget {
-  _ExerciseScreenState createState() => _ExerciseScreenState();
+class ExercisesScreen extends StatefulWidget {
+  _ExercisesScreenState createState() => _ExercisesScreenState();
 }
 
-class _ExerciseScreenState extends State<ExerciseScreen> {
-  List<Exercise> ExerciseList = [];
+class _ExercisesScreenState extends State<ExercisesScreen> {
+  List<Exercise> exerciseList = [];
   @override
   void initState() {
     super.initState();
-    ExerciseList = [
+    exerciseList = [
       Exercise(
         img: "assets/images/Photo1.png",
         name: 'Name Of The Exercise 002',
@@ -60,7 +57,7 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
   }
 
   Widget _buildExerciseCard(BuildContext context, int index) {
-    Exercise action = ExerciseList[index];
+    Exercise action = exerciseList[index];
     return InkWell(
       onTap: () => navExerciseDetail(context),
       child: Column(
@@ -115,6 +112,7 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
   Widget build(BuildContext context) {
     return MainScaffold(
       title: 'exercise',
+      pageIndex: 1,
       child: Container(
         width: getWindowWidth(context),
         margin: EdgeInsets.symmetric(
@@ -123,7 +121,7 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
         child: ListView.builder(
           physics: BouncingScrollPhysics(),
           scrollDirection: Axis.vertical,
-          itemCount: ExerciseList.length,
+          itemCount: exerciseList.length,
           itemBuilder: (context, index) {
             return _buildExerciseCard(context, index);
           },

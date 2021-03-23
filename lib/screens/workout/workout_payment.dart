@@ -1,3 +1,5 @@
+import 'package:fitness/components/credit_card.dart';
+import 'package:fitness/components/credit_text.dart';
 import 'package:fitness/components/main_responsive_scaffold.dart';
 import 'package:fitness/components/main_scaffold.dart';
 import 'package:fitness/components/round_checkbox.dart';
@@ -27,7 +29,7 @@ class _WorkoutPaymentScreenState extends State<WorkoutPaymentScreen>
     navPush(context, GoalActionRunScreen());
   }
 
-  Widget _buildTabBarViewText() {
+  /* Widget _buildTabBarViewText() {
     return Container(
       margin: EdgeInsets.symmetric(
         horizontal: 30,
@@ -75,7 +77,7 @@ class _WorkoutPaymentScreenState extends State<WorkoutPaymentScreen>
                   ),
                 ],
               ),
-              SizedBox(width: 10),
+              SizedBox(width: 20),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -99,13 +101,13 @@ class _WorkoutPaymentScreenState extends State<WorkoutPaymentScreen>
               )
             ],
           ),
-          SizedBox(height: 30),
+          SizedBox(height: 20),
         ],
       ),
     );
-  }
+  } */
 
-  Widget _buildTabBarCreditCard(BuildContext context) {
+  /* Widget _buildTabBarCreditCard(BuildContext context) {
     double width = getWindowWidth(context);
 
     return Container(
@@ -207,11 +209,12 @@ class _WorkoutPaymentScreenState extends State<WorkoutPaymentScreen>
         ],
       ),
     );
-  }
+  } */
 
   Widget build(BuildContext context) {
     return MainScaffold(
       title: 'workout',
+      pageIndex: 1,
       child: Container(
         width: getWindowWidth(context),
         /* margin: EdgeInsets.symmetric(
@@ -241,15 +244,25 @@ class _WorkoutPaymentScreenState extends State<WorkoutPaymentScreen>
                     width: 2,
                     color: secondaryColor,
                   ),
-                  insets: EdgeInsets.only(left: 0, right: 80, bottom: 4),
+                  insets: EdgeInsets.only(left: 25, right: 60, bottom: 4),
                 ),
                 labelColor: textColor,
                 labelPadding: EdgeInsets.all(0),
                 labelStyle:
                     TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
                 tabs: [
-                  Tab(text: 'TEXT'),
-                  Tab(text: 'VISA'),
+                  Padding(
+                    padding: EdgeInsets.only(right: 40),
+                    child: Tab(
+                      text: 'TEXT',
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(right: 25),
+                    child: Tab(
+                      text: 'VISA',
+                    ),
+                  ),
                   Tab(text: 'MASTERCARD'),
                 ],
                 controller: _tabController,
@@ -259,8 +272,8 @@ class _WorkoutPaymentScreenState extends State<WorkoutPaymentScreen>
               flex: 4,
               child: TabBarView(
                 children: [
-                  _buildTabBarViewText(),
-                  _buildTabBarCreditCard(context),
+                  CreditTextView(),
+                  CreditCardView(),
                   Text('Person'),
                 ],
                 controller: _tabController,

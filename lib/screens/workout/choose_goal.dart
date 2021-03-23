@@ -1,4 +1,3 @@
-import 'package:fitness/components/main_responsive_scaffold.dart';
 import 'package:fitness/components/main_scaffold.dart';
 import 'package:fitness/components/rounded_raised_button.dart';
 import 'package:fitness/constants.dart';
@@ -19,7 +18,8 @@ class _ChooseGoalScreenState extends State<ChooseGoalScreen> {
     ['CrossFit', 'assets/images/crossfit.png'],
     ['Healthy Lifestyle', 'assets/images/healthy.png'],
   ];
-  int active_item = 3;
+
+  int activeItem = 3;
 
   void goNextStep(context) {
     navPush(context, GoalActionScreen());
@@ -28,12 +28,12 @@ class _ChooseGoalScreenState extends State<ChooseGoalScreen> {
   Widget buildChooseItem(int index) {
     return InkWell(
       onTap: () => setState(() {
-        active_item = index;
+        activeItem = index;
       }),
       child: Container(
         margin: EdgeInsets.only(bottom: 20),
         decoration: BoxDecoration(
-          color: index == active_item ? primaryColor : white,
+          color: index == activeItem ? primaryColor : white,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
@@ -47,12 +47,16 @@ class _ChooseGoalScreenState extends State<ChooseGoalScreen> {
           children: [
             Padding(
               padding: EdgeInsets.only(top: 10, left: 10),
-              child: index == active_item
+              child: index == activeItem
                   ? whiteText(chooseItemList[index][0], 14, true)
                   : blackText(chooseItemList[index][0], 14, true),
             ),
             Positioned.fill(
-              child: Image(image: AssetImage(chooseItemList[index][1])),
+              // child: Image(image: AssetImage(chooseItemList[index][1])),
+              child: Image.asset(
+                chooseItemList[index][1],
+                color: index == activeItem ? white : primaryColor,
+              ),
             )
           ],
         ),
@@ -63,19 +67,17 @@ class _ChooseGoalScreenState extends State<ChooseGoalScreen> {
   Widget build(BuildContext context) {
     return MainScaffold(
       title: 'workout',
+      pageIndex: 1,
       child: Container(
         width: getWindowWidth(context),
-        margin: EdgeInsets.symmetric(
-          horizontal: 30,
-          vertical: 20,
-        ),
+        margin: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
         child: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               blackText('GOAL', 18, true),
-              SizedBox(height: 10),
+              SizedBox(height: 15),
               GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,

@@ -1,12 +1,9 @@
-import 'package:fitness/components/avatar.dart';
 import 'package:fitness/components/main_responsive_scaffold.dart';
-import 'package:fitness/components/rounded_icon.dart';
-import 'package:fitness/components/rounded_raised_button.dart';
 import 'package:fitness/constants.dart';
 import 'package:fitness/model/goal_action.dart';
-import 'package:fitness/screens/workout/diet.dart';
-import 'package:fitness/screens/workout/exercise.dart';
-import 'package:fitness/screens/workout/supplement.dart';
+import 'package:fitness/screens/workout/diets.dart';
+import 'package:fitness/screens/workout/exercises.dart';
+import 'package:fitness/screens/workout/supplements.dart';
 import 'package:fitness/screens/workout/workout_payment.dart';
 import 'package:fitness/utils/navigation_util.dart';
 import 'package:flutter/material.dart';
@@ -48,9 +45,9 @@ class _GoalActionRunScreenState extends State<GoalActionRunScreen> {
     ];
     List actionColor = [primaryColor, secondaryColor, thirdColor];
     List navs = [
-      ExerciseScreen(),
-      DietScreen(),
-      SupplementScreen(),
+      ExercisesScreen(),
+      DietsScreen(),
+      SupplementsScreen(),
     ];
     return List.generate(3, (index) {
       return GestureDetector(
@@ -110,6 +107,7 @@ class _GoalActionRunScreenState extends State<GoalActionRunScreen> {
   Widget build(BuildContext context) {
     return MainResponsiveScaffold(
       title: 'workout',
+      pageIndex: 1,
       child: Column(
         children: [
           Container(

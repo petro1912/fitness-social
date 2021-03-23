@@ -3,53 +3,39 @@ import 'package:fitness/constants.dart';
 import 'package:fitness/model/diet.dart';
 import 'package:flutter/material.dart';
 
-class DietScreen extends StatefulWidget {
-  _DietScreenState createState() => _DietScreenState();
+class DietsScreen extends StatefulWidget {
+  _DietsScreenState createState() => _DietsScreenState();
 }
 
-class _DietScreenState extends State<DietScreen> {
+class _DietsScreenState extends State<DietsScreen> {
   List<Diet> dietList = [];
   @override
   void initState() {
     super.initState();
     dietList = [
       Diet(
-        img: "assets/images/Photo1.png",
+        img: "assets/images/exercise-photo1.png",
         name: 'HEALTHY CHICKEN',
         kcal: 350,
         ingredients: ['Chicken Breast', 'Eggs'],
         condiments: ['0.2kg Chees', '0.2kg Brocoli'],
       ),
       Diet(
-        img: "assets/images/Photo1.png",
+        img: "assets/images/exercise-photo2.png",
         name: 'HEALTHY CHICKEN',
         kcal: 350,
         ingredients: ['Chicken Breast', 'Eggs'],
         condiments: ['0.2kg Chees', '0.2kg Brocoli'],
       ),
       Diet(
-        img: "assets/images/Photo1.png",
+        img: "assets/images/exercise-photo3.png",
         name: 'HEALTHY CHICKEN',
         kcal: 350,
         ingredients: ['Chicken Breast', 'Eggs'],
         condiments: ['0.2kg Chees', '0.2kg Brocoli'],
       ),
       Diet(
-        img: "assets/images/Photo1.png",
-        name: 'HEALTHY CHICKEN',
-        kcal: 350,
-        ingredients: ['Chicken Breast', 'Eggs'],
-        condiments: ['0.2kg Chees', '0.2kg Brocoli'],
-      ),
-      Diet(
-        img: "assets/images/Photo1.png",
-        name: 'HEALTHY CHICKEN',
-        kcal: 350,
-        ingredients: ['Chicken Breast', 'Eggs'],
-        condiments: ['0.2kg Chees', '0.2kg Brocoli'],
-      ),
-      Diet(
-        img: "assets/images/Photo1.png",
+        img: "assets/images/exercise-photo4.png",
         name: 'HEALTHY CHICKEN',
         kcal: 350,
         ingredients: ['Chicken Breast', 'Eggs'],
@@ -148,6 +134,7 @@ class _DietScreenState extends State<DietScreen> {
   Widget build(BuildContext context) {
     return MainScaffold(
       title: 'diet',
+      pageIndex: 1,
       child: Container(
         width: getWindowWidth(context),
         margin: EdgeInsets.symmetric(

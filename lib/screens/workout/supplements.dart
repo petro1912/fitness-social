@@ -3,11 +3,11 @@ import 'package:fitness/constants.dart';
 import 'package:fitness/model/supplement.dart';
 import 'package:flutter/material.dart';
 
-class SupplementScreen extends StatefulWidget {
-  _SupplementScreenState createState() => _SupplementScreenState();
+class SupplementsScreen extends StatefulWidget {
+  _SupplementsScreenState createState() => _SupplementsScreenState();
 }
 
-class _SupplementScreenState extends State<SupplementScreen> {
+class _SupplementsScreenState extends State<SupplementsScreen> {
   List<Supplement> supplementList = [];
   @override
   void initState() {
@@ -80,6 +80,7 @@ class _SupplementScreenState extends State<SupplementScreen> {
   Widget build(BuildContext context) {
     return MainScaffold(
       title: 'supplement',
+      pageIndex: 1,
       child: Container(
         width: getWindowWidth(context),
         margin: EdgeInsets.symmetric(

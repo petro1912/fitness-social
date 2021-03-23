@@ -4,12 +4,17 @@ import 'package:fitness/constants.dart';
 
 class RoundedRaisedButton extends StatelessWidget {
   RoundedRaisedButton(
-      {Key key, this.filled, this.action, this.label, this.color})
+      {Key key,
+      this.filled,
+      this.action,
+      this.label,
+      this.color,
+      this.textColor})
       : super(key: key);
   final bool filled;
   final Function action;
   final String label;
-  final Color color;
+  final Color color, textColor;
 
   Widget build(BuildContext context) {
     bool _filled = filled == null || filled;
@@ -30,7 +35,7 @@ class RoundedRaisedButton extends StatelessWidget {
           label,
           style: TextStyle(
             fontSize: 16,
-            color: _filled ? white : primaryColor,
+            color: _filled ? textColor ?? white : primaryColor,
             fontWeight: FontWeight.bold,
           ),
         ),

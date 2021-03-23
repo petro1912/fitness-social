@@ -134,6 +134,7 @@ class _GoalActionScreenState extends State<GoalActionScreen> {
   Widget build(BuildContext context) {
     return MainScaffold(
       title: 'workout',
+      pageIndex: 1,
       child: Container(
         width: getWindowWidth(context),
         margin: EdgeInsets.symmetric(
