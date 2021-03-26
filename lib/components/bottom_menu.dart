@@ -1,4 +1,5 @@
 import 'package:fitness/constants.dart';
+import 'package:fitness/screens/community/community.dart';
 import 'package:fitness/screens/store/store.dart';
 import 'package:fitness/screens/workout/workout.dart';
 import 'package:fitness/utils/navigation_util.dart';
@@ -12,9 +13,21 @@ class NavbarItem {
 }
 
 List navbarItems = [
-  NavbarItem(icon: 'store.png', label: 'Store', screen: StoreScreen()),
-  NavbarItem(icon: 'workout.png', label: 'Workout', screen: WorkoutScreen()),
-  NavbarItem(icon: 'community.png', label: 'Community', screen: StoreScreen()),
+  NavbarItem(
+    icon: 'store',
+    label: 'Store',
+    screen: StoreScreen(),
+  ),
+  NavbarItem(
+    icon: 'workout',
+    label: 'Workout',
+    screen: WorkoutScreen(),
+  ),
+  NavbarItem(
+    icon: 'community',
+    label: 'Community',
+    screen: CommunityScreen(),
+  ),
 ];
 
 class BottomMenu extends StatefulWidget {
@@ -27,12 +40,14 @@ class _BottomMenuState extends State<BottomMenu> {
   int pageIndex = 0;
   void initState() {
     super.initState();
+    print(widget.activeIndex);
     setState(() {
       pageIndex = widget.activeIndex;
     });
   }
 
   void _onItemTapped(BuildContext context, int index) {
+    print('$pageIndex ${navbarItems[index].screen.toString()}');
     navPush(context, navbarItems[index].screen);
   }
 
@@ -43,24 +58,10 @@ class _BottomMenuState extends State<BottomMenu> {
       showUnselectedLabels: false,
       items: navbarItems
           .map((item) => BottomNavigationBarItem(
-                icon: ImageIcon(AssetImage('assets/icons/${item.icon}')),
+                icon: ImageIcon(getIcon(item.icon)),
                 label: item.label,
               ))
           .toList(),
-      /* [
-        BottomNavigationBarItem(
-          icon: ImageIcon(AssetImage('assets/icons/store.png')),
-          label: 'Store',
-        ),
-        BottomNavigationBarItem(
-          icon: ImageIcon(AssetImage('assets/icons/workout.png')),
-          label: 'Workout',
-        ),
-        BottomNavigationBarItem(
-          icon: ImageIcon(AssetImage('assets/icons/user-group.png')),
-          label: 'Community',
-        ),
-      ], */
       currentIndex: pageIndex == null ? 0 : pageIndex,
       selectedItemColor: primaryColor,
       onTap: (index) => _onItemTapped(context, index),

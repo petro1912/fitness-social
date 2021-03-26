@@ -91,12 +91,12 @@ class _GoalActionRunScreenState extends State<GoalActionRunScreen> {
                   Text(actionType[index],
                       style: TextStyle(
                         color: actionColor[index],
-                        fontWeight: FontWeight.bold,
+                        fontWeight: Bold,
                         fontSize: 16,
                       ))
                 ],
               ),
-              blackText(actionDesc[index])
+              BlackText(actionDesc[index])
             ],
           ),
         ),
@@ -141,15 +141,15 @@ class _GoalActionRunScreenState extends State<GoalActionRunScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      whiteText(goalActionDetail.title.toUpperCase(), 18, true),
-                      blackText(goalActionDetail.time, 14, true),
+                      WhiteText(goalActionDetail.title.toUpperCase(), 18, true),
+                      BlackText(goalActionDetail.time, 14, true),
                     ],
                   ),
                 ),
                 Container(
                   alignment: Alignment.topLeft,
-                  padding: EdgeInsets.symmetric(horizontal: 30),
-                  child: blackText(
+                  padding: mainHrPadding,
+                  child: BlackText(
                       goalActionDetail.isAdvanced ? 'Advanced Level' : '',
                       14,
                       true),
@@ -157,7 +157,7 @@ class _GoalActionRunScreenState extends State<GoalActionRunScreen> {
                 SizedBox(height: 10),
                 Container(
                   alignment: Alignment.topLeft,
-                  padding: EdgeInsets.symmetric(horizontal: 30),
+                  padding: mainHrPadding,
                   child: Text(
                     goalActionDetail.description,
                     style: TextStyle(

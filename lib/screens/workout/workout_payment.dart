@@ -38,7 +38,7 @@ class _WorkoutPaymentScreenState extends State<WorkoutPaymentScreen>
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(height: 20),
-          blackText('Card Number', 14, true),
+          BlackText('Card Number', 14, true),
           TextFormField(
             initialValue: '',
             keyboardType: TextInputType.text,
@@ -59,7 +59,7 @@ class _WorkoutPaymentScreenState extends State<WorkoutPaymentScreen>
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  blackText('Expired Date', 14, true),
+                  BlackText('Expired Date', 14, true),
                   SizedBox(
                     width: 80,
                     child: TextFormField(
@@ -81,7 +81,7 @@ class _WorkoutPaymentScreenState extends State<WorkoutPaymentScreen>
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  blackText('CVV', 14, true),
+                  BlackText('CVV', 14, true),
                   SizedBox(
                     width: 80,
                     child: TextFormField(
@@ -149,23 +149,23 @@ class _WorkoutPaymentScreenState extends State<WorkoutPaymentScreen>
                         disabledBorder: InputBorder.none,
                         hintText: 'Card Number',
                         hintStyle: TextStyle(
-                            color: white, fontWeight: FontWeight.bold),
+                            color: white, fontWeight: Bold),
                       ),
                       onChanged: (text) => setState(() {
                         // phoneNumber = text;
                       }),
                       style:
-                          TextStyle(color: white, fontWeight: FontWeight.bold),
+                          TextStyle(color: white, fontWeight: Bold),
                       textAlign: TextAlign.center,
                     ),
                   ),
                   SizedBox(height: 30),
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: 30),
+                    padding: mainHrPadding,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        whiteText('Ahmed Abed ElAziz', 12, true),
+                        WhiteText('Ahmed Abed ElAziz', 12, true),
                         SizedBox(
                           width: 60,
                           child: TextFormField(
@@ -176,7 +176,7 @@ class _WorkoutPaymentScreenState extends State<WorkoutPaymentScreen>
                               hintStyle: TextStyle(
                                   color: white,
                                   fontSize: 12,
-                                  fontWeight: FontWeight.bold),
+                                  fontWeight: Bold),
                               border: InputBorder.none,
                               focusedBorder: InputBorder.none,
                               enabledBorder: InputBorder.none,
@@ -223,14 +223,14 @@ class _WorkoutPaymentScreenState extends State<WorkoutPaymentScreen>
         child: Column(
           children: [
             SizedBox(height: 20),
-            blackText(strPaymentPlaceholder, 16, false, true),
+            BlackText(strPaymentPlaceholder, 16, false, true),
             SizedBox(height: 5),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                primaryText('20 SAR', 28, true),
+                PrimaryText('20 SAR', 28, true),
                 SizedBox(width: 10),
-                blackText('per month', 28, true)
+                BlackText('per month', 28, true)
               ],
             ),
             SizedBox(height: 20),
@@ -248,8 +248,7 @@ class _WorkoutPaymentScreenState extends State<WorkoutPaymentScreen>
                 ),
                 labelColor: textColor,
                 labelPadding: EdgeInsets.all(0),
-                labelStyle:
-                    TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                labelStyle: TextStyle(fontSize: 12, fontWeight: Bold),
                 tabs: [
                   Padding(
                     padding: EdgeInsets.only(right: 40),

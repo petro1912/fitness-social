@@ -95,9 +95,9 @@ class _ProductsScreenState extends State<ProductsScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            blackText(product.name, 14, true),
+                            BlackText(product.name, 14, true),
                             SizedBox(height: 4),
-                            greyText(getSubstring(product.description, 30), 12),
+                            GreyText(getSubstring(product.description, 30), 12),
                           ],
                         ),
                       ),
@@ -107,7 +107,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                         mainStyle: TextStyle(
                             color: primaryColor,
                             fontSize: 14,
-                            fontWeight: FontWeight.bold),
+                            fontWeight: Bold),
                         subText: ' SAR',
                         subStyle: TextStyle(color: primaryColor, fontSize: 8),
                       )

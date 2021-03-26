@@ -1,12 +1,12 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-class LineChart extends StatefulWidget {
+class DashboardChart extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _LineChartState();
+  State<StatefulWidget> createState() => _DashboardChartState();
 }
 
-class _LineChartState extends State<LineChart> {
+class _DashboardChartState extends State<DashboardChart> {
   bool isShowingMainData;
 
   @override

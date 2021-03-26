@@ -58,11 +58,11 @@ class _StoreScreenState extends State<StoreScreen> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    whiteText('Up to 70% off'.toUpperCase(), 22, true),
+                    WhiteText('Up to 70% off'.toUpperCase(), 22, true),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        whiteText('Product Name', 12),
+                        WhiteText('Product Name', 12),
                         Container(
                           padding:
                               EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -79,7 +79,7 @@ class _StoreScreenState extends State<StoreScreen> {
                             ),
                             border: Border.all(color: greyTextColor),
                           ),
-                          child: secondaryText('69.99 SAR', 9, true),
+                          child: SecondaryText('69.99 SAR', 9, true),
                         )
                       ],
                     )
@@ -127,11 +127,11 @@ class _StoreScreenState extends State<StoreScreen> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    whiteText('New Arrival', 22, true),
+                    WhiteText('New Arrival', 22, true),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        whiteText('Product Name', 12),
+                        WhiteText('Product Name', 12),
                         Container(
                           padding:
                               EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -148,7 +148,7 @@ class _StoreScreenState extends State<StoreScreen> {
                             ),
                             border: Border.all(color: greyTextColor),
                           ),
-                          child: secondaryText('69.99 SAR', 9, true),
+                          child: SecondaryText('69.99 SAR', 9, true),
                         )
                       ],
                     )
@@ -211,7 +211,7 @@ class _StoreScreenState extends State<StoreScreen> {
           mainAxisSize: MainAxisSize.max,
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30),
+              padding: mainHrPadding,
               child: SearchBox(),
             ),
             SizedBox(height: 16),
@@ -222,11 +222,11 @@ class _StoreScreenState extends State<StoreScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  primaryText('CLUB GEAR', 20, true),
+                  PrimaryText('CLUB GEAR', 20, true),
                   InkWell(
                     onTap: () =>
                         navPush(context, ProductsScreen(title: 'CLUB GEAR')),
-                    child: primaryText('View All', 10),
+                    child: PrimaryText('View All', 10),
                   ),
                 ],
               ),
@@ -260,11 +260,11 @@ class _StoreScreenState extends State<StoreScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  primaryText('GYM GEAR', 20, true),
+                  PrimaryText('GYM GEAR', 20, true),
                   InkWell(
                     onTap: () =>
                         navPush(context, ProductsScreen(title: 'GYM GEAR')),
-                    child: primaryText('View All', 10),
+                    child: PrimaryText('View All', 10),
                   ),
                 ],
               ),

@@ -63,7 +63,7 @@ class _CreditTextState extends State<CreditTextView> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(height: 20),
-          blackText('Card Number', 14, true),
+          BlackText('Card Number', 14, true),
           TextFormField(
             initialValue: cardNumber,
             keyboardType: TextInputType.text,
@@ -82,7 +82,7 @@ class _CreditTextState extends State<CreditTextView> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  blackText('Expired Date', 14, true),
+                  BlackText('Expired Date', 14, true),
                   SizedBox(
                     width: 80,
                     child: TextFormField(
@@ -102,7 +102,7 @@ class _CreditTextState extends State<CreditTextView> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  blackText('CVV', 14, true),
+                  BlackText('CVV', 14, true),
                   SizedBox(
                     width: 80,
                     child: TextFormField(

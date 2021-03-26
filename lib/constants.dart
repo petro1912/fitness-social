@@ -12,10 +12,11 @@ const Color textColor = Color(0xFF22242A);
 const Color lightTextColor = Color(0xAA22242A);
 const Color greyTextColor = Color(0xFF8D92A3);
 const Color grayColor = Color(0xFFF7F8FA);
+const Color dividerColor = Color(0x1F000000);
 
 //const Color primaryColor = Color(0xFF29B6F6);
 
-Text primaryText(String text, [double size, bool bold, bool center]) {
+Text PrimaryText(String text, [double size, bool bold, bool center]) {
   return getText(text, primaryColor, size, bold, center);
 }
 
@@ -23,19 +24,19 @@ Text lightPrimaryText(String text, [double size, bool bold, bool center]) {
   return getText(text, primaryColor.withOpacity(.6), size, bold, center);
 }
 
-Text secondaryText(String text, [double size, bool bold, bool center]) {
+Text SecondaryText(String text, [double size, bool bold, bool center]) {
   return getText(text, secondaryColor, size, bold, center);
 }
 
-Text blackText(String text, [double size, bool bold, bool center]) {
+Text BlackText(String text, [double size, bool bold, bool center]) {
   return getText(text, textColor, size, bold, center);
 }
 
-Text greyText(String text, [double size, bool bold, bool center]) {
+Text GreyText(String text, [double size, bool bold, bool center]) {
   return getText(text, greyTextColor, size, bold, center);
 }
 
-Text whiteText(String text, [double size, bool bold, bool center]) {
+Text WhiteText(String text, [double size, bool bold, bool center]) {
   return getText(text, white, size, bold, center);
 }
 
@@ -43,7 +44,7 @@ Text getText(String text, Color color, [double size, bool bold, bool center]) {
   return Text(
     text,
     style: TextStyle(
-      fontWeight: (bold != null && bold) ? FontWeight.bold : FontWeight.normal,
+      fontWeight: (bold != null && bold) ? Bold : FontWeight.normal,
       fontSize: (size != null) ? size : 14,
       color: color,
     ),
@@ -100,4 +101,39 @@ String getSubstring(String text, int length) {
   return '${text.substring(0, length - 3)} ...';
 }
 
+String getAvatarName(name) {
+  List<String> names = name.split(" ");
+  String initials = "";
+
+  for (var i = 0; i < names.length; i++) {
+    if (names[i][0] == names[i][0].toUpperCase()) initials += '${names[i][0]}';
+  }
+  if (initials.length < 2) return initials;
+  return initials.substring(0, 2);
+}
+
+AssetImage getIcon(String image) {
+  return AssetImage('assets/icons/$image.png');
+}
+
+AssetImage getAssetImage(String image) {
+  return AssetImage('assets/images/$image.png');
+}
+
+void showAppBtSheet(BuildContext context, Widget sheet) {
+  showModalBottomSheet<void>(
+    context: context,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(10.0),
+        topRight: Radius.circular(10.0),
+      ),
+    ),
+    backgroundColor: Colors.white,
+    builder: (context) => sheet,
+  );
+}
+
+EdgeInsets mainHrPadding = EdgeInsets.symmetric(horizontal: 30);
+const FontWeight Bold = FontWeight.bold;
 double appPadding = 24;

@@ -39,7 +39,7 @@ class RadioGroupWidget extends State<RadioGroup> {
                     child: Transform.scale(
                       scale: 1.1,
                       child: Radio(
-                        // title: blackText("${list[index].name}", 14, true),
+                        // title: BlackText("${list[index].name}", 14, true),
                         activeColor: secondaryColor,
                         groupValue: id,
                         value: index,
@@ -52,10 +52,11 @@ class RadioGroupWidget extends State<RadioGroup> {
                     ),
                   ),
                   SizedBox(width: 12),
-                  blackText("${list[index].name}", 14, true),
+                  BlackText("${list[index].name}", 14, true),
                   SizedBox(width: 20),
                   Image(
-                      image: AssetImage('assets/icons/${list[index].icon}.png'))
+                    image: getIcon(list[index].icon),
+                  )
                 ],
               ),
               Divider(),

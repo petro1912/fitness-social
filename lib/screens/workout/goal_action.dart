@@ -106,7 +106,7 @@ class _GoalActionScreenState extends State<GoalActionScreen> {
                     color: white,
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: primaryText('Advance', 10, true),
+                  child: PrimaryText('Advance', 10, true),
                 )
               ],
             ),
@@ -116,11 +116,11 @@ class _GoalActionScreenState extends State<GoalActionScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  blackText(action.title, 16, true),
+                  BlackText(action.title, 16, true),
                   SizedBox(height: 6),
-                  secondaryText('${action.members} Member', 10),
+                  SecondaryText('${action.members} Member', 10),
                   SizedBox(height: 6),
-                  greyText(action.description, 10),
+                  GreyText(action.description, 10),
                 ],
               ),
             ),

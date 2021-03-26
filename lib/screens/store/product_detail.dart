@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:fitness/components/color_selector.dart';
 import 'package:fitness/components/count_selector.dart';
+import 'package:fitness/components/image_slider.dart';
 import 'package:fitness/components/main_responsive_scaffold.dart';
 import 'package:fitness/components/price_text.dart';
 import 'package:fitness/components/rounded_raised_button.dart';
@@ -15,64 +16,7 @@ class ProductDetailScreen extends StatefulWidget {
 }
 
 class _ProductDetailScreenState extends State<ProductDetailScreen> {
-  int _currentImageIndex = 0;
   Product product;
-
-  List<Widget> _buildProductImages() {
-    return List.generate(
-      product.images.length,
-      (index) => Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(12),
-            topRight: Radius.circular(12),
-          ),
-          image: DecorationImage(
-              image: AssetImage(product.images[index]), fit: BoxFit.cover),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildProCarouselBullets() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: List.generate(
-        product.images.length,
-        (index) => Container(
-          width: 8.0,
-          height: 8.0,
-          margin: EdgeInsets.symmetric(vertical: 6.0, horizontal: 4.0),
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: _currentImageIndex == index
-                ? secondaryColor
-                : secondaryColor.withOpacity(.5),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildProImageSlider() {
-    return CarouselSlider(
-      options: CarouselOptions(
-        viewportFraction: 1,
-        enlargeCenterPage: true,
-        initialPage: 0,
-        enableInfiniteScroll: true,
-        reverse: false,
-        autoPlay: true,
-        autoPlayInterval: Duration(seconds: 3),
-        onPageChanged: (index, reason) {
-          setState(() {
-            _currentImageIndex = index;
-          });
-        },
-      ),
-      items: _buildProductImages(),
-    );
-  }
 
   void initState() {
     product = Product(
@@ -80,12 +24,12 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
       description: '',
       price: 45.99,
       images: [
-        'assets/images/club-item1.png',
-        'assets/images/club-item2.png',
-        'assets/images/club-item3.png',
-        'assets/images/club-item1.png',
-        'assets/images/club-item2.png',
-        'assets/images/club-item3.png',
+        'club-item1',
+        'club-item2',
+        'club-item3',
+        'club-item1',
+        'club-item2',
+        'club-item3',
       ],
     );
     super.initState();
@@ -100,9 +44,13 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
       title: '',
       child: Column(
         children: [
-          _buildProImageSlider(),
+          ImageSlider(
+            images: product.images,
+            // dotColor: primaryColor,
+            titleText: GreyText('Company', 12),
+          ),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 30),
+            padding: mainHrPadding,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -111,16 +59,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    greyText('Company', 12),
-                    _buildProCarouselBullets(),
-                  ],
-                ),
-                SizedBox(height: 12),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    blackText('Name of this Product', 24, true),
+                    BlackText('Name of this Product', 24, true),
                     PriceText(
                       mainText: product.price.toString(),
                       mainStyle: TextStyle(color: primaryColor, fontSize: 16),
@@ -131,7 +70,6 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 ),
                 SizedBox(height: 12),
                 Row(
-                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Expanded(
@@ -144,7 +82,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   ],
                 ),
                 SizedBox(height: 12),
-                greyText('Other Products', 12),
+                GreyText('Other Products', 12),
                 SizedBox(height: 12),
               ],
             ),
@@ -175,7 +113,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
           ),
           SizedBox(height: 30),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 30),
+            padding: mainHrPadding,
             child: SizedBox(
               width: double.infinity,
               child: RoundedRaisedButton(

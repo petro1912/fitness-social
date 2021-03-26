@@ -49,7 +49,7 @@ class _AccountScreenState extends State<AccountScreen> {
                 height: 30,
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 30),
+                padding: mainHrPadding,
                 child: Column(
                   children: [
                     TextFormField(
@@ -97,7 +97,7 @@ class _AccountScreenState extends State<AccountScreen> {
                           Icons.mail_outline,
                           color: textColor.withOpacity(0.5),
                         ),
-                        suffix: secondaryText('optional'),
+                        suffix: SecondaryText('optional'),
                       ),
                       onChanged: (text) => setState(() {
                         phoneNumber = text;
@@ -138,7 +138,7 @@ class _AccountScreenState extends State<AccountScreen> {
                             SizedBox(
                               height: 10,
                             ),
-                            primaryText('MALE', 14, true, true),
+                            PrimaryText('MALE', 14, true, true),
                           ],
                         ),
                         Container(
@@ -155,7 +155,7 @@ class _AccountScreenState extends State<AccountScreen> {
                             SizedBox(
                               height: 10,
                             ),
-                            primaryText('FEMALE', 14, true, true),
+                            PrimaryText('FEMALE', 14, true, true),
                           ],
                         ),
                       ],
@@ -170,7 +170,7 @@ class _AccountScreenState extends State<AccountScreen> {
                 height: 48,
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 30),
+                padding: mainHrPadding,
                 child: SizedBox(
                   width: double.infinity,
                   child: RoundedRaisedButton(

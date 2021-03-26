@@ -85,13 +85,13 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      blackText(action.name, 16, true),
+                      BlackText(action.name, 16, true),
                       SizedBox(height: 6),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          primaryText('${action.sessions} Sessions', 12),
-                          secondaryText('${action.laps} laps', 12),
+                          PrimaryText('${action.sessions} Sessions', 12),
+                          SecondaryText('${action.laps} laps', 12),
                         ],
                       )
                     ],

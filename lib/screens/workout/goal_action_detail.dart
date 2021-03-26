@@ -68,15 +68,15 @@ class _GoalActionDetailScreenState extends State<GoalActionDetailScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      whiteText(goalActionDetail.title.toUpperCase(), 18, true),
-                      blackText(goalActionDetail.time, 14, true)
+                      WhiteText(goalActionDetail.title.toUpperCase(), 18, true),
+                      BlackText(goalActionDetail.time, 14, true)
                     ],
                   ),
                 ),
                 Container(
                   alignment: Alignment.topLeft,
-                  padding: EdgeInsets.symmetric(horizontal: 30),
-                  child: blackText(
+                  padding: mainHrPadding,
+                  child: BlackText(
                       goalActionDetail.isAdvanced ? 'Advanced Level' : '',
                       14,
                       true),
@@ -87,7 +87,7 @@ class _GoalActionDetailScreenState extends State<GoalActionDetailScreen> {
           ),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-            child: greyText(goalActionDetail.description, 14),
+            child: GreyText(goalActionDetail.description, 14),
           ),
           Container(
             padding: EdgeInsets.symmetric(
@@ -104,7 +104,7 @@ class _GoalActionDetailScreenState extends State<GoalActionDetailScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      primaryText('Ahmed Sami', 14, true),
+                      PrimaryText('Ahmed Sami', 14, true),
                       lightPrimaryText(
                         'Brief description for this activity .. Brief description for this activity',
                         12,

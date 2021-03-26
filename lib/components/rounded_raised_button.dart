@@ -36,7 +36,7 @@ class RoundedRaisedButton extends StatelessWidget {
           style: TextStyle(
             fontSize: 16,
             color: _filled ? textColor ?? white : primaryColor,
-            fontWeight: FontWeight.bold,
+            fontWeight: Bold,
           ),
         ),
         padding: EdgeInsets.symmetric(

@@ -50,14 +50,14 @@ class _DietsScreenState extends State<DietsScreen> {
   List<Widget> _buildDietContent(index) {
     Diet action = dietList[index];
     List<Widget> contents = [];
-    contents.add(blackText(action.name.toUpperCase(), 16, true));
+    contents.add(BlackText(action.name.toUpperCase(), 16, true));
     contents.add(SizedBox(height: 6));
     for (var i = 0; i < action.ingredients.length; i++) {
-      contents.add(blackText('${i + 1} ${action.ingredients[i]}', 12));
+      contents.add(BlackText('${i + 1} ${action.ingredients[i]}', 12));
       contents.add(SizedBox(height: 6));
     }
     for (var i = 0; i < action.ingredients.length; i++) {
-      contents.add(blackText(action.condiments[i], 12));
+      contents.add(BlackText(action.condiments[i], 12));
       contents.add(SizedBox(height: 6));
     }
     return contents;
@@ -121,7 +121,7 @@ class _DietsScreenState extends State<DietsScreen> {
                     color: white,
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: primaryText('${action.kcal} Calories', 10, true),
+                  child: PrimaryText('${action.kcal} Calories', 10, true),
                 )
               ],
             ),

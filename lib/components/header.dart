@@ -8,26 +8,22 @@ class Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var icon = (isMain != null && isMain) ? 'tab-icon' : 'arrow-left';
     return Container(
       height: 72,
-      margin: EdgeInsets.symmetric(horizontal: 30),
+      margin: mainHrPadding,
       child: Stack(
         alignment: Alignment.centerLeft,
         children: [
           SizedBox(
             width: double.infinity,
-            child: blackText(title.toUpperCase(), 16, true, true),
+            child: BlackText(title.toUpperCase(), 16, true, true),
           ),
           InkWell(
             onTap: () {
               Navigator.pop(context);
             },
-            child: Image.asset(
-              (isMain != null && isMain)
-                  ? 'assets/icons/tab-icon.png'
-                  : 'assets/icons/arrow-left.png',
-              scale: 0.8,
-            ),
+            child: Image(image: getIcon(icon)),
           ),
         ],
       ),

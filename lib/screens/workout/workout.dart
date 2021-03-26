@@ -25,13 +25,13 @@ class WorkoutScreen extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 80),
-              child: blackText(strNoPlan.toUpperCase(), 32, true, true),
+              child: BlackText(strNoPlan.toUpperCase(), 32, true, true),
             ),
             SizedBox(
               height: 30,
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30),
+              padding: mainHrPadding,
               child: SizedBox(
                 width: double.infinity,
                 child: RoundedRaisedButton(

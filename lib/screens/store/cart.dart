@@ -99,11 +99,11 @@ class _CartScreenState extends State<CartScreen> {
                         Row(
                           children: [
                             Expanded(
-                              child: blackText(product.name, 14, true),
+                              child: BlackText(product.name, 14, true),
                             ),
                             Row(
                               children: [
-                                primaryText('Blue', 12),
+                                PrimaryText('Blue', 12),
                                 SizedBox(width: 6),
                                 DoubleColorDot(
                                   size: 12,
@@ -145,7 +145,7 @@ class _CartScreenState extends State<CartScreen> {
                 child: Container(
                   alignment: Alignment.center,
                   color: secondaryColor.withOpacity(.15),
-                  child: secondaryText('Shopping Similar', 12, true),
+                  child: SecondaryText('Shopping Similar', 12, true),
                 ),
               ),
             )

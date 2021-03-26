@@ -1,3 +1,4 @@
+import 'package:fitness/components/card.dart';
 import 'package:fitness/components/main_scaffold.dart';
 import 'package:fitness/components/rounded_raised_button.dart';
 import 'package:fitness/constants.dart';
@@ -30,26 +31,15 @@ class _ChooseGoalScreenState extends State<ChooseGoalScreen> {
       onTap: () => setState(() {
         activeItem = index;
       }),
-      child: Container(
-        margin: EdgeInsets.only(bottom: 20),
-        decoration: BoxDecoration(
-          color: index == activeItem ? primaryColor : white,
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-              color: textColor.withOpacity(0.1),
-              offset: Offset(0, 4),
-              blurRadius: 10,
-            )
-          ],
-        ),
+      child: RRCard(
+        color: index == activeItem ? primaryColor : white,
         child: Stack(
           children: [
             Padding(
               padding: EdgeInsets.only(top: 10, left: 10),
               child: index == activeItem
-                  ? whiteText(chooseItemList[index][0], 14, true)
-                  : blackText(chooseItemList[index][0], 14, true),
+                  ? WhiteText(chooseItemList[index][0], 14, true)
+                  : BlackText(chooseItemList[index][0], 14, true),
             ),
             Positioned.fill(
               // child: Image(image: AssetImage(chooseItemList[index][1])),
@@ -76,13 +66,13 @@ class _ChooseGoalScreenState extends State<ChooseGoalScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              blackText('GOAL', 18, true),
+              BlackText('GOAL', 18, true),
               SizedBox(height: 15),
               GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   crossAxisSpacing: 20,
-                  mainAxisSpacing: 0,
+                  mainAxisSpacing: 20,
                 ),
                 itemCount: 6,
                 physics: NeverScrollableScrollPhysics(),

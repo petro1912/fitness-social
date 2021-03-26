@@ -42,20 +42,20 @@ class _VerificationScreenState extends State<VerificationScreen> {
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 80),
-                child: blackText(strPhonNumberPlaceholder, 20, true, true),
+                child: BlackText(strPhonNumberPlaceholder, 20, true, true),
               ),
               SizedBox(
                 height: 30,
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 30),
+                padding: mainHrPadding,
                 child: DigitalCodeField(digits: 4, chagedDigits: changedDigits),
               ),
               SizedBox(
                 height: 24,
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 30),
+                padding: mainHrPadding,
                 child: SizedBox(
                   width: double.infinity,
                   child: RoundedRaisedButton(

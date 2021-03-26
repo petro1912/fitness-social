@@ -33,8 +33,8 @@ class _DigitalCodeFieldState extends State<DigitalCodeField> {
               hintText: '',
               counterText: '',
             ),
-            style: TextStyle(
-                fontWeight: FontWeight.bold, color: primaryColor, fontSize: 32),
+            style:
+                TextStyle(fontWeight: Bold, color: primaryColor, fontSize: 32),
           ),
         ),
       );

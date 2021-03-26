@@ -70,9 +70,9 @@ class _SupplementsScreenState extends State<SupplementsScreen> {
           ),
         ),
         SizedBox(height: 12),
-        blackText(action.usage, 12, true),
+        BlackText(action.usage, 12, true),
         SizedBox(height: 6),
-        primaryText('${action.amount} Scoop', 10)
+        PrimaryText('${action.amount} Scoop', 10)
       ],
     );
   }

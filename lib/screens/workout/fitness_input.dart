@@ -25,7 +25,7 @@ class _FitnessInputScreenState extends State<FitnessInputScreen> {
       isMain: false,
       child: Expanded(
         child: Container(
-          margin: EdgeInsets.symmetric(horizontal: 30),
+          margin: mainHrPadding,
           child: Column(
             children: [
               Expanded(
@@ -38,7 +38,7 @@ class _FitnessInputScreenState extends State<FitnessInputScreen> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          blackText('HEIGHT', 22, true),
+                          BlackText('HEIGHT', 22, true),
                           SizedBox(
                             height: 12,
                           ),
@@ -48,7 +48,7 @@ class _FitnessInputScreenState extends State<FitnessInputScreen> {
                               initialValue: '',
                               keyboardType: TextInputType.number,
                               decoration: InputDecoration(
-                                  hintText: '176 cm', suffix: blackText('cm')),
+                                  hintText: '176 cm', suffix: BlackText('cm')),
                               onChanged: (text) => setState(() {
                                 height = int.parse(text);
                               }),
@@ -61,7 +61,7 @@ class _FitnessInputScreenState extends State<FitnessInputScreen> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          blackText('WEIGHT', 22, true),
+                          BlackText('WEIGHT', 22, true),
                           SizedBox(
                             height: 12,
                           ),
@@ -71,7 +71,7 @@ class _FitnessInputScreenState extends State<FitnessInputScreen> {
                               initialValue: '',
                               keyboardType: TextInputType.number,
                               decoration: InputDecoration(
-                                  hintText: '82 kg', suffix: blackText('kg')),
+                                  hintText: '82 kg', suffix: BlackText('kg')),
                               onChanged: (text) => setState(() {
                                 weight = int.parse(text);
                               }),
@@ -84,7 +84,7 @@ class _FitnessInputScreenState extends State<FitnessInputScreen> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          blackText('DATE OF BIRTH', 22, true),
+                          BlackText('DATE OF BIRTH', 22, true),
                           SizedBox(height: 12),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,

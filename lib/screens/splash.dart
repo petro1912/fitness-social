@@ -44,7 +44,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 Container(
                   child: Column(
                     children: [
-                      secondaryText('Fitness App', 28, true),
+                      SecondaryText('Fitness App', 28, true),
                       SizedBox(
                         height: 18,
                       ),
@@ -70,14 +70,14 @@ class _SplashScreenState extends State<SplashScreen> {
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
-                                    whiteText(text[0].toUpperCase(), 24, true),
+                                    WhiteText(text[0].toUpperCase(), 24, true),
                                     SizedBox(
                                       height: 12,
                                     ),
                                     Padding(
                                       padding:
                                           EdgeInsets.symmetric(horizontal: 20),
-                                      child: whiteText(text[1], 18, true, true),
+                                      child: WhiteText(text[1], 18, true, true),
                                     ),
                                   ],
                                 ),
@@ -117,7 +117,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       ),
                     ),
                     TextButton(
-                      child: whiteText('Sign in', 16),
+                      child: WhiteText('Sign in', 16),
                       onPressed: () => navPush(context, LoginScreen()),
                     )
                   ]),

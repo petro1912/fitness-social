@@ -34,7 +34,7 @@ class _CountSelectorState extends State<CountSelector> {
             onTap: () => updateCount(true),
             child: Padding(
               padding: EdgeInsets.all(3),
-              child: blackText('-', 16),
+              child: BlackText('-', 16),
             ),
           ),
           SizedBox(width: 6),
@@ -47,7 +47,7 @@ class _CountSelectorState extends State<CountSelector> {
                   left: BorderSide(color: textColor.withOpacity(.2), width: .8),
                 ),
               ),
-              child: blackText(_count.toString(), 14, false, true),
+              child: BlackText(_count.toString(), 14, false, true),
             ),
           ),
           SizedBox(width: 6),
@@ -55,7 +55,7 @@ class _CountSelectorState extends State<CountSelector> {
             onTap: () => updateCount(false),
             child: Padding(
               padding: EdgeInsets.all(3),
-              child: blackText('+', 16),
+              child: BlackText('+', 16),
             ),
           ),
         ],
