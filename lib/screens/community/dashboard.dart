@@ -1,4 +1,5 @@
 import 'package:fitness/components/dashbard_radio.dart';
+import 'package:fitness/components/line_chart.dart';
 import 'package:fitness/components/main_responsive_scaffold.dart';
 import 'package:fitness/constants.dart';
 import 'package:flutter/material.dart';
@@ -17,13 +18,14 @@ class _CommunityDashboardScreenState extends State<CommunityDashboardScreen> {
   @override
   Widget build(BuildContext context) {
     return MainResponsiveScaffold(
-      title: 'community',
+      title: 'dashboard',
       pageIndex: 2,
       child: Column(
         children: [
           Container(
-            height: 240,
-            color: primaryColor.withOpacity(.6),
+            width: double.infinity,
+            height: 280,
+            child: DashboardChart(),
           ),
           SizedBox(height: 20),
           Padding(

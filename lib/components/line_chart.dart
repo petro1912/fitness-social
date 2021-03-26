@@ -1,3 +1,4 @@
+import 'package:fitness/constants.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
@@ -19,76 +20,42 @@ class _DashboardChartState extends State<DashboardChart> {
   Widget build(BuildContext context) {
     return AspectRatio(
       aspectRatio: 1.23,
-      child: Container(
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(18)),
-          gradient: LinearGradient(
-            colors: [
-              Color(0xff2c274c),
-              Color(0xff46426c),
-            ],
-            begin: Alignment.bottomCenter,
-            end: Alignment.topCenter,
-          ),
-        ),
-        child: Stack(
-          children: <Widget>[
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                const SizedBox(
-                  height: 37,
-                ),
-                const Text(
-                  'Unfold Shop 2018',
-                  style: TextStyle(
-                    color: Color(0xff827daa),
-                    fontSize: 16,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(
-                  height: 4,
-                ),
-                const Text(
-                  'Monthly Sales',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 32,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 2),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(
-                  height: 37,
-                ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(right: 16.0, left: 6.0),
-                    child: LineChart(
-                      isShowingMainData ? sampleData1() : sampleData2(),
-                      swapAnimationDuration: const Duration(milliseconds: 250),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-              ],
-            ),
-            IconButton(
-              icon: Icon(
-                Icons.refresh,
-                color: Colors.white.withOpacity(isShowingMainData ? 1.0 : 0.5),
+      child: Stack(
+        children: <Widget>[
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              const SizedBox(
+                height: 37,
               ),
-              onPressed: () {
-                setState(() {
-                  isShowingMainData = !isShowingMainData;
-                });
-              },
-            )
-          ],
-        ),
+              Expanded(
+                child:
+                    /* Padding(
+                  padding: const EdgeInsets.only(right: 16.0, left: 6.0),
+                  child: */
+                    LineChart(
+                  isShowingMainData ? sampleData1() : sampleData2(),
+                  swapAnimationDuration: const Duration(milliseconds: 250),
+                ),
+                /* ), */
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+            ],
+          ),
+          IconButton(
+            icon: Icon(
+              Icons.refresh,
+              color: Colors.white.withOpacity(isShowingMainData ? 1.0 : 0.5),
+            ),
+            onPressed: () {
+              setState(() {
+                isShowingMainData = !isShowingMainData;
+              });
+            },
+          )
+        ],
       ),
     );
   }
@@ -103,7 +70,14 @@ class _DashboardChartState extends State<DashboardChart> {
         handleBuiltInTouches: true,
       ),
       gridData: FlGridData(
-        show: false,
+        show: true,
+        drawVerticalLine: false,
+        getDrawingHorizontalLine: (value) {
+          return FlLine(
+            color: dividerColor,
+            strokeWidth: 1,
+          );
+        },
       ),
       titlesData: FlTitlesData(
         bottomTitles: SideTitles(
@@ -128,7 +102,7 @@ class _DashboardChartState extends State<DashboardChart> {
           },
         ),
         leftTitles: SideTitles(
-          showTitles: true,
+          showTitles: false,
           getTextStyles: (value) => const TextStyle(
             color: Color(0xff75729e),
             fontWeight: FontWeight.bold,
@@ -152,11 +126,11 @@ class _DashboardChartState extends State<DashboardChart> {
         ),
       ),
       borderData: FlBorderData(
-        show: true,
+        show: false,
         border: const Border(
           bottom: BorderSide(
             color: Color(0xff4e4965),
-            width: 4,
+            width: 0,
           ),
           left: BorderSide(
             color: Colors.transparent,
@@ -180,6 +154,7 @@ class _DashboardChartState extends State<DashboardChart> {
   List<LineChartBarData> linesBarData1() {
     final LineChartBarData lineChartBarData1 = LineChartBarData(
       spots: [
+        FlSpot(0, 2),
         FlSpot(1, 1),
         FlSpot(3, 1.5),
         FlSpot(5, 1.4),
@@ -187,43 +162,46 @@ class _DashboardChartState extends State<DashboardChart> {
         FlSpot(10, 2),
         FlSpot(12, 2.2),
         FlSpot(13, 1.8),
+        FlSpot(14, 3),
       ],
       isCurved: true,
       colors: [
-        const Color(0xff4af699),
+        primaryColor,
       ],
-      barWidth: 8,
+      barWidth: 3,
       isStrokeCapRound: true,
       dotData: FlDotData(
         show: false,
       ),
-      belowBarData: BarAreaData(
-        show: false,
-      ),
+      belowBarData: BarAreaData(show: true, colors: [
+        primaryColor.withOpacity(.3),
+      ]),
     );
     final LineChartBarData lineChartBarData2 = LineChartBarData(
       spots: [
+        FlSpot(0, .5),
         FlSpot(1, 1),
         FlSpot(3, 2.8),
         FlSpot(7, 1.2),
         FlSpot(10, 2.8),
         FlSpot(12, 2.6),
         FlSpot(13, 3.9),
+        FlSpot(14, 3),
       ],
       isCurved: true,
       colors: [
-        const Color(0xffaa4cfc),
+        secondaryColor,
       ],
-      barWidth: 8,
+      barWidth: 3,
       isStrokeCapRound: true,
       dotData: FlDotData(
         show: false,
       ),
-      belowBarData: BarAreaData(show: false, colors: [
-        const Color(0x00aa4cfc),
+      belowBarData: BarAreaData(show: true, colors: [
+        secondaryColor.withOpacity(.3),
       ]),
     );
-    final LineChartBarData lineChartBarData3 = LineChartBarData(
+    /* final LineChartBarData lineChartBarData3 = LineChartBarData(
       spots: [
         FlSpot(1, 2.8),
         FlSpot(3, 1.9),
@@ -233,21 +211,21 @@ class _DashboardChartState extends State<DashboardChart> {
       ],
       isCurved: true,
       colors: const [
-        Color(0xff27b6fc),
+        secondaryColor,
       ],
-      barWidth: 8,
+      barWidth: 3,
       isStrokeCapRound: true,
       dotData: FlDotData(
         show: false,
       ),
       belowBarData: BarAreaData(
-        show: false,
+        show: true,
       ),
-    );
+    ); */
     return [
       lineChartBarData1,
       lineChartBarData2,
-      lineChartBarData3,
+      // lineChartBarData3,
     ];
   }
 
@@ -281,8 +259,8 @@ class _DashboardChartState extends State<DashboardChart> {
             return '';
           },
         ),
-        leftTitles: SideTitles(
-          showTitles: true,
+        /* leftTitles: SideTitles(
+          showTitles: false,
           getTextStyles: (value) => const TextStyle(
             color: Color(0xff75729e),
             fontWeight: FontWeight.bold,
@@ -305,7 +283,7 @@ class _DashboardChartState extends State<DashboardChart> {
           },
           margin: 8,
           reservedSize: 30,
-        ),
+        ), */
       ),
       borderData: FlBorderData(
           show: true,
@@ -393,7 +371,7 @@ class _DashboardChartState extends State<DashboardChart> {
         colors: const [
           Color(0x4427b6fc),
         ],
-        barWidth: 2,
+        barWidth: 3,
         isStrokeCapRound: true,
         dotData: FlDotData(show: true),
         belowBarData: BarAreaData(
