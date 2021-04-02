@@ -17,7 +17,7 @@ samples, guidance on mobile development, and a full API reference.
 
 
 <div style="text-align: center">
-  <img src = "https://github.com/jsec1912/fitness-flutter/blob/master/screenshots/Splash screen – 1@3x.png" width = "200px"/>
+  <img src = "https://github.com/jsec1912/fitness-flutter/blob/master/screenshots/Splash.png" width = "200px"/>
   <img src = "https://github.com/jsec1912/fitness-flutter/blob/master/screenshots/login–0.png" width = "200px"/>
   <img src = "https://github.com/jsec1912/fitness-flutter/blob/master/screenshots/login–1.png" width = "200px"/>
   <img src = "https://github.com/jsec1912/fitness-flutter/blob/master/screenshots/login–2.png" width = "200px"/>
@@ -60,15 +60,15 @@ samples, guidance on mobile development, and a full API reference.
   <img src = "https://github.com/jsec1912/fitness-flutter/blob/master/screenshots/Workout–11.png" width = "200px"/>
 </div>
 <div style="text-align: center">
-  <img src = "https://github.com/jsec1912/fitness-flutter/blob/master/screenshots/Community–0.png" width = "200px"/>
   <img src = "https://github.com/jsec1912/fitness-flutter/blob/master/screenshots/Community–1.png" width = "200px"/>
+  <img src = "https://github.com/jsec1912/fitness-flutter/blob/master/screenshots/Community–1_.png" width = "200px"/>
   <img src = "https://github.com/jsec1912/fitness-flutter/blob/master/screenshots/Community–2.png" width = "200px"/>
   <img src = "https://github.com/jsec1912/fitness-flutter/blob/master/screenshots/Community–3.png" width = "200px"/>
 </div>
 <div style="text-align: center">
   <img src = "https://github.com/jsec1912/fitness-flutter/blob/master/screenshots/Community–4.png" width = "200px"/>
-  <img src = "https://github.com/jsec1912/fitness-flutter/blob/master/screenshots/Community–5.png" width = "200px"/>
-  <img src = "https://github.com/jsec1912/fitness-flutter/blob/master/screenshots/Community–6.png" width = "200px"/>
+  <img src = "https://github.com/jsec1912/fitness-flutter/blob/master/screenshots/Community–14-1.png" width = "200px"/>
+  <img src = "https://github.com/jsec1912/fitness-flutter/blob/master/screenshots/Community–14-2.png" width = "200px"/>
   <img src = "https://github.com/jsec1912/fitness-flutter/blob/master/screenshots/Community–7.png" width = "200px"/>
 </div>
 <div style="text-align: center">
