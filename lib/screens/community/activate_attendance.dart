@@ -54,7 +54,6 @@ class _ActivateAttendanceState extends State<ActivateAttendance> {
 
   @override
   Widget build(BuildContext context) {
-    print('list height: ${getWindowHeight(context) * .7 - 200}');
     return Container(
       height: getWindowHeight(context) * .7,
       padding: EdgeInsets.only(top: 40),

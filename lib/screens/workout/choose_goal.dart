@@ -73,14 +73,16 @@ class _ChooseGoalScreenState extends State<ChooseGoalScreen> {
                   crossAxisCount: 2,
                   crossAxisSpacing: 20,
                   mainAxisSpacing: 20,
+                  childAspectRatio: 1.1,
                 ),
                 itemCount: 6,
                 physics: NeverScrollableScrollPhysics(),
                 itemBuilder: (_, index) => buildChooseItem(index),
                 shrinkWrap: true,
+                padding: EdgeInsets.only(bottom: 20),
               ),
               SizedBox(
-                height: 20,
+                height: 10,
               ),
               SizedBox(
                 width: double.infinity,

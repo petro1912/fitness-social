@@ -18,7 +18,6 @@ class _AccountScreenState extends State<AccountScreen> {
   String phoneNumber = '';
 
   void proceed() {
-    print('clicked');
     if (phoneNumber.isNotEmpty) navPush(context, VerificationScreen());
   }
 

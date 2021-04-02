@@ -4,8 +4,10 @@ import 'package:fitness/components/main_responsive_scaffold.dart';
 import 'package:fitness/components/main_scaffold.dart';
 import 'package:fitness/components/round_checkbox.dart';
 import 'package:fitness/components/rounded_raised_button.dart';
+import 'package:fitness/components/tabbar.dart';
 import 'package:fitness/constants.dart';
 import 'package:fitness/data/string.dart';
+import 'package:fitness/model/tabbar_item.dart';
 import 'package:fitness/screens/workout/goal_action_run.dart';
 import 'package:fitness/utils/navigation_util.dart';
 import 'package:flutter/material.dart';
@@ -28,188 +30,6 @@ class _WorkoutPaymentScreenState extends State<WorkoutPaymentScreen>
   void purchasePlan(BuildContext context) {
     navPush(context, GoalActionRunScreen());
   }
-
-  /* Widget _buildTabBarViewText() {
-    return Container(
-      margin: EdgeInsets.symmetric(
-        horizontal: 30,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(height: 20),
-          BlackText('Card Number', 14, true),
-          TextFormField(
-            initialValue: '',
-            keyboardType: TextInputType.text,
-            decoration: InputDecoration(
-              hintText: 'Card number',
-              suffixIcon:
-                  Image(image: AssetImage('assets/images/mastercard.png')),
-            ),
-            onChanged: (text) => setState(() {
-              cardNumber = text;
-            }),
-            style: TextStyle(color: textColor),
-          ),
-          SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  BlackText('Expired Date', 14, true),
-                  SizedBox(
-                    width: 80,
-                    child: TextFormField(
-                      initialValue: '',
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        hintText: 'MM/YY',
-                      ),
-                      onChanged: (text) => setState(() {
-                        cardNumber = text;
-                      }),
-                      style: TextStyle(color: textColor),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(width: 20),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  BlackText('CVV', 14, true),
-                  SizedBox(
-                    width: 80,
-                    child: TextFormField(
-                      initialValue: '',
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        hintText: 'CVV',
-                      ),
-                      onChanged: (text) => setState(() {
-                        cardNumber = text;
-                      }),
-                      style: TextStyle(color: textColor),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                ],
-              )
-            ],
-          ),
-          SizedBox(height: 20),
-        ],
-      ),
-    );
-  } */
-
-  /* Widget _buildTabBarCreditCard(BuildContext context) {
-    double width = getWindowWidth(context);
-
-    return Container(
-      /* height: , */
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            width: 20,
-            margin: EdgeInsets.symmetric(vertical: 50),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(10),
-                    bottomRight: Radius.circular(10)),
-                color: Color(0xFFF5003C)),
-          ),
-          Expanded(
-            child: Container(
-              margin: EdgeInsets.symmetric(horizontal: 16),
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('assets/images/visa.png'),
-                    fit: BoxFit.contain),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(height: 45),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 50),
-                    child: TextFormField(
-                      initialValue: '',
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        focusedBorder: InputBorder.none,
-                        enabledBorder: InputBorder.none,
-                        errorBorder: InputBorder.none,
-                        disabledBorder: InputBorder.none,
-                        hintText: 'Card Number',
-                        hintStyle: TextStyle(
-                            color: white, fontWeight: Bold),
-                      ),
-                      onChanged: (text) => setState(() {
-                        // phoneNumber = text;
-                      }),
-                      style:
-                          TextStyle(color: white, fontWeight: Bold),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  SizedBox(height: 30),
-                  Container(
-                    padding: mainHrPadding,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        WhiteText('Ahmed Abed ElAziz', 12, true),
-                        SizedBox(
-                          width: 60,
-                          child: TextFormField(
-                            initialValue: '',
-                            keyboardType: TextInputType.text,
-                            decoration: InputDecoration(
-                              hintText: 'CVV',
-                              hintStyle: TextStyle(
-                                  color: white,
-                                  fontSize: 12,
-                                  fontWeight: Bold),
-                              border: InputBorder.none,
-                              focusedBorder: InputBorder.none,
-                              enabledBorder: InputBorder.none,
-                              errorBorder: InputBorder.none,
-                              disabledBorder: InputBorder.none,
-                            ),
-                            onChanged: (text) => setState(() {
-                              // phoneNumber = text;
-                            }),
-                            style: TextStyle(color: white, fontSize: 12),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Container(
-            width: 20,
-            margin: EdgeInsets.symmetric(vertical: 50),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(10),
-                    bottomLeft: Radius.circular(10)),
-                color: Color(0xFFF7B579)),
-          ),
-        ],
-      ),
-    );
-  } */
 
   Widget build(BuildContext context) {
     return MainScaffold(
@@ -234,7 +54,7 @@ class _WorkoutPaymentScreenState extends State<WorkoutPaymentScreen>
               ],
             ),
             SizedBox(height: 20),
-            Container(
+            /* Container(
               margin: EdgeInsets.symmetric(
                 horizontal: 30,
               ),
@@ -277,6 +97,15 @@ class _WorkoutPaymentScreenState extends State<WorkoutPaymentScreen>
                 ],
                 controller: _tabController,
               ),
+            ), */
+            Tabbar(
+              height: getWindowHeight(context) - 500,
+              small: true,
+              items: [
+                TabbarItem(label: 'TEXT', page: CreditTextView()),
+                TabbarItem(label: 'VISA', page: CreditCardView()),
+                TabbarItem(label: 'MASTERCARD', page: Text('Person')),
+              ],
             ),
             SizedBox(height: 30),
             Container(

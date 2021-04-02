@@ -1,5 +1,6 @@
 import 'package:fitness/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:fitness/screens/drawer/zoom_drawer.dart';
 
 class Header extends StatelessWidget {
   const Header({Key key, this.title, this.isMain}) : super(key: key);
@@ -21,7 +22,10 @@ class Header extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              Navigator.pop(context);
+              if (isMain != null && isMain) {
+                ZoomDrawer.of(context).toggle();
+              } else
+                Navigator.pop(context);
             },
             child: Image(image: getIcon(icon)),
           ),

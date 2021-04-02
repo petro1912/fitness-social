@@ -39,7 +39,6 @@ class _PaymentScreenState extends State<PaymentScreen> {
   }
 
   Widget _buildInvoiceItem(String text, double price) {
-    print(price);
     return Container(
       margin: EdgeInsets.only(
         bottom: 10,

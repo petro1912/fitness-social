@@ -82,7 +82,10 @@ class _CommunityActivatesScreenState extends State<CommunityActivatesScreen> {
             children: [
               Padding(
                 padding: EdgeInsets.all(6),
-                child: TextAvatar(name: 'F', color: primaryColor, size: 40),
+                child: TextAvatar(
+                    name: activate.name.substring(0, 1).toUpperCase(),
+                    color: primaryColor,
+                    size: 40),
               ),
               Expanded(
                 child: Column(

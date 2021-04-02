@@ -1,4 +1,6 @@
+import 'package:fitness/components/dialog_box.dart';
 import 'package:fitness/constants.dart';
+import 'package:fitness/screens/drawer/drawer_screen.dart';
 import 'package:fitness/screens/workout/workout.dart';
 import 'package:fitness/utils/navigation_util.dart';
 import 'package:flutter/material.dart';
@@ -113,12 +115,23 @@ class _SplashScreenState extends State<SplashScreen> {
                       child: RoundedRaisedButton(
                         filled: true,
                         label: 'Get Started',
-                        action: () => navPush(context, WorkoutScreen()),
+                        action: () => navPush(
+                            context, DrawerScreen(child: WorkoutScreen())),
                       ),
                     ),
                     TextButton(
                       child: WhiteText('Sign in', 16),
-                      onPressed: () => navPush(context, LoginScreen()),
+                      onPressed: () => showMessage(
+                        context,
+                        DialogBox.confirm(
+                          context,
+                          title: 'Here Appear Text Message\n for the Group',
+                          yes: 'Option',
+                          no: 'Option',
+                          yesAction: () => {},
+                          noAction: () => {},
+                        ),
+                      ), //navPush(context, LoginScreen()),
                     )
                   ]),
                 ),

@@ -98,7 +98,7 @@ class _GoalActionDetailScreenState extends State<GoalActionDetailScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Avatar(image: 'assets/images/Photo3.png', size: 40),
+                Avatar(image: 'Photo3', size: 40),
                 SizedBox(width: 20),
                 Expanded(
                   child: Column(

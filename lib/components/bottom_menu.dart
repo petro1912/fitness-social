@@ -1,4 +1,5 @@
 import 'package:fitness/constants.dart';
+import 'package:fitness/screens/drawer/drawer_screen.dart';
 import 'package:fitness/screens/community/community.dart';
 import 'package:fitness/screens/store/store.dart';
 import 'package:fitness/screens/workout/workout.dart';
@@ -16,17 +17,17 @@ List navbarItems = [
   NavbarItem(
     icon: 'store',
     label: 'Store',
-    screen: StoreScreen(),
+    screen: DrawerScreen(child: StoreScreen()),
   ),
   NavbarItem(
     icon: 'workout',
     label: 'Workout',
-    screen: WorkoutScreen(),
+    screen: DrawerScreen(child: WorkoutScreen()),
   ),
   NavbarItem(
     icon: 'community',
     label: 'Community',
-    screen: CommunityScreen(),
+    screen: DrawerScreen(child: CommunityScreen()),
   ),
 ];
 
@@ -40,14 +41,12 @@ class _BottomMenuState extends State<BottomMenu> {
   int pageIndex = 0;
   void initState() {
     super.initState();
-    print(widget.activeIndex);
     setState(() {
       pageIndex = widget.activeIndex;
     });
   }
 
   void _onItemTapped(BuildContext context, int index) {
-    print('$pageIndex ${navbarItems[index].screen.toString()}');
     navPush(context, navbarItems[index].screen);
   }
 

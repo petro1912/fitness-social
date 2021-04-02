@@ -15,7 +15,6 @@ class _LoginScreenState extends State<LoginScreen> {
   String phoneNumber = '';
 
   void verify() {
-    print('clicked');
     if (phoneNumber.isNotEmpty) navPush(context, VerificationScreen());
   }
 

@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 class Tabbar extends StatefulWidget {
   final List<TabbarItem> items;
   final double height;
-  Tabbar({Key key, this.items, this.height}) : super(key: key);
+  final bool small;
+
+  Tabbar({Key key, this.items, this.small, this.height}) : super(key: key);
   _TabbarState createState() => _TabbarState();
 }
 
@@ -40,6 +42,7 @@ class _TabbarState extends State<Tabbar> {
   Widget _buildTabbarItemLabel(int index) {
     var selected = index == selectedIndex;
     var item = widget.items[index];
+    var small = widget.small == null ? false : widget.small;
     return InkWell(
       onTap: () => pageChanged(index),
       child: Padding(
@@ -50,14 +53,18 @@ class _TabbarState extends State<Tabbar> {
             Padding(
               padding: EdgeInsets.symmetric(vertical: 10),
               child: selected
-                  ? PrimaryText(item.label, 16, true)
-                  : GreyText(item.label, 16, true),
+                  ? small
+                      ? BlackText(item.label, 12, true)
+                      : PrimaryText(item.label, 16, true)
+                  : GreyText(item.label, small ? 12 : 16, true),
             ),
             Expanded(child: SizedBox()),
             Container(
               width: 30,
               height: 4,
-              color: selected ? primaryColor : Colors.transparent,
+              color: selected
+                  ? (small ? secondaryColor : primaryColor)
+                  : Colors.transparent,
             )
           ],
         ),
