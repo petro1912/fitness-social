@@ -25,7 +25,7 @@ class MainResponsiveScaffold extends StatelessWidget {
             child: IntrinsicHeight(
               child: Container(
                 child: Column(
-                  mainAxisSize: MainAxisSize.max,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     Header(
                       title: title.toUpperCase(),

@@ -121,7 +121,8 @@ class _SplashScreenState extends State<SplashScreen> {
                     ),
                     TextButton(
                       child: WhiteText('Sign in', 16),
-                      onPressed: () => showMessage(
+                      onPressed:
+                          /* () => showMessage(
                         context,
                         DialogBox.confirm(
                           context,
@@ -131,7 +132,8 @@ class _SplashScreenState extends State<SplashScreen> {
                           yesAction: () => {},
                           noAction: () => {},
                         ),
-                      ), //navPush(context, LoginScreen()),
+                      ),  */
+                          () => navPush(context, LoginScreen()),
                     )
                   ]),
                 ),

@@ -78,10 +78,13 @@ class _CommunityClasssScreenState extends State<CommunityClassScreen> {
               ],
             ),
           ),
+          SizedBox(height: 20),
           NavSecondBar(
-              title: 'TB Building, Tahlia Street, Riyadh',
-              titleActive: true,
-              prefixIcon: 'send'),
+            title: 'TB Building, Tahlia Street, Riyadh',
+            titleActive: true,
+            prefixIcon: 'send',
+          ),
+          SizedBox(height: 20),
           Container(
             padding: mainHrPadding,
             child: Column(

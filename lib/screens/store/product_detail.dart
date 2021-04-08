@@ -103,7 +103,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     image: DecorationImage(
-                      image: AssetImage(product.images[index]),
+                      image: getAssetImage(product.images[index]),
                       fit: BoxFit.cover,
                     ),
                   ),

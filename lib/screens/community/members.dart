@@ -3,6 +3,8 @@ import 'package:fitness/components/main_responsive_scaffold.dart';
 import 'package:fitness/components/search.dart';
 import 'package:fitness/constants.dart';
 import 'package:fitness/model/member.dart';
+import 'package:fitness/screens/community/members_chat.dart';
+import 'package:fitness/utils/navigation_util.dart';
 import 'package:flutter/material.dart';
 
 class CommunityMembersScreen extends StatefulWidget {
@@ -34,14 +36,16 @@ class _CommunityMembersScreenState extends State<CommunityMembersScreen> {
     return subList[0].name == name;
   }
 
-  void navMemberPage() {}
+  void navMemberChatPage(BuildContext context) {
+    navPush(context, CommunityChatScreen());
+  }
 
   Widget _buildMemberItem(BuildContext context, int index) {
     var member = memberList[index];
     var name = member.name;
     var nIndex = name.substring(0, 1);
     return InkWell(
-      onTap: () => navMemberPage(),
+      onTap: () => navMemberChatPage(context),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [

@@ -43,11 +43,13 @@ class GapCardShape extends CustomPainter {
           true);
 
     return Path.combine(
-        PathOperation.difference,
-        Path()
-          ..addRRect(RRect.fromLTRBR(
-              0, 0, width, height, Radius.circular(borderRadius))),
-        cutPath);
+      PathOperation.difference,
+      Path()
+        ..addRRect(
+          RRect.fromLTRBR(0, 0, width, height, Radius.circular(borderRadius)),
+        ),
+      cutPath,
+    );
   }
 
   @override

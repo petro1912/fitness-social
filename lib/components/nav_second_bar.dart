@@ -15,8 +15,7 @@ class NavSecondBar extends StatelessWidget {
       child: Container(
         height: 60,
         color: secondaryColor.withOpacity(.15),
-        margin: EdgeInsets.symmetric(vertical: 20),
-        padding: EdgeInsets.symmetric(horizontal: 30),
+        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
         alignment: Alignment.center,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,

@@ -21,7 +21,7 @@ List<MenuItem> mainMenu = [
     title: "View Membership",
     icon: 'membership',
     index: 0,
-    page: ProfileScreen(),
+    page: MembershipScreen(),
   ),
   MenuItem(
     title: "Switch Plans",

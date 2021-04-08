@@ -74,17 +74,43 @@ class _CartScreenState extends State<CartScreen> {
         Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
-              width: 60,
-              height: 60,
-              decoration: BoxDecoration(
-                color: grayColor,
-                borderRadius: BorderRadius.circular(10),
-                image: DecorationImage(
-                  image: AssetImage(product.img),
-                  fit: BoxFit.cover,
+            Stack(
+              children: [
+                Container(
+                  width: 48,
+                  height: 48,
+                  margin: EdgeInsets.only(left: 8, top: 8),
+                  decoration: BoxDecoration(
+                    color: grayColor,
+                    borderRadius: BorderRadius.circular(10),
+                    image: DecorationImage(
+                      image: AssetImage(product.img),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                 ),
-              ),
+                Container(
+                  width: 20,
+                  height: 20,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: Color(0xFFD0021B),
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      width: 3,
+                      color: white,
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: textColor.withOpacity(0.2),
+                        offset: Offset(2, 2),
+                        blurRadius: 6,
+                      )
+                    ],
+                  ),
+                  child: Container(width: 8, height: 3, color: white),
+                ),
+              ],
             ),
             SizedBox(width: 12),
             Expanded(

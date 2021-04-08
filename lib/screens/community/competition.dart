@@ -81,7 +81,7 @@ class _CommunityCompetitionScreenState
         children: [
           SizedBox(height: 20),
           Container(
-            height: 80,
+            height: 90,
             padding: mainHrPadding,
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -97,7 +97,7 @@ class _CommunityCompetitionScreenState
                       BlackText('Competition Name'.toUpperCase(), 18, true),
                       SizedBox(height: 8),
                       SizedBox(
-                        height: 50,
+                        height: 56,
                         child: Text(
                           'Few Description for this competition Few Descrip tion for this competition Description for this competition ... ',
                           style: TextStyle(fontSize: 12, color: greyTextColor),

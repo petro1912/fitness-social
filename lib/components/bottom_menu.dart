@@ -55,6 +55,7 @@ class _BottomMenuState extends State<BottomMenu> {
     return BottomNavigationBar(
       showSelectedLabels: false,
       showUnselectedLabels: false,
+      backgroundColor: Colors.white,
       items: navbarItems
           .map((item) => BottomNavigationBarItem(
                 icon: ImageIcon(getIcon(item.icon)),

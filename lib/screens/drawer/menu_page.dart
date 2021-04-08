@@ -3,6 +3,8 @@ import 'package:fitness/components/avatar.dart';
 import 'package:fitness/constants.dart';
 import 'package:fitness/screens/drawer/app_menu.dart';
 import 'package:fitness/screens/drawer/drawer_screen.dart';
+import 'package:fitness/screens/sidebar/profile.dart';
+import 'package:fitness/utils/navigation_util.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -49,23 +51,26 @@ class _MenuScreenState extends State<MenuScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Spacer(flex: 2),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(width: 30),
-                  Avatar(
-                    image: 'avatar',
-                    size: 40,
-                  ),
-                  widthBox,
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      BlackText('Mohammed Abed', 14, true),
-                      GreyText('Profile', 12)
-                    ],
-                  ),
-                ],
+              InkWell(
+                onTap: () => navPush(context, ProfileScreen()),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(width: 30),
+                    Avatar(
+                      image: 'avatar',
+                      size: 40,
+                    ),
+                    widthBox,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        BlackText('Mohammed Abed', 14, true),
+                        GreyText('Profile', 12)
+                      ],
+                    ),
+                  ],
+                ),
               ),
               Selector<MenuProvider, int>(
                 selector: (_, provider) => provider.currentPage,

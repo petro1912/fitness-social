@@ -12,10 +12,12 @@ const Color textColor = Color(0xFF22242A);
 const Color lightTextColor = Color(0xAA22242A);
 const Color greyTextColor = Color(0xFF8D92A3);
 const Color greyBtnColor = Color(0xFFF1F3F8);
+const Color greyIconColor = Color(0xFFCDCDD7);
 const Color grayColor = Color(0xFFF7F8FA);
 const Color dividerColor = Color(0x1F000000);
 const Color successColor = Color(0xFF51DC8E);
 const Color errorColor = Color(0xFFEF4B5F);
+const Color pinkColor = Color(0xFF6487D3);
 
 //const Color primaryColor = Color(0xFF29B6F6);
 
@@ -54,7 +56,7 @@ Text getText(String text, Color color, [double size, bool bold, bool center]) {
       fontWeight: (bold != null && bold) ? Bold : FontWeight.normal,
       fontSize: (size != null) ? size : 14,
       color: color,
-      // height: 1.5,
+      height: 1.3,
     ),
     textAlign: center != null && center ? TextAlign.center : TextAlign.start,
   );

@@ -84,14 +84,14 @@ class _TabbarState extends State<Tabbar> {
             alignment: Alignment.bottomLeft,
             children: [
               Container(
-                height: 44,
+                height: 45,
                 margin: EdgeInsets.only(bottom: 1),
                 decoration: BoxDecoration(
                   border: Border(bottom: BorderSide(color: dividerColor)),
                 ),
               ),
               Container(
-                height: 44,
+                height: 45,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: List.generate(
