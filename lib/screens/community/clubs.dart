@@ -6,6 +6,7 @@ import 'package:fitness/constants.dart';
 import 'package:fitness/model/club.dart';
 import 'package:fitness/model/tabbar_item.dart';
 import 'package:fitness/screens/community/club.dart';
+import 'package:fitness/screens/community/club_join.dart';
 import 'package:fitness/utils/navigation_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -161,7 +162,7 @@ class _CommunityClubsScreenState extends State<CommunityClubsScreen> {
           img: allClubList[index].img,
           title: allClubList[index].name,
           subtitle: '${allClubList[index].members} Members',
-          action: () => navClubItem(context),
+          action: () => navPush(context, CommunityClubJoinScreen()),
         ),
       ),
     );

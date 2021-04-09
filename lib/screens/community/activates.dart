@@ -67,14 +67,14 @@ class _CommunityActivatesScreenState extends State<CommunityActivatesScreen> {
     ];
   }
 
-  void navCommunityActivate(BuildContext context) {
-    navPush(context, CommunityActivateScreen());
+  void navCommunityActivate(BuildContext context, bool active) {
+    navPush(context, CommunityActivateScreen(active: active));
   }
 
   Widget _buildActivateItem(BuildContext context, int index) {
     var activate = activateList[index];
     return InkWell(
-      onTap: () => navCommunityActivate(context),
+      onTap: () => navCommunityActivate(context, true),
       child: Column(
         children: [
           Row(
@@ -167,7 +167,7 @@ class _CommunityActivatesScreenState extends State<CommunityActivatesScreen> {
           description: allActivateList[index].description,
           date: allActivateList[index].date,
           isFavorite: allActivateList[index].isFavorite,
-          action: () => navCommunityActivate(context),
+          action: () => navCommunityActivate(context, false),
         ),
       ),
     );

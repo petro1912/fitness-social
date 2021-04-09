@@ -48,15 +48,18 @@ class _GoalActionDetailScreenState extends State<GoalActionDetailScreen> {
                 Stack(
                   alignment: Alignment.center,
                   children: [
-                    Image(
-                      image: AssetImage("assets/images/cover.png"),
-                      fit: BoxFit.cover,
+                    Container(
+                      child: Image(
+                        image: getAssetImage("cover"),
+                        width: getWindowWidth(context),
+                        fit: BoxFit.fitWidth,
+                      ),
                     ),
                     SizedBox(
                       width: 48,
                       height: 48,
                       child: Image(
-                        image: AssetImage("assets/images/play_video.png"),
+                        image: getAssetImage("play_video"),
                         fit: BoxFit.cover,
                       ),
                     ),

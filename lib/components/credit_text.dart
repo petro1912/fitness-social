@@ -30,27 +30,15 @@ class _CreditTextState extends State<CreditTextView> {
     });
   }
 
-  void numberChanged(text) {
-    setState(() {
-      cardNumber = text;
-    });
-
+  void numberChanged(String text) {
     if (widget.numberChanged != null) widget.numberChanged(text);
   }
 
   void expiredChanged(text) {
-    setState(() {
-      expired = text;
-    });
-
     if (widget.expiredChanged != null) widget.expiredChanged(text);
   }
 
   void cvvChanged(text) {
-    setState(() {
-      cvv = text;
-    });
-
     if (widget.cvvChanged != null) widget.cvvChanged(text);
   }
 
@@ -66,13 +54,14 @@ class _CreditTextState extends State<CreditTextView> {
           BlackText('Card Number', 14, true),
           TextFormField(
             initialValue: cardNumber,
-            keyboardType: TextInputType.text,
+            keyboardType: TextInputType.number,
+            inputFormatters: [cardFormat],
             decoration: InputDecoration(
               hintText: 'Card number',
               suffixIcon:
                   Image(image: AssetImage('assets/images/mastercard.png')),
             ),
-            onChanged: (text) => numberChanged(text),
+            // onChanged: (text) => numberChanged(text),
             style: TextStyle(color: textColor),
           ),
           SizedBox(height: 20),
@@ -87,7 +76,8 @@ class _CreditTextState extends State<CreditTextView> {
                     width: 80,
                     child: TextFormField(
                       initialValue: expired,
-                      keyboardType: TextInputType.text,
+                      keyboardType: TextInputType.number,
+                      inputFormatters: [expiredFormat],
                       decoration: InputDecoration(
                         hintText: 'MM/YY',
                       ),
@@ -107,7 +97,9 @@ class _CreditTextState extends State<CreditTextView> {
                     width: 80,
                     child: TextFormField(
                       initialValue: cvv,
-                      keyboardType: TextInputType.text,
+                      // inputFormatters: [cvvFormat],
+                      keyboardType: TextInputType.number,
+                      obscureText: true,
                       decoration: InputDecoration(
                         hintText: 'CVV',
                       ),

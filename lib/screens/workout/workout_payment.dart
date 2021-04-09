@@ -1,4 +1,5 @@
 import 'package:fitness/components/credit_card.dart';
+import 'package:fitness/components/credit_card_input.dart';
 import 'package:fitness/components/credit_text.dart';
 import 'package:fitness/components/main_responsive_scaffold.dart';
 import 'package:fitness/components/main_scaffold.dart';
@@ -32,14 +33,11 @@ class _WorkoutPaymentScreenState extends State<WorkoutPaymentScreen>
   }
 
   Widget build(BuildContext context) {
-    return MainScaffold(
+    return MainResponsiveScaffold(
       title: 'workout',
       pageIndex: 1,
       child: Container(
         width: getWindowWidth(context),
-        /* margin: EdgeInsets.symmetric(
-          horizontal: 30,
-        ), */
         child: Column(
           children: [
             SizedBox(height: 20),
@@ -54,60 +52,15 @@ class _WorkoutPaymentScreenState extends State<WorkoutPaymentScreen>
               ],
             ),
             SizedBox(height: 20),
-            /* Container(
-              margin: EdgeInsets.symmetric(
-                horizontal: 30,
-              ),
-              child: TabBar(
-                indicator: UnderlineTabIndicator(
-                  borderSide: BorderSide(
-                    width: 2,
-                    color: secondaryColor,
-                  ),
-                  insets: EdgeInsets.only(left: 25, right: 60, bottom: 4),
-                ),
-                labelColor: textColor,
-                labelPadding: EdgeInsets.all(0),
-                labelStyle: TextStyle(fontSize: 12, fontWeight: Bold),
-                tabs: [
-                  Padding(
-                    padding: EdgeInsets.only(right: 40),
-                    child: Tab(
-                      text: 'TEXT',
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(right: 25),
-                    child: Tab(
-                      text: 'VISA',
-                    ),
-                  ),
-                  Tab(text: 'MASTERCARD'),
-                ],
-                controller: _tabController,
-              ),
-            ),
-            Expanded(
-              flex: 4,
-              child: TabBarView(
-                children: [
-                  CreditTextView(),
-                  CreditCardView(),
-                  Text('Person'),
-                ],
-                controller: _tabController,
-              ),
-            ), */
             Tabbar(
-              height: getWindowHeight(context) - 500,
+              height: 300,
               small: true,
               items: [
                 TabbarItem(label: 'TEXT', page: CreditTextView()),
                 TabbarItem(label: 'VISA', page: CreditCardView()),
-                TabbarItem(label: 'MASTERCARD', page: Text('Person')),
+                TabbarItem(label: 'MASTERCARD', page: CreditCardInput()),
               ],
             ),
-            SizedBox(height: 30),
             Container(
               margin: EdgeInsets.symmetric(
                 horizontal: 30,
@@ -146,19 +99,11 @@ class _WorkoutPaymentScreenState extends State<WorkoutPaymentScreen>
             ),
             SizedBox(height: 20),
             /* Expanded(child: SizedBox(height: 1)), */
-            Container(
-              margin: EdgeInsets.symmetric(
-                horizontal: 30,
-              ),
-              child: SizedBox(
-                width: double.infinity,
-                child: RoundedRaisedButton(
-                  label: 'Proceed',
-                  filled: true,
-                  action: () => purchasePlan(context),
-                ),
-              ),
+            PrimaryBlockButton(
+              label: 'Proceed',
+              action: () => purchasePlan(context),
             ),
+            SizedBox(height: 20),
           ],
         ),
       ),

@@ -49,7 +49,11 @@ class _VerificationScreenState extends State<VerificationScreen> {
               ),
               Padding(
                 padding: mainHrPadding,
-                child: DigitalCodeField(digits: 4, chagedDigits: changedDigits),
+                child: DigitalCodeField(
+                  digits: 4,
+                  width: getWindowWidth(context) - 80,
+                  chagedDigits: changedDigits,
+                ),
               ),
               SizedBox(
                 height: 24,

@@ -17,6 +17,7 @@ class _ActivateAttendanceState extends State<ActivateAttendance> {
       Member(img: 'exercise-photo1', name: 'Ahmad Dosari', isFavorite: true),
       Member(name: 'Ahmad Dosari'),
       Member(name: 'Ahmad Dosari'),
+      Member(img: 'exercise-photo1', name: 'Ahmad Dosari'),
     ];
   }
 
@@ -62,7 +63,7 @@ class _ActivateAttendanceState extends State<ActivateAttendance> {
         children: [
           BlackText('ATTENDANCE', 28, true),
           Container(
-            height: getWindowHeight(context) * .7 - 180,
+            height: getWindowHeight(context) * .7 - 200,
             padding: mainHrPadding,
             child: ListView.builder(
               physics: BouncingScrollPhysics(),

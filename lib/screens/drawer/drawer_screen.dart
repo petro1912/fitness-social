@@ -62,17 +62,21 @@ class _MainScreenState extends State<MainScreen> {
       valueListenable: ZoomDrawer.of(context).stateNotifier,
       builder: (context, state, child) {
         return AbsorbPointer(
-          absorbing: state != DrawerState.closed,
+          absorbing: false,
           child: child,
         );
       },
       child: GestureDetector(
         child: widget.child,
-        onPanUpdate: (details) {
+        onTap: () {
+          if (!ZoomDrawer.of(context).isOpen()) return;
+          ZoomDrawer.of(context).close();
+        },
+        /* onPanUpdate: (details) {
           if (details.delta.dx < 6 && !rtl || details.delta.dx < -6 && rtl) {
             ZoomDrawer.of(context).toggle();
           }
-        },
+        }, */
       ),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:fitness/components/digital_code_field.dart';
 import 'package:fitness/constants.dart';
 import 'package:fitness/data/string.dart';
 import 'package:flutter/material.dart';
@@ -32,30 +33,20 @@ class _CreditTextState extends State<CreditCardInput> {
   }
 
   void numberChanged(text) {
-    setState(() {
-      cardNumber = text;
-    });
-
     if (widget.numberChanged != null) widget.numberChanged(text);
   }
 
   void expiredChanged(text) {
-    setState(() {
-      expired = text;
-    });
-
     if (widget.expiredChanged != null) widget.expiredChanged(text);
   }
 
   void cvvChanged(text) {
-    setState(() {
-      cvv = text;
-    });
-
     if (widget.cvvChanged != null) widget.cvvChanged(text);
   }
 
   Widget build(BuildContext context) {
+    const inputBorder =
+        UnderlineInputBorder(borderSide: BorderSide(color: white));
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 16),
       decoration: BoxDecoration(
@@ -68,75 +59,57 @@ class _CreditTextState extends State<CreditCardInput> {
           Expanded(child: SizedBox(height: 1)),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 50),
-            child: TextFormField(
-              initialValue: cardNumber,
-              keyboardType: TextInputType.text,
-              decoration: InputDecoration(
-                hintText: 'Card Number',
-                isDense: true,
-                hintStyle: TextStyle(color: white, fontWeight: Bold),
-                border:
-                    UnderlineInputBorder(borderSide: BorderSide(color: white)),
-                focusedBorder:
-                    UnderlineInputBorder(borderSide: BorderSide(color: white)),
-                enabledBorder:
-                    UnderlineInputBorder(borderSide: BorderSide(color: white)),
-              ),
-              onChanged: (text) => numberChanged(text),
-              style: TextStyle(color: white, fontWeight: Bold),
-              textAlign: TextAlign.center,
+            child: DigitalCodeField(
+              width: 240,
+              textSize: 16,
+              textColor: white,
+              unit: 4,
+              whiteBorder: true,
             ),
           ),
           SizedBox(height: 10),
           Expanded(child: SizedBox(height: 1)),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 40),
+            padding: EdgeInsets.symmetric(horizontal: 50),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SizedBox(
-                  width: 150,
+                  width: 130,
                   child: TextFormField(
-                    initialValue: cvv,
+                    initialValue: cardNumber,
                     keyboardType: TextInputType.text,
                     decoration: InputDecoration(
                       hintText: strHolderNamePl,
                       isDense: true,
-                      border: UnderlineInputBorder(
-                          borderSide: BorderSide(color: white)),
-                      focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: white)),
-                      enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: white)),
+                      border: inputBorder,
+                      focusedBorder: inputBorder,
+                      enabledBorder: inputBorder,
                       hintStyle: TextStyle(
-                          color: white,
-                          fontSize: 12,
-                          fontWeight: Bold),
+                        color: white,
+                        fontSize: 12,
+                        fontWeight: Bold,
+                      ),
                     ),
                     onChanged: (text) => cvvChanged(text),
                     style: TextStyle(color: white, fontSize: 12),
                     textAlign: TextAlign.center,
                   ),
                 ),
-                SizedBox(width: 10),
+                SizedBox(width: 20),
                 SizedBox(
-                  width: 50,
+                  width: 40,
                   child: TextFormField(
                     initialValue: cvv,
-                    keyboardType: TextInputType.text,
+                    keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                       hintText: 'CVV',
                       isDense: true,
-                      border: UnderlineInputBorder(
-                          borderSide: BorderSide(color: white)),
-                      focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: white)),
-                      enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: white)),
+                      border: inputBorder,
+                      focusedBorder: inputBorder,
+                      enabledBorder: inputBorder,
                       hintStyle: TextStyle(
-                          color: white,
-                          fontSize: 12,
-                          fontWeight: Bold),
+                          color: white, fontSize: 12, fontWeight: Bold),
                     ),
                     onChanged: (text) => cvvChanged(text),
                     style: TextStyle(color: white, fontSize: 12),
@@ -145,12 +118,12 @@ class _CreditTextState extends State<CreditCardInput> {
                 ),
                 Expanded(child: SizedBox(width: 1)),
                 SizedBox(
-                  width: 50,
+                  width: 46,
                   child: TextFormField(
-                    initialValue: cvv,
+                    initialValue: expired,
                     keyboardType: TextInputType.text,
                     decoration: InputDecoration(
-                      hintText: '02/22',
+                      hintText: 'MM/YY',
                       isDense: true,
                       border: UnderlineInputBorder(
                           borderSide: BorderSide(color: white)),
@@ -159,9 +132,7 @@ class _CreditTextState extends State<CreditCardInput> {
                       enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: white)),
                       hintStyle: TextStyle(
-                          color: white,
-                          fontSize: 12,
-                          fontWeight: Bold),
+                          color: white, fontSize: 12, fontWeight: Bold),
                     ),
                     onChanged: (text) => cvvChanged(text),
                     style: TextStyle(color: white, fontSize: 12),

@@ -1,4 +1,5 @@
 import 'package:fitness/components/avatar.dart';
+import 'package:fitness/components/dialog_box.dart';
 import 'package:fitness/components/main_responsive_scaffold.dart';
 import 'package:fitness/components/search.dart';
 import 'package:fitness/components/triangle.dart';
@@ -14,6 +15,7 @@ class _CommunityChatScreenState extends State<CommunityChatScreen> {
   List<MemberChat> memberList = [];
   List<ChatMessage> messageList = [];
   String message;
+  MemberChat member;
 
   void initState() {
     super.initState();
@@ -55,16 +57,22 @@ class _CommunityChatScreenState extends State<CommunityChatScreen> {
             messages: ['OK, see u later'],
             time: 'just now'),
       ];
+      member = memberList[0];
     });
   }
 
   Widget _buildMemberItem(int index) {
-    var member = memberList[index];
-    return ChatAvatar(
-      image: member.img,
-      name: member.name,
-      count: member.count,
-      active: member.active,
+    var _member = memberList[index];
+    return GestureDetector(
+      onTap: () => setState(() {
+        member = _member;
+      }),
+      child: ChatAvatar(
+        image: _member.img,
+        name: _member.name,
+        count: _member.count,
+        active: _member.active,
+      ),
     );
   }
 
@@ -259,7 +267,6 @@ class _CommunityChatScreenState extends State<CommunityChatScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var member = memberList[0];
     return MainResponsiveScaffold(
       title: 'community',
       pageIndex: 2,
@@ -279,7 +286,6 @@ class _CommunityChatScreenState extends State<CommunityChatScreen> {
           ),
           Container(
             height: 72,
-            // color: Colors.green,
             padding: mainHrPadding,
             decoration: BoxDecoration(
               boxShadow: [
@@ -304,12 +310,21 @@ class _CommunityChatScreenState extends State<CommunityChatScreen> {
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    BlackText('Members', 14),
+                    BlackText(
+                      member.name == 'Group Chat' ? 'Members' : member.name,
+                      14,
+                    ),
                     GreyText('36 participants', 12)
                   ],
                 ),
                 Expanded(child: SizedBox()),
-                Image(image: getIcon('more')),
+                InkWell(
+                  onTap: () => showMessage(
+                      context, DialogBox.favoriteUser(context, member)),
+                  child: Center(
+                    child: Image(image: getIcon('more')),
+                  ),
+                ),
               ],
             ),
           ),

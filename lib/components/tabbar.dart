@@ -45,13 +45,12 @@ class _TabbarState extends State<Tabbar> {
     var small = widget.small == null ? false : widget.small;
     return InkWell(
       onTap: () => pageChanged(index),
-      child: Padding(
-        padding: mainHrPadding,
+      child: IntrinsicWidth(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 10),
+              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 30),
               child: selected
                   ? small
                       ? BlackText(item.label, 12, true)
@@ -59,13 +58,15 @@ class _TabbarState extends State<Tabbar> {
                   : GreyText(item.label, small ? 12 : 16, true),
             ),
             Expanded(child: SizedBox()),
-            Container(
-              width: 30,
-              height: 4,
-              color: selected
-                  ? (small ? secondaryColor : primaryColor)
-                  : Colors.transparent,
-            )
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: Container(
+                height: 4,
+                color: selected
+                    ? (small ? secondaryColor : primaryColor)
+                    : Colors.transparent,
+              ),
+            ),
           ],
         ),
       ),
@@ -104,6 +105,7 @@ class _TabbarState extends State<Tabbar> {
           ),
         ),
         Container(
+          padding: EdgeInsets.symmetric(vertical: 20),
           height: widget.height,
           child: PageView(
             controller: _controller,

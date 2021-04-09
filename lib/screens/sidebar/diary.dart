@@ -1,13 +1,20 @@
+import 'dart:io';
+
+import 'package:fitness/components/gallery.dart';
 import 'package:fitness/components/main_responsive_scaffold.dart';
 import 'package:fitness/components/main_scaffold.dart';
 import 'package:fitness/components/swiper.dart';
 import 'package:fitness/constants.dart';
 import 'package:fitness/model/diary.dart';
+import 'package:fitness/utils/navigation_util.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 
 class DiaryScreen extends StatefulWidget {
+  DiaryScreen({Key key, this.editMode, this.dailyImg}) : super(key: key);
+  final bool editMode;
+  final String dailyImg;
   _DiaryScreenState createState() => _DiaryScreenState();
 }
 
@@ -16,16 +23,21 @@ class _DiaryScreenState extends State<DiaryScreen> {
   bool recording = false;
   List<Diary> weekDiary;
   int weight;
+  String dailyImg;
 
   void initState() {
     super.initState();
-    weekDiary = [
-      Diary(img: 'club-item3', weight: 83, bmi: 25),
-      Diary(img: 'club-item2', weight: 82, bmi: 27),
-      Diary(img: 'club-item1', weight: 82, bmi: 27),
-      Diary(img: 'club-item3', weight: 81, bmi: 28),
-      Diary(img: 'club-item2', weight: 80, bmi: 29),
-    ];
+    setState(() {
+      weekDiary = [
+        Diary(img: 'club-item3', weight: 83, bmi: 25),
+        Diary(img: 'club-item2', weight: 82, bmi: 27),
+        Diary(img: 'club-item1', weight: 82, bmi: 27),
+        Diary(img: 'club-item3', weight: 81, bmi: 28),
+        Diary(img: 'club-item2', weight: 80, bmi: 29),
+      ];
+      recording = widget.editMode != null && widget.editMode;
+      dailyImg = widget.dailyImg;
+    });
   }
 
   void onIndexChanged(int index) {
@@ -78,11 +90,11 @@ class _DiaryScreenState extends State<DiaryScreen> {
           itemCount: weekDiary.length,
           itemBuilder: _buildWeeksPhoto,
         ),
-        SizedBox(height: 14),
+        SizedBox(height: 10),
         Divider(),
-        SizedBox(height: 14),
+        SizedBox(height: 10),
         BlackText('This Week\'s Weight', 14),
-        SizedBox(height: 14),
+        SizedBox(height: 10),
         SwiperSlider(
           index: _currentIndex,
           onIndexChanged: onIndexChanged,
@@ -91,11 +103,11 @@ class _DiaryScreenState extends State<DiaryScreen> {
           itemCount: weekDiary.length,
           itemBuilder: _buildWeeksWeight,
         ),
-        SizedBox(height: 14),
+        SizedBox(height: 10),
         Divider(),
-        SizedBox(height: 14),
+        SizedBox(height: 10),
         BlackText('BMI', 14),
-        SizedBox(height: 14),
+        SizedBox(height: 10),
         SwiperSlider(
           index: _currentIndex,
           onIndexChanged: onIndexChanged,
@@ -108,23 +120,82 @@ class _DiaryScreenState extends State<DiaryScreen> {
     );
   }
 
+  Widget _buildTakePhoto() {
+    return GestureDetector(
+      onTap: () => navPush(context, GalleryPage()),
+      child: Container(
+        width: 180,
+        child: Stack(
+          alignment: Alignment.bottomCenter,
+          children: [
+            Container(
+              alignment: Alignment.center,
+              height: 230,
+              margin: EdgeInsets.only(bottom: 16),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.25),
+                    offset: Offset(0, 4),
+                    blurRadius: 20,
+                  ),
+                ],
+                color: white,
+              ),
+              child: Container(
+                width: 36,
+                height: 36,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(width: 3, color: primaryColor),
+                ),
+                child: Center(
+                  child: Icon(
+                    Icons.add,
+                    size: 24,
+                    color: primaryColor,
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 16),
+              height: 32,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                color: primaryColor,
+              ),
+              child: WhiteText('Take Your Weekly Photo', 11),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildDailyPhoto() {
+    return GestureDetector(
+      onTap: () => navPush(context, GalleryPage()),
+      child: Image.file(
+        File(dailyImg),
+        width: getWindowWidth(context) * .5,
+      ),
+    );
+  }
+
   Widget _buildRecordDiary() {
     return Column(
       children: [
         SizedBox(height: 20),
-        SwiperSlider(
-          index: _currentIndex,
-          onIndexChanged: onIndexChanged,
-          itemWidth: 200,
-          itemHeight: 200,
-          itemCount: weekDiary.length,
-          itemBuilder: _buildWeeksPhoto,
-        ),
-        SizedBox(height: 14),
+        dailyImg == null ? _buildTakePhoto() : _buildDailyPhoto(),
+        SizedBox(height: 10),
         Divider(),
-        SizedBox(height: 14),
+        SizedBox(height: 10),
         BlackText('This Week\'s Weight', 14),
-        SizedBox(height: 14),
+        SizedBox(height: 10),
         SizedBox(
           width: 100,
           child: TextFormField(
@@ -142,11 +213,11 @@ class _DiaryScreenState extends State<DiaryScreen> {
             textAlign: TextAlign.center,
           ),
         ),
-        SizedBox(height: 14),
+        SizedBox(height: 10),
         Divider(),
-        SizedBox(height: 14),
+        SizedBox(height: 10),
         BlackText('BMI', 14),
-        SizedBox(height: 14),
+        SizedBox(height: 10),
         SizedBox(
           width: 100,
           child: TextFormField(
@@ -193,6 +264,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
                     recording = true;
                   }),
                 ),
+          SizedBox(height: 20),
         ],
       ),
     );

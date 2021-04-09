@@ -20,10 +20,12 @@ class CommunityItem extends StatelessWidget {
               children: [
                 Padding(
                   padding: EdgeInsets.all(6),
-                  child: Avatar(
-                    image: comm.img,
-                    size: 48,
-                  ),
+                  child: comm.img != null
+                      ? Avatar(
+                          image: comm.img,
+                          size: 48,
+                        )
+                      : TextAvatar(name: comm.name, size: 48),
                 ),
                 Expanded(
                   child: Column(
@@ -39,7 +41,7 @@ class CommunityItem extends StatelessWidget {
                           Row(children: [
                             BlackText(comm.name),
                             SizedBox(width: 6),
-                            comm.isFavorite
+                            comm.isFavorite != null && comm.isFavorite
                                 ? Image(
                                     image: getIcon('comm_badge'),
                                     width: 15,

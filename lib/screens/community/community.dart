@@ -1,9 +1,8 @@
-import 'package:fitness/components/avatar.dart';
 import 'package:fitness/components/community_item.dart';
 import 'package:fitness/components/community_join.dart';
 import 'package:fitness/components/community_search.dart';
 import 'package:fitness/components/main_responsive_scaffold.dart';
-import 'package:fitness/components/search.dart';
+import 'package:fitness/components/search_member.dart';
 import 'package:fitness/constants.dart';
 import 'package:fitness/model/community.dart';
 import 'package:fitness/screens/community/community_items.dart';
@@ -63,6 +62,13 @@ class _CommunityScreenState extends State<CommunityScreen> {
       title: 'community',
       isMain: true,
       pageIndex: 2,
+      headerAction: () => showAppBtSheet(
+        context,
+        JoinCommunity(
+          comm: communityList[0],
+        ),
+      ),
+      headerActionIcon: Icon(Icons.add, size: 24),
       child: Container(
         child: Column(
           mainAxisSize: MainAxisSize.max,

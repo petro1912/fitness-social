@@ -2,24 +2,45 @@ import 'package:flutter/material.dart';
 import 'package:fitness/constants.dart';
 
 class DigitalCodeField extends StatefulWidget {
-  DigitalCodeField({Key key, this.digits, this.chagedDigits}) : super(key: key);
-  final int digits;
+  DigitalCodeField({
+    Key key,
+    this.digits = 4,
+    this.unit = 1,
+    this.width,
+    this.textSize = 32,
+    this.textColor = primaryColor,
+    this.whiteBorder,
+    this.chagedDigits,
+  }) : super(key: key);
+  final int digits, unit;
+  final double width;
+  final double textSize;
+  final Color textColor;
+  final bool whiteBorder;
   final Function chagedDigits;
 
   _DigitalCodeFieldState createState() => _DigitalCodeFieldState();
 }
 
 class _DigitalCodeFieldState extends State<DigitalCodeField> {
-  int focused = 0;
-  List<FocusNode> _focusNodes = []; //List.generate(4, (index) => FocusNode());
+  List<FocusNode> _focusNodes = [];
   List<String> code;
 
   List<Widget> _buildDCWidget() {
     List<Widget> dcWidget = [];
+    var whited = widget.whiteBorder != null && widget.whiteBorder;
+    const whiteBorder =
+        UnderlineInputBorder(borderSide: BorderSide(color: white));
+    const blackBorder =
+        UnderlineInputBorder(borderSide: BorderSide(color: textColor));
+    const primaryBorder =
+        UnderlineInputBorder(borderSide: BorderSide(color: primaryColor));
+    var border = whited ? whiteBorder : blackBorder;
+
     for (var idx = 0; idx < widget.digits; idx++) {
       dcWidget.add(
         Container(
-          width: (getWindowWidth(context) - 80) / 4 - appPadding / 2,
+          width: widget.width / widget.digits - appPadding / 2,
           margin: EdgeInsets.symmetric(
             horizontal: appPadding / 4,
           ),
@@ -28,13 +49,20 @@ class _DigitalCodeFieldState extends State<DigitalCodeField> {
             keyboardType: TextInputType.number,
             focusNode: _focusNodes[idx],
             onChanged: (String c) => digitChanged(idx, c),
-            maxLength: 1,
+            maxLength: widget.unit,
             decoration: InputDecoration(
               hintText: '',
               counterText: '',
+              isDense: true,
+              border: border,
+              enabledBorder: border,
+              focusedBorder: whited ? whiteBorder : primaryBorder,
             ),
-            style:
-                TextStyle(fontWeight: Bold, color: primaryColor, fontSize: 32),
+            style: TextStyle(
+              fontWeight: Bold,
+              color: widget.textColor,
+              fontSize: widget.textSize,
+            ),
           ),
         ),
       );
@@ -44,20 +72,13 @@ class _DigitalCodeFieldState extends State<DigitalCodeField> {
 
   @override
   void initState() {
+    super.initState();
     for (var idx = 0; idx < widget.digits; idx++) {
       _focusNodes.add(FocusNode());
-      _focusNodes[idx].addListener(() {
-        if (_focusNodes[idx].hasFocus) {
-          setState(() {
-            focused = idx;
-          });
-        }
-      });
     }
     setState(() {
-      code = List.generate(widget.digits, (index) => null);
+      code = List.generate(widget.digits, (index) => '');
     });
-    super.initState();
   }
 
   @override
@@ -69,13 +90,16 @@ class _DigitalCodeFieldState extends State<DigitalCodeField> {
   void digitChanged(int idx, String cd) {
     setState(() {
       code[idx] = cd;
-      widget.chagedDigits(code);
+      if (widget.chagedDigits != null) widget.chagedDigits(code);
     });
+    if (cd.length == widget.unit && idx != 3)
+      FocusScope.of(context).nextFocus();
   }
 
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
       children: _buildDCWidget(),
     );

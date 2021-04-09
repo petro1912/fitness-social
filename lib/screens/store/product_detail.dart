@@ -124,6 +124,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               ),
             ),
           ),
+          SizedBox(height: 20),
         ],
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'components/rounded_raised_button.dart';
 
 const Color white = Colors.white;
@@ -20,6 +21,18 @@ const Color errorColor = Color(0xFFEF4B5F);
 const Color pinkColor = Color(0xFF6487D3);
 
 //const Color primaryColor = Color(0xFF29B6F6);
+MaskTextInputFormatter cardFormat = MaskTextInputFormatter(
+  mask: '#### #### #### ####',
+  filter: {"#": RegExp(r'[0-9]')},
+);
+MaskTextInputFormatter expiredFormat = MaskTextInputFormatter(
+  mask: '##/##',
+  filter: {"#": RegExp(r'[0-9]')},
+);
+MaskTextInputFormatter cvvFormat = MaskTextInputFormatter(
+  mask: '###',
+  filter: {"#": RegExp(r'[0-9]')},
+);
 
 Text PrimaryText(String text, [double size, bool bold, bool center]) {
   return getText(text, primaryColor, size, bold, center);
@@ -62,7 +75,7 @@ Text getText(String text, Color color, [double size, bool bold, bool center]) {
   );
 }
 
-Widget PrimaryBlockButton({Function action, String label}) {
+Widget PrimaryBlockButton({Function action, String label, Widget icon}) {
   return Padding(
     padding: EdgeInsets.symmetric(
       horizontal: 30,
@@ -74,12 +87,13 @@ Widget PrimaryBlockButton({Function action, String label}) {
         filled: true,
         action: action,
         color: primaryColor,
+        icon: icon,
       ),
     ),
   );
 }
 
-Widget SecondaryBlockButton({Function action, String label}) {
+Widget SecondaryBlockButton({Function action, String label, Widget icon}) {
   return Padding(
     padding: EdgeInsets.symmetric(
       horizontal: 30,
@@ -91,6 +105,7 @@ Widget SecondaryBlockButton({Function action, String label}) {
         filled: true,
         action: action,
         color: secondaryColor,
+        icon: icon,
       ),
     ),
   );

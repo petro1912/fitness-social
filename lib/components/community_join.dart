@@ -23,7 +23,7 @@ class _JoinCommunityState extends State<JoinCommunity> {
           SizedBox(height: 30),
           CommunityItem(comm: widget.comm, action: null),
           SizedBox(height: 30),
-          PrimaryBlockButton(label: 'Search'),
+          PrimaryBlockButton(label: 'Join'),
           SizedBox(height: 30),
         ],
       ),

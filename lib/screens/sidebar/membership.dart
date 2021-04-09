@@ -1,9 +1,11 @@
 import 'package:fitness/components/avatar.dart';
+import 'package:fitness/components/dialog_box.dart';
 import 'package:fitness/components/main_responsive_scaffold.dart';
 import 'package:fitness/components/rounded_icon.dart';
 import 'package:fitness/components/rounded_raised_button.dart';
 import 'package:fitness/constants.dart';
 import 'package:fitness/model/goal_action.dart';
+import 'package:fitness/screens/workout/goal_action_detail.dart';
 import 'package:fitness/screens/workout/workout_payment.dart';
 import 'package:fitness/utils/navigation_util.dart';
 import 'package:flutter/material.dart';
@@ -27,8 +29,18 @@ class _MembershipScreenState extends State<MembershipScreen> {
     );
   }
 
-  void choosePlan(BuildContext context) {
-    navPush(context, WorkoutPaymentScreen());
+  void switchPlan(BuildContext context) {
+    showMessage(
+      context,
+      DialogBox.confirm(
+        context,
+        title: 'Are you Sure you want to\n switch your Plans',
+        yes: 'Subscribe',
+        no: 'Not now',
+        yesAction: () => navPush(context, GoalActionDetailScreen()),
+        noAction: () => Navigator.of(context).pop(),
+      ),
+    );
   }
 
   Widget build(BuildContext context) {
@@ -47,9 +59,12 @@ class _MembershipScreenState extends State<MembershipScreen> {
                 Stack(
                   alignment: Alignment.center,
                   children: [
-                    Image(
-                      image: AssetImage("assets/images/cover.png"),
-                      fit: BoxFit.cover,
+                    Container(
+                      child: Image(
+                        image: AssetImage("assets/images/cover.png"),
+                        width: getWindowWidth(context),
+                        fit: BoxFit.cover,
+                      ),
                     ),
                     SizedBox(
                       width: 48,
@@ -149,9 +164,9 @@ class _MembershipScreenState extends State<MembershipScreen> {
             child: SizedBox(
               width: double.infinity,
               child: RoundedRaisedButton(
-                label: 'Choose this Plan',
+                label: 'Switch plans',
                 filled: true,
-                action: () => choosePlan(context),
+                action: () => switchPlan(context),
               ),
             ),
           ),

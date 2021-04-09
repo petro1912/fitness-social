@@ -9,6 +9,8 @@ import 'package:fitness/components/nav_second_bar.dart';
 import 'package:flutter/material.dart';
 
 class CommunityClassScreen extends StatefulWidget {
+  CommunityClassScreen({Key key, this.active}) : super(key: key);
+  final bool active;
   _CommunityClasssScreenState createState() => _CommunityClasssScreenState();
 }
 
@@ -97,8 +99,9 @@ class _CommunityClasssScreenState extends State<CommunityClassScreen> {
               ],
             ),
           ),
+          SizedBox(height: 20),
           PrimaryBlockButton(
-            label: 'Join',
+            label: !widget.active ? 'Join' : 'Not attending',
             action: () => {},
           ),
           SizedBox(height: 30),

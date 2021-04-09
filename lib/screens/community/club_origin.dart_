@@ -1,0 +1,134 @@
+import 'package:fitness/components/avatar.dart';
+import 'package:fitness/components/main_responsive_scaffold.dart';
+import 'package:fitness/constants.dart';
+import 'package:fitness/model/club.dart';
+import 'package:fitness/model/member.dart';
+import 'package:fitness/screens/community/club_join.dart';
+import 'package:fitness/utils/navigation_util.dart';
+import 'package:flutter/material.dart';
+
+class CommunityClubScreen extends StatefulWidget {
+  _CommunityClubScreenState createState() => _CommunityClubScreenState();
+}
+
+class _CommunityClubScreenState extends State<CommunityClubScreen> {
+  Club club;
+  List<Member> memberList = [];
+
+  void initState() {
+    super.initState();
+    club = Club(name: 'Football Club', members: 23, img: 'exercise-photo1');
+    memberList = [
+      Member(img: 'exercise-photo1', name: 'Ahmad Dosari'),
+      Member(img: 'exercise-photo1', name: 'Ahmad Dosari'),
+      Member(img: 'exercise-photo1', name: 'Ahmad Dosari'),
+      Member(img: 'exercise-photo1', name: 'Ahmad Dosari'),
+    ];
+  }
+
+  void navCommunityDashboard(BuildContext context) {
+    // navPush(context, CommunityClubScreen());
+  }
+
+  Widget _buildMemberItem(BuildContext context, int index) {
+    var member = memberList[index];
+    var clubAvName = club.name.substring(0, 1).toUpperCase();
+    return InkWell(
+      onTap: () => navCommunityDashboard(context),
+      child: Column(
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 6),
+                child: member.img != null
+                    ? Avatar(image: club.img, size: 40)
+                    : TextAvatar(name: clubAvName, size: 40),
+              ),
+              SizedBox(width: 20),
+              Expanded(
+                child: BlackText(member.name, 14, true),
+              ),
+            ],
+          ),
+          Divider()
+        ],
+      ),
+    );
+  }
+
+  void joinClub() {
+    navPush(context, CommunityClubJoinScreen());
+  }
+
+  Widget build(BuildContext context) {
+    return MainResponsiveScaffold(
+      title: 'my club',
+      pageIndex: 2,
+      child: Container(
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Padding(
+              padding: mainHrPadding,
+              child: Row(
+                children: [
+                  club.img != null
+                      ? Avatar(image: club.img, size: 58)
+                      : TextAvatar(name: club.name, size: 58),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        BlackText(club.name.toUpperCase(), 16, true),
+                        GreyText('${club.members} Member', 12),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  InkWell(
+                    onTap: () => joinClub(),
+                    child: Container(
+                      height: 28,
+                      alignment: Alignment.center,
+                      padding: EdgeInsets.symmetric(horizontal: 12),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(14),
+                        color: primaryColor,
+                      ),
+                      child: WhiteText('Join', 14, true),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              height: getWindowHeight(context) - 220,
+              margin: EdgeInsets.only(top: 10),
+              padding: EdgeInsets.symmetric(
+                horizontal: 30,
+              ),
+              child: ListView.builder(
+                physics: BouncingScrollPhysics(),
+                scrollDirection: Axis.vertical,
+                itemCount: memberList.length,
+                itemBuilder: (context, index) {
+                  return _buildMemberItem(context, index);
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

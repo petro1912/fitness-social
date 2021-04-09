@@ -1,20 +1,13 @@
+import 'package:dotted_border/dotted_border.dart';
 import 'package:fitness/components/credit_card_visa.dart';
 import 'package:fitness/constants.dart';
 import 'package:flutter/material.dart';
 
 class CreditCardCreate extends StatefulWidget {
-  CreditCardCreate({
-    Key key,
-    this.cardNumber,
-    this.expired,
-    this.cvv,
-    this.numberChanged,
-    this.expiredChanged,
-    this.cvvChanged,
-  }) : super(key: key);
+  CreditCardCreate({Key key, this.cardNumber, this.expired, this.cvv})
+      : super(key: key);
 
   final String cardNumber, expired, cvv;
-  final Function numberChanged, expiredChanged, cvvChanged;
 
   _CreditTextState createState() => _CreditTextState();
 }
@@ -31,30 +24,6 @@ class _CreditTextState extends State<CreditCardCreate> {
     });
   }
 
-  void numberChanged(text) {
-    setState(() {
-      cardNumber = text;
-    });
-
-    if (widget.numberChanged != null) widget.numberChanged(text);
-  }
-
-  void expiredChanged(text) {
-    setState(() {
-      expired = text;
-    });
-
-    if (widget.expiredChanged != null) widget.expiredChanged(text);
-  }
-
-  void cvvChanged(text) {
-    setState(() {
-      cvv = text;
-    });
-
-    if (widget.cvvChanged != null) widget.cvvChanged(text);
-  }
-
   Widget build(BuildContext context) {
     return Container(
       child: Row(
@@ -64,31 +33,30 @@ class _CreditTextState extends State<CreditCardCreate> {
           Expanded(child: CreditCardVisa()),
           GestureDetector(
             onTap: () => {},
-            child: ClipRRect(
-              borderRadius: BorderRadius.all(Radius.circular(12)),
-              child: Container(
-                height: 40,
-                width: 40,
-                alignment: Alignment.center,
-                color: primaryColor.withOpacity(.3),
-                child: WhiteText('+', 24, true),
+            child: DottedBorder(
+              borderType: BorderType.RRect,
+              strokeWidth: 1.5,
+              dashPattern: [6, 2],
+              padding: EdgeInsets.all(1),
+              color: primaryColor,
+              radius: Radius.circular(12),
+              child: ClipRRect(
+                borderRadius: BorderRadius.all(Radius.circular(12)),
+                child: Container(
+                  height: 40,
+                  width: 40,
+                  alignment: Alignment.center,
+                  color: primaryColor.withOpacity(.3),
+                  child: Icon(
+                    Icons.add,
+                    size: 20,
+                    color: primaryColor,
+                  ),
+                ),
               ),
             ),
           ),
           SizedBox(width: 16),
-          /* DottedBorder(
-  borderType: BorderType.RRect,
-  radius: Radius.circular(12),
-  padding: EdgeInsets.all(6),
-  child: ClipRRect(
-    borderRadius: BorderRadius.all(Radius.circular(12)),
-    child: Container(
-      height: 40,
-      width: 40,
-      color: primaryColor.withOpacity(.6),
-    ),
-  ),
-), */
         ],
       ),
     );

@@ -44,7 +44,7 @@ class _MenuScreenState extends State<MenuScreen> {
 
     return Scaffold(
       body: Container(
-        color: white,
+        color: Colors.black,
         child: SafeArea(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -65,8 +65,8 @@ class _MenuScreenState extends State<MenuScreen> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        BlackText('Mohammed Abed', 14, true),
-                        GreyText('Profile', 12)
+                        WhiteText('Mohammed Abed', 14, true),
+                        WhiteText('Profile', 12)
                       ],
                     ),
                   ],
@@ -124,7 +124,7 @@ class MenuItemWidget extends StatelessWidget {
       onTap: () => callback(item.index),
       child: Container(
         padding: mainHrPadding,
-        margin: item.index == 4
+        margin: item.index == 3
             ? EdgeInsets.only(top: 100)
             : EdgeInsets.only(top: 30),
         child: Row(
@@ -134,7 +134,7 @@ class MenuItemWidget extends StatelessWidget {
           children: <Widget>[
             Image(
               image: getIcon(item.icon),
-              color: selected ? primaryColor : greyTextColor,
+              color: selected ? primaryColor : white,
               width: 24,
               height: 24,
             ),
@@ -142,8 +142,7 @@ class MenuItemWidget extends StatelessWidget {
             Expanded(
               child: Text(
                 item.title,
-                style:
-                    TextStyle(color: selected ? primaryColor : greyTextColor),
+                style: TextStyle(color: selected ? primaryColor : white),
               ),
             )
           ],

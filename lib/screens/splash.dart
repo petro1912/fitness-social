@@ -31,7 +31,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 fit: BoxFit.cover,
                 colorFilter: ColorFilter.mode(
                     Colors.black.withOpacity(0.5), BlendMode.colorBurn),
-                image: AssetImage('assets/images/splash.png'),
+                image: getAssetImage('splash'),
               ),
             ),
           ),

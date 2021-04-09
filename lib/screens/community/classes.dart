@@ -77,15 +77,15 @@ class _CommunityClassesScreenState extends State<CommunityClassesScreen> {
     ];
   }
 
-  void navClassItem(BuildContext context) {
-    navPush(context, CommunityClassScreen());
+  void navClassItem(BuildContext context, bool active) {
+    navPush(context, CommunityClassScreen(active: active));
   }
 
   Widget _buildMyClassItem(BuildContext context, int index) {
     var cls = classList[index];
     var clsAvName = cls.name.substring(0, 1).toUpperCase();
     return InkWell(
-      onTap: () => navClassItem(context),
+      onTap: () => navClassItem(context, true),
       child: Column(
         children: [
           Row(
@@ -167,7 +167,7 @@ class _CommunityClassesScreenState extends State<CommunityClassesScreen> {
           img: allClassList[index].img,
           title: allClassList[index].name,
           subtitle: '${allClassList[index].next} ${allClassList[index].when}',
-          action: () => navClassItem(context),
+          action: () => navClassItem(context, false),
         ),
       ),
     );

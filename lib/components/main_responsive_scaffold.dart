@@ -3,13 +3,21 @@ import 'package:fitness/components/header.dart';
 import 'package:flutter/material.dart';
 
 class MainResponsiveScaffold extends StatelessWidget {
-  MainResponsiveScaffold(
-      {Key key, this.title, this.isMain, this.pageIndex, this.child})
-      : super(key: key);
+  MainResponsiveScaffold({
+    Key key,
+    this.title,
+    this.isMain,
+    this.pageIndex,
+    this.child,
+    this.headerAction,
+    this.headerActionIcon,
+  }) : super(key: key);
   final Widget child;
   final String title;
   final int pageIndex;
   final bool isMain;
+  final Widget headerActionIcon;
+  final Function headerAction;
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +38,8 @@ class MainResponsiveScaffold extends StatelessWidget {
                     Header(
                       title: title.toUpperCase(),
                       isMain: isMain,
+                      actionIcon: headerActionIcon,
+                      action: headerAction,
                     ),
                     Container(
                       child: this.child,

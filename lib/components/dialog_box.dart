@@ -1,6 +1,8 @@
+import 'package:fitness/components/avatar.dart';
 import 'package:fitness/components/color_dot.dart';
 import 'package:fitness/components/rounded_raised_button.dart';
 import 'package:fitness/constants.dart';
+import 'package:fitness/model/member.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
@@ -223,6 +225,29 @@ class DialogBox {
     );
   }
 
+  static Dialog favoriteUser(BuildContext context, MemberChat user) {
+    return create(
+      child: Column(
+        children: [
+          SizedBox(height: 30),
+          user.img == null
+              ? TextAvatar(name: user.name, size: 72)
+              : Avatar(image: user.img, size: 72),
+          BlackText(user.name, 24, true, true),
+          SizedBox(height: 10),
+          GreyText('Business', 12, false, true),
+          SizedBox(height: 30),
+          SecondaryBlockButton(
+            label: 'Favorite',
+            action: () => {},
+            icon: Icon(Icons.star, size: 24, color: white),
+          ),
+          SizedBox(height: 20),
+        ],
+      ),
+    );
+  }
+
   static Dialog confirm(BuildContext context,
       {String title,
       String yes,
@@ -245,7 +270,7 @@ class DialogBox {
                     filled: true,
                     action: noAction,
                     color: greyBtnColor,
-                    textColor: textColor,
+                    textColor: greyTextColor,
                   ),
                 ),
                 SizedBox(width: 20),
@@ -268,7 +293,7 @@ class DialogBox {
   static Dialog create({Widget child}) {
     return Dialog(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(16),
       ),
       elevation: 2,
       backgroundColor: Colors.white, //Colors.transparent,

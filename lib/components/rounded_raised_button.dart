@@ -3,18 +3,20 @@ import 'package:fitness/components/elevation.dart';
 import 'package:fitness/constants.dart';
 
 class RoundedRaisedButton extends StatelessWidget {
-  RoundedRaisedButton(
-      {Key key,
-      this.filled,
-      this.action,
-      this.label,
-      this.color,
-      this.textColor})
-      : super(key: key);
+  RoundedRaisedButton({
+    Key key,
+    this.filled,
+    this.action,
+    this.label,
+    this.icon,
+    this.color,
+    this.textColor,
+  }) : super(key: key);
   final bool filled;
   final Function action;
   final String label;
   final Color color, textColor;
+  final Widget icon;
 
   Widget build(BuildContext context) {
     bool _filled = filled == null || filled;
@@ -31,16 +33,27 @@ class RoundedRaisedButton extends StatelessWidget {
                 ? primaryColor
                 : white,
         textColor: Colors.white,
-        child: Text(
-          label,
-          style: TextStyle(
-            fontSize: 14,
-            color: _filled ? textColor ?? white : primaryColor,
-            fontWeight: Bold,
-          ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(right: 12),
+              child: this.icon ?? SizedBox(),
+            ),
+            Text(
+              label,
+              style: TextStyle(
+                fontSize: 15,
+                color: _filled ? textColor ?? white : primaryColor,
+                fontWeight: Bold,
+              ),
+            ),
+          ],
         ),
         padding: EdgeInsets.symmetric(
-            horizontal: appPadding * 1.6, vertical: appPadding * 2 / 3),
+          horizontal: appPadding * 0.6,
+          vertical: appPadding * 2 / 3,
+        ),
       ),
     );
   }

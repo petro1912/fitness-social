@@ -204,7 +204,7 @@ class _CartScreenState extends State<CartScreen> {
             ),
           ),
         ),
-        SizedBox(height: 10),
+        SizedBox(height: 20),
         PrimaryBlockButton(
           label: 'Process to Checkout',
           action: () => navPush(context, SelectPlaceScreen()),

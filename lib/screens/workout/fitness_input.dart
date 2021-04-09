@@ -33,7 +33,7 @@ class _FitnessInputScreenState extends State<FitnessInputScreen> {
                   padding: EdgeInsets.symmetric(vertical: 20),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -55,6 +55,9 @@ class _FitnessInputScreenState extends State<FitnessInputScreen> {
                               style: TextStyle(color: textColor, fontSize: 20),
                               textAlign: TextAlign.center,
                             ),
+                          ),
+                          SizedBox(
+                            height: 30,
                           ),
                         ],
                       ),
@@ -78,6 +81,9 @@ class _FitnessInputScreenState extends State<FitnessInputScreen> {
                               style: TextStyle(color: textColor, fontSize: 20),
                               textAlign: TextAlign.center,
                             ),
+                          ),
+                          SizedBox(
+                            height: 30,
                           ),
                         ],
                       ),
@@ -137,6 +143,9 @@ class _FitnessInputScreenState extends State<FitnessInputScreen> {
                                       TextStyle(color: textColor, fontSize: 20),
                                   textAlign: TextAlign.center,
                                 ),
+                              ),
+                              SizedBox(
+                                height: 30,
                               ),
                             ],
                           )

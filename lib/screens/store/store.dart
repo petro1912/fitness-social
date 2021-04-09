@@ -2,7 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:fitness/components/main_responsive_scaffold.dart';
 import 'package:fitness/components/main_scaffold.dart';
 import 'package:fitness/components/rounded_raised_button.dart';
-import 'package:fitness/components/search.dart';
+import 'package:fitness/components/search_member.dart';
 import 'package:fitness/constants.dart';
 import 'package:fitness/data/string.dart';
 import 'package:fitness/screens/store/products.dart';

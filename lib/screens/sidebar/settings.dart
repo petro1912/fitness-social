@@ -51,7 +51,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return MainScaffold(
-      title: 'feed back',
+      title: 'settings',
       child: Column(
         children: [
           Padding(
@@ -118,9 +118,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ],
             ),
           ),
-          Spacer(),
-          PrimaryBlockButton(label: 'Submit', action: () => {}),
-          SizedBox(height: 40),
+          // Spacer(),
+          // PrimaryBlockButton(label: 'Submit', action: () => {}),
+          // SizedBox(height: 40),
         ],
       ),
     );

@@ -64,7 +64,7 @@ class _GoalActionScreenState extends State<GoalActionScreen> {
       onTap: () => navGoalActionDetail(context),
       child: Container(
         margin: EdgeInsets.all(10),
-        height: 100,
+        height: 120,
         decoration: BoxDecoration(
           color: grayColor,
           borderRadius: BorderRadius.circular(12),
@@ -82,8 +82,8 @@ class _GoalActionScreenState extends State<GoalActionScreen> {
             Stack(
               children: [
                 Container(
-                  width: 100,
-                  height: 100,
+                  width: 120,
+                  height: 120,
                   decoration: BoxDecoration(
                     color: grayColor,
                     borderRadius: BorderRadius.only(
@@ -138,7 +138,7 @@ class _GoalActionScreenState extends State<GoalActionScreen> {
       child: Container(
         width: getWindowWidth(context),
         margin: EdgeInsets.symmetric(
-          horizontal: 30,
+          horizontal: 20,
         ),
         child: ListView.builder(
           physics: BouncingScrollPhysics(),

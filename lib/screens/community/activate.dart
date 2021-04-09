@@ -11,6 +11,8 @@ import 'package:fitness/screens/community/activate_attendance.dart';
 import 'package:flutter/material.dart';
 
 class CommunityActivateScreen extends StatefulWidget {
+  CommunityActivateScreen({Key key, this.active}) : super(key: key);
+  final bool active;
   _CommunityActivatesScreenState createState() =>
       _CommunityActivatesScreenState();
 }
@@ -82,13 +84,15 @@ class _CommunityActivatesScreenState extends State<CommunityActivateScreen> {
               ],
             ),
           ),
+          SizedBox(height: 20),
           NavSecondBar(
             title: 'Who is Attending',
             prefixIcon: 'user',
             action: () => showAttendance(context),
           ),
+          SizedBox(height: 20),
           PrimaryBlockButton(
-            label: 'Join',
+            label: !widget.active ? 'Join' : 'Leave this activity',
             action: () => {},
           ),
           SizedBox(height: 30),

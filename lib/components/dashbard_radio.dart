@@ -54,14 +54,14 @@ class RadioGroupWidget extends State<RadioGroup> {
                   SizedBox(width: 20),
                   BlackText("${list[index].name}", 14, true),
                   Expanded(child: SizedBox()),
-                  Container(
+                  /* Container(
                     width: 20,
                     height: 6,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(3),
                       color: list[index].color,
                     ),
-                  ),
+                  ), */
                 ],
               ),
               Container(

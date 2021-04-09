@@ -30,6 +30,7 @@ class _ChooseGoalScreenState extends State<ChooseGoalScreen> {
     return InkWell(
       onTap: () => setState(() {
         activeItem = index;
+        goNextStep(context);
       }),
       child: RRCard(
         color: index == activeItem ? primaryColor : white,
@@ -73,7 +74,7 @@ class _ChooseGoalScreenState extends State<ChooseGoalScreen> {
                   crossAxisCount: 2,
                   crossAxisSpacing: 20,
                   mainAxisSpacing: 20,
-                  childAspectRatio: 1.1,
+                  childAspectRatio: 1,
                 ),
                 itemCount: 6,
                 physics: NeverScrollableScrollPhysics(),
@@ -84,7 +85,7 @@ class _ChooseGoalScreenState extends State<ChooseGoalScreen> {
               SizedBox(
                 height: 10,
               ),
-              SizedBox(
+              /* SizedBox(
                 width: double.infinity,
                 child: RoundedRaisedButton(
                   filled: true,
@@ -94,7 +95,7 @@ class _ChooseGoalScreenState extends State<ChooseGoalScreen> {
               ),
               SizedBox(
                 height: 30,
-              ),
+              ), */
             ],
           ),
         ),

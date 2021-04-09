@@ -22,7 +22,6 @@ class TrianglePainter extends CustomPainter {
   }
 
   Path getTrianglePath(double size) {
-    print(isLeft);
     if (isLeft != null && isLeft)
       return Path()
         ..moveTo(0, size)
