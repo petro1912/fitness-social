@@ -13,8 +13,8 @@ class VerificationScreen extends StatefulWidget {
 }
 
 class _VerificationScreenState extends State<VerificationScreen> {
-  String phoneNumber;
-  List<String> digits;
+  late String phoneNumber;
+  late List<String> digits;
 
   void runVerify() async {
     if (digits.where((dg) => dg == null).toList().length > 0) {
@@ -22,7 +22,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
     }
   }
 
-  void changedDigits(List dts) {
+  void changedDigits(List<String> dts) {
     setState(() {
       print(dts);
       digits = dts;

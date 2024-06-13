@@ -3,7 +3,6 @@ import 'package:fitness/screens/sidebar/contact.dart';
 import 'package:fitness/screens/sidebar/diary.dart';
 import 'package:fitness/screens/sidebar/feedback.dart';
 import 'package:fitness/screens/sidebar/membership.dart';
-import 'package:fitness/screens/sidebar/profile.dart';
 import 'package:fitness/screens/sidebar/settings.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +12,12 @@ class MenuItem {
   final int index;
   final Widget page;
 
-  const MenuItem({this.title, this.icon, this.index, this.page});
+  const MenuItem({
+    required this.title, 
+    required this.icon, 
+    required this.index, 
+    required this.page
+  });
 }
 
 List<MenuItem> mainMenu = [

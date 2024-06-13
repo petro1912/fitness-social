@@ -42,7 +42,7 @@ class _CommunityCompetitionScreenState
             Container(
               width: 40,
               alignment: Alignment.center,
-              child: Badge(color: color, value: rank),
+              child: CircleBadge(color: color, value: rank),
             ),
             member.img == null
                 ? TextAvatar(name: member.name, size: 48)

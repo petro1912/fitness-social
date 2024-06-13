@@ -9,7 +9,7 @@ class ContactScreen extends StatefulWidget {
 
 class _ContactScreenState extends State<ContactScreen> {
   List<String> images = [];
-  String name, email, message;
+  late String name, email, message;
   String description = '';
   void initState() {
     super.initState();

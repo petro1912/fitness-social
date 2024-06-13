@@ -2,9 +2,7 @@ import 'package:fitness/components/credit_card.dart';
 import 'package:fitness/components/credit_card_input.dart';
 import 'package:fitness/components/credit_text.dart';
 import 'package:fitness/components/main_responsive_scaffold.dart';
-import 'package:fitness/components/main_scaffold.dart';
 import 'package:fitness/components/round_checkbox.dart';
-import 'package:fitness/components/rounded_raised_button.dart';
 import 'package:fitness/components/tabbar.dart';
 import 'package:fitness/constants.dart';
 import 'package:fitness/data/string.dart';
@@ -19,8 +17,8 @@ class WorkoutPaymentScreen extends StatefulWidget {
 
 class _WorkoutPaymentScreenState extends State<WorkoutPaymentScreen>
     with SingleTickerProviderStateMixin {
-  TabController _tabController;
-  String cardNumber;
+  late TabController _tabController;
+  late String cardNumber;
 
   @override
   void initState() {

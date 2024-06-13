@@ -1,4 +1,3 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:fitness/components/color_selector.dart';
 import 'package:fitness/components/count_selector.dart';
 import 'package:fitness/components/image_slider.dart';
@@ -16,7 +15,7 @@ class ProductDetailScreen extends StatefulWidget {
 }
 
 class _ProductDetailScreenState extends State<ProductDetailScreen> {
-  Product product;
+  late Product product;
 
   void initState() {
     product = Product(
@@ -45,7 +44,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
       child: Column(
         children: [
           ImageSlider(
-            images: product.images,
+            images: product.images!,
             // dotColor: primaryColor,
             titleText: GreyText('Company', 12),
           ),
@@ -93,7 +92,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             child: ListView.separated(
               physics: BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
-              itemCount: product.images.length,
+              itemCount: product.images!.length,
               separatorBuilder: (context, index) => SizedBox(width: 16),
               itemBuilder: (context, index) => GestureDetector(
                 onTap: () => {},
@@ -103,7 +102,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     image: DecorationImage(
-                      image: getAssetImage(product.images[index]),
+                      image: getAssetImage(product.images![index]),
                       fit: BoxFit.cover,
                     ),
                   ),

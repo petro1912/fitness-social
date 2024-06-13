@@ -2,9 +2,16 @@ import 'package:fitness/constants.dart';
 import 'package:flutter/cupertino.dart';
 
 class ClubCard extends StatefulWidget {
-  final String img, title, subtitle;
-  final Function action;
-  ClubCard({Key key, this.img, this.title, this.subtitle, this.action})
+  final String? img;
+  final String title, subtitle;
+  final GestureTapCallback? action;
+  ClubCard({
+    Key? key, 
+    this.img, 
+    required this.title, 
+    required this.subtitle, 
+    required this.action
+  })
       : super(key: key);
 
   _ClubCardState createState() => _ClubCardState();
@@ -14,7 +21,7 @@ class _ClubCardState extends State<ClubCard> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => widget.action == null ? {} : widget.action(),
+      onTap: widget.action,
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
@@ -31,7 +38,7 @@ class _ClubCardState extends State<ClubCard> {
                   topLeft: Radius.circular(10),
                 ),
                 child: Image(
-                  image: getAssetImage(widget.img),
+                  image: getAssetImage(widget.img!),
                   fit: BoxFit.cover,
                 ),
               ),

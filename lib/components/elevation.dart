@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class CustomElevation extends StatelessWidget {
   final Widget child;
 
-  CustomElevation({@required this.child}) : assert(child != null);
+  CustomElevation({required this.child});
 
   @override
   Widget build(BuildContext context) {

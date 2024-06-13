@@ -2,5 +2,10 @@ class Competition {
   final String name;
   final String img;
   final int steps;
-  Competition({this.name, this.img, this.steps});
+  
+  Competition({
+    required this.name, 
+    required this.img, 
+    required this.steps
+  });
 }

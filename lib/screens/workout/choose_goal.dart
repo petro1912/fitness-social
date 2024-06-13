@@ -1,6 +1,5 @@
 import 'package:fitness/components/card.dart';
 import 'package:fitness/components/main_scaffold.dart';
-import 'package:fitness/components/rounded_raised_button.dart';
 import 'package:fitness/constants.dart';
 import 'package:fitness/screens/workout/goal_action.dart';
 import 'package:fitness/utils/navigation_util.dart';

@@ -3,5 +3,10 @@ class User {
   final String job;
   final List properties;
 
-  User({this.name, this.img, this.job, this.properties});
+  User({
+    required this.name, 
+    required this.img, 
+    required this.job, 
+    required this.properties
+  });
 }

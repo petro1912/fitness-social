@@ -8,7 +8,7 @@ class DashboardChart extends StatefulWidget {
 }
 
 class _DashboardChartState extends State<DashboardChart> {
-  bool isShowingMainData;
+  late bool isShowingMainData;
 
   @override
   void initState() {
@@ -35,7 +35,7 @@ class _DashboardChartState extends State<DashboardChart> {
                   child: */
                     LineChart(
                   isShowingMainData ? sampleData1() : sampleData2(),
-                  swapAnimationDuration: const Duration(milliseconds: 250),
+                  duration: const Duration(milliseconds: 250),
                 ),
                 /* ), */
               ),
@@ -64,9 +64,9 @@ class _DashboardChartState extends State<DashboardChart> {
     return LineChartData(
       lineTouchData: LineTouchData(
         touchTooltipData: LineTouchTooltipData(
-          tooltipBgColor: Colors.blueGrey.withOpacity(0.8),
+          // tooltipBgColor: Colors.blueGrey.withOpacity(0.8),
         ),
-        touchCallback: (LineTouchResponse touchResponse) {},
+        touchCallback: null,
         handleBuiltInTouches: true,
       ),
       gridData: FlGridData(
@@ -80,49 +80,9 @@ class _DashboardChartState extends State<DashboardChart> {
         },
       ),
       titlesData: FlTitlesData(
-        bottomTitles: SideTitles(
-          showTitles: true,
-          reservedSize: 22,
-          getTextStyles: (value) => const TextStyle(
-            color: Color(0xff72719b),
-            fontWeight: FontWeight.bold,
-            fontSize: 16,
-          ),
-          margin: 10,
-          getTitles: (value) {
-            switch (value.toInt()) {
-              case 2:
-                return 'SEPT';
-              case 7:
-                return 'OCT';
-              case 12:
-                return 'DEC';
-            }
-            return '';
-          },
+        bottomTitles: AxisTitles(
         ),
-        leftTitles: SideTitles(
-          showTitles: false,
-          getTextStyles: (value) => const TextStyle(
-            color: Color(0xff75729e),
-            fontWeight: FontWeight.bold,
-            fontSize: 14,
-          ),
-          getTitles: (value) {
-            switch (value.toInt()) {
-              case 1:
-                return '1m';
-              case 2:
-                return '2m';
-              case 3:
-                return '3m';
-              case 4:
-                return '5m';
-            }
-            return '';
-          },
-          margin: 8,
-          reservedSize: 30,
+        leftTitles: AxisTitles(
         ),
       ),
       borderData: FlBorderData(
@@ -165,17 +125,16 @@ class _DashboardChartState extends State<DashboardChart> {
         FlSpot(14, 3),
       ],
       isCurved: true,
-      colors: [
-        primaryColor,
-      ],
+      color: primaryColor,
       barWidth: 3,
       isStrokeCapRound: true,
       dotData: FlDotData(
         show: false,
       ),
-      belowBarData: BarAreaData(show: true, colors: [
-        primaryColor.withOpacity(.3),
-      ]),
+      belowBarData: BarAreaData(
+        show: true, 
+        color: primaryColor.withOpacity(.3),
+      ),
     );
     final LineChartBarData lineChartBarData2 = LineChartBarData(
       spots: [
@@ -189,17 +148,16 @@ class _DashboardChartState extends State<DashboardChart> {
         FlSpot(14, 3),
       ],
       isCurved: true,
-      colors: [
-        secondaryColor,
-      ],
+      color: secondaryColor,
       barWidth: 3,
       isStrokeCapRound: true,
       dotData: FlDotData(
         show: false,
       ),
-      belowBarData: BarAreaData(show: true, colors: [
-        secondaryColor.withOpacity(.3),
-      ]),
+      belowBarData: BarAreaData(
+        show: true, 
+        color: secondaryColor.withOpacity(.3),
+      ),
     );
     /* final LineChartBarData lineChartBarData3 = LineChartBarData(
       spots: [
@@ -238,26 +196,7 @@ class _DashboardChartState extends State<DashboardChart> {
         show: false,
       ),
       titlesData: FlTitlesData(
-        bottomTitles: SideTitles(
-          showTitles: true,
-          reservedSize: 22,
-          getTextStyles: (value) => const TextStyle(
-            color: Color(0xff72719b),
-            fontWeight: FontWeight.bold,
-            fontSize: 16,
-          ),
-          margin: 10,
-          getTitles: (value) {
-            switch (value.toInt()) {
-              case 2:
-                return 'SEPT';
-              case 7:
-                return 'OCT';
-              case 12:
-                return 'DEC';
-            }
-            return '';
-          },
+        bottomTitles: AxisTitles(
         ),
         /* leftTitles: SideTitles(
           showTitles: false,
@@ -324,9 +263,7 @@ class _DashboardChartState extends State<DashboardChart> {
         ],
         isCurved: true,
         curveSmoothness: 0,
-        colors: const [
-          Color(0x444af699),
-        ],
+        color: Color(0x444af699),
         barWidth: 4,
         isStrokeCapRound: true,
         dotData: FlDotData(
@@ -346,17 +283,16 @@ class _DashboardChartState extends State<DashboardChart> {
           FlSpot(13, 3.9),
         ],
         isCurved: true,
-        colors: const [
-          Color(0x99aa4cfc),
-        ],
+        color: Color(0x99aa4cfc),
         barWidth: 4,
         isStrokeCapRound: true,
         dotData: FlDotData(
           show: false,
         ),
-        belowBarData: BarAreaData(show: true, colors: [
-          const Color(0x33aa4cfc),
-        ]),
+        belowBarData: BarAreaData(
+          show: true, 
+          color:const Color(0x33aa4cfc),
+        ),
       ),
       LineChartBarData(
         spots: [
@@ -368,9 +304,7 @@ class _DashboardChartState extends State<DashboardChart> {
         ],
         isCurved: true,
         curveSmoothness: 0,
-        colors: const [
-          Color(0x4427b6fc),
-        ],
+        color: Color(0x4427b6fc),
         barWidth: 3,
         isStrokeCapRound: true,
         dotData: FlDotData(show: true),

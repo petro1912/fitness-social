@@ -34,48 +34,48 @@ MaskTextInputFormatter cvvFormat = MaskTextInputFormatter(
   filter: {"#": RegExp(r'[0-9]')},
 );
 
-Text PrimaryText(String text, [double size, bool bold, bool center]) {
+Text PrimaryText(String text, [double? size, bool bold = false, bool center = false]) {
   return getText(text, primaryColor, size, bold, center);
 }
 
-Text lightPrimaryText(String text, [double size, bool bold, bool center]) {
+Text lightPrimaryText(String text, [double? size, bool bold = false, bool center = false]) {
   return getText(text, primaryColor.withOpacity(.6), size, bold, center);
 }
 
-Text SecondaryText(String text, [double size, bool bold, bool center]) {
+Text SecondaryText(String text, [double? size, bool bold = false, bool center = false]) {
   return getText(text, secondaryColor, size, bold, center);
 }
 
-Text BlackText(String text, [double size, bool bold, bool center]) {
+Text BlackText(String text, [double? size, bool bold = false, bool center = false]) {
   return getText(text, textColor, size, bold, center);
 }
 
-Text GreyText(String text, [double size, bool bold, bool center]) {
+Text GreyText(String text, [double? size, bool bold = false, bool center = false]) {
   return getText(text, greyTextColor, size, bold, center);
 }
 
-Text WhiteText(String text, [double size, bool bold, bool center]) {
+Text WhiteText(String text, [double? size, bool bold = false, bool center = false]) {
   return getText(text, white, size, bold, center);
 }
 
-Text ErrorText(String text, [double size, bool bold, bool center]) {
+Text ErrorText(String text, [double? size, bool bold = false, bool center = false]) {
   return getText(text, errorColor, size, bold, center);
 }
 
-Text getText(String text, Color color, [double size, bool bold, bool center]) {
+Text getText(String text, Color color, [double? size, bool bold = false, bool center = false]) {
   return Text(
     text,
     style: TextStyle(
-      fontWeight: (bold != null && bold) ? Bold : FontWeight.normal,
+      fontWeight: (bold) ? Bold : FontWeight.normal,
       fontSize: (size != null) ? size : 14,
       color: color,
       height: 1.3,
     ),
-    textAlign: center != null && center ? TextAlign.center : TextAlign.start,
+    textAlign: center ? TextAlign.center : TextAlign.start,
   );
 }
 
-Widget PrimaryBlockButton({Function action, String label, Widget icon}) {
+Widget PrimaryBlockButton({required VoidCallback? action, required String label, Widget? icon}) {
   return Padding(
     padding: EdgeInsets.symmetric(
       horizontal: 30,
@@ -93,7 +93,7 @@ Widget PrimaryBlockButton({Function action, String label, Widget icon}) {
   );
 }
 
-Widget SecondaryBlockButton({Function action, String label, Widget icon}) {
+Widget SecondaryBlockButton({VoidCallback? action, required String label, Widget? icon}) {
   return Padding(
     padding: EdgeInsets.symmetric(
       horizontal: 30,

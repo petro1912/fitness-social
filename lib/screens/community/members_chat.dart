@@ -1,7 +1,6 @@
 import 'package:fitness/components/avatar.dart';
 import 'package:fitness/components/dialog_box.dart';
 import 'package:fitness/components/main_responsive_scaffold.dart';
-import 'package:fitness/components/search.dart';
 import 'package:fitness/components/triangle.dart';
 import 'package:fitness/constants.dart';
 import 'package:fitness/model/member.dart';
@@ -14,8 +13,8 @@ class CommunityChatScreen extends StatefulWidget {
 class _CommunityChatScreenState extends State<CommunityChatScreen> {
   List<MemberChat> memberList = [];
   List<ChatMessage> messageList = [];
-  String message;
-  MemberChat member;
+  late String message;
+  late MemberChat member;
 
   void initState() {
     super.initState();
@@ -171,7 +170,7 @@ class _CommunityChatScreenState extends State<CommunityChatScreen> {
                       color: primaryColor,
                     ),
                     child: WhiteText(
-                      message.messages[0],
+                      message.messages![0],
                       14,
                     ),
                   ),
@@ -202,7 +201,7 @@ class _CommunityChatScreenState extends State<CommunityChatScreen> {
       children: [
         SizedBox(height: 10),
         Row(
-          children: [SizedBox(width: 54), PrimaryText(message.name, 12)],
+          children: [SizedBox(width: 54), PrimaryText(message.name!, 12)],
         ),
         SizedBox(height: 4),
         Row(
@@ -211,7 +210,7 @@ class _CommunityChatScreenState extends State<CommunityChatScreen> {
             SizedBox(width: 15),
             message.img != null
                 ? Avatar(image: message.img, size: 36)
-                : TextAvatar(name: message.name, size: 36),
+                : TextAvatar(name: message.name!, size: 36),
             Row(
               crossAxisAlignment: CrossAxisAlignment.end,
               mainAxisSize: MainAxisSize.min,
@@ -239,7 +238,7 @@ class _CommunityChatScreenState extends State<CommunityChatScreen> {
                     color: greyIconColor,
                   ),
                   child: Text(
-                    message.messages[0],
+                    message.messages![0],
                     maxLines: 100,
                   ),
                 ),

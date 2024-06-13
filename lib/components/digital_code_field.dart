@@ -3,13 +3,13 @@ import 'package:fitness/constants.dart';
 
 class DigitalCodeField extends StatefulWidget {
   DigitalCodeField({
-    Key key,
+    Key? key,
     this.digits = 4,
     this.unit = 1,
-    this.width,
+    required this.width,
     this.textSize = 32,
     this.textColor = primaryColor,
-    this.whiteBorder,
+    this.whiteBorder = false,
     this.chagedDigits,
   }) : super(key: key);
   final int digits, unit;
@@ -17,18 +17,18 @@ class DigitalCodeField extends StatefulWidget {
   final double textSize;
   final Color textColor;
   final bool whiteBorder;
-  final Function chagedDigits;
+  final Function? chagedDigits;
 
   _DigitalCodeFieldState createState() => _DigitalCodeFieldState();
 }
 
 class _DigitalCodeFieldState extends State<DigitalCodeField> {
   List<FocusNode> _focusNodes = [];
-  List<String> code;
+  List<String>? code;
 
   List<Widget> _buildDCWidget() {
     List<Widget> dcWidget = [];
-    var whited = widget.whiteBorder != null && widget.whiteBorder;
+    var whited = widget.whiteBorder;
     const whiteBorder =
         UnderlineInputBorder(borderSide: BorderSide(color: white));
     const blackBorder =
@@ -89,8 +89,8 @@ class _DigitalCodeFieldState extends State<DigitalCodeField> {
 
   void digitChanged(int idx, String cd) {
     setState(() {
-      code[idx] = cd;
-      if (widget.chagedDigits != null) widget.chagedDigits(code);
+      code![idx] = cd;
+      widget.chagedDigits!(code);
     });
     if (cd.length == widget.unit && idx != 3)
       FocusScope.of(context).nextFocus();

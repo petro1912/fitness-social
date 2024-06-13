@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 
 class MainResponsiveScaffold extends StatelessWidget {
   MainResponsiveScaffold({
-    Key key,
-    this.title,
-    this.isMain,
-    this.pageIndex,
-    this.child,
+    Key? key,
+    required this.title,
+    this.isMain = false,
+    this.pageIndex = 0,
+    required this.child,
     this.headerAction,
     this.headerActionIcon,
   }) : super(key: key);
@@ -16,8 +16,8 @@ class MainResponsiveScaffold extends StatelessWidget {
   final String title;
   final int pageIndex;
   final bool isMain;
-  final Widget headerActionIcon;
-  final Function headerAction;
+  final Widget? headerActionIcon;
+  final GestureTapCallback? headerAction;
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +51,7 @@ class MainResponsiveScaffold extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: BottomMenu(activeIndex: pageIndex ?? 0),
+      bottomNavigationBar: BottomMenu(activeIndex: pageIndex),
     );
   }
 }

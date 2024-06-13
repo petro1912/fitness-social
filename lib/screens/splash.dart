@@ -1,4 +1,3 @@
-import 'package:fitness/components/dialog_box.dart';
 import 'package:fitness/constants.dart';
 import 'package:fitness/screens/drawer/drawer_screen.dart';
 import 'package:fitness/screens/workout/workout.dart';
@@ -10,7 +9,7 @@ import 'package:fitness/components/rounded_raised_button.dart';
 import 'package:fitness/screens/login.dart';
 
 class SplashScreen extends StatefulWidget {
-  SplashScreen({Key key}) : super(key: key);
+  SplashScreen({Key? key}) : super(key: key);
 
   @override
   _SplashScreenState createState() => _SplashScreenState();

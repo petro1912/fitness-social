@@ -20,8 +20,8 @@ class App extends StatelessWidget {
       child: MaterialApp(
         title: 'Fitness App',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
           scaffoldBackgroundColor: Colors.white,
           // fontFamily: 'Gotham',
         ),
@@ -31,7 +31,7 @@ class App extends StatelessWidget {
           // imagePath: 'assets/images/layout/splash.png',
           home: SplashScreen(),
           duration: 2000,
-          type: AnimatedSplashType.StaticDuration,
+          runfor: AnimatedSplashType.StaticDuration,
         ),
       ),
     );

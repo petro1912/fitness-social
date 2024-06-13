@@ -8,7 +8,10 @@ import 'package:fitness/screens/drawer/app_menu.dart';
 
 class DrawerScreen extends StatefulWidget {
   final Widget child;
-  DrawerScreen({Key key, this.child}) : super(key: key);
+  DrawerScreen({
+    Key? key, 
+    required this.child
+  }) : super(key: key);
   @override
   _DrawerScreenState createState() => new _DrawerScreenState();
 }
@@ -49,7 +52,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
 
 class MainScreen extends StatefulWidget {
   final Widget child;
-  MainScreen({Key key, this.child}) : super(key: key);
+  MainScreen({Key? key, required this.child}) : super(key: key);
   @override
   _MainScreenState createState() => _MainScreenState();
 }

@@ -2,14 +2,17 @@ import 'package:fitness/components/header.dart';
 import 'package:fitness/components/responsive_scaffold.dart';
 import 'package:fitness/components/rounded_raised_button.dart';
 import 'package:fitness/constants.dart';
-import 'package:fitness/data/string.dart';
 import 'package:fitness/screens/verification.dart';
 import 'package:fitness/utils/navigation_util.dart';
 import 'package:flutter/material.dart';
 
 class AccountScreen extends StatefulWidget {
-  AccountScreen({Key key, this.title}) : super(key: key);
-  final String title;
+  AccountScreen({
+    Key? key, 
+    this.title
+  }) : super(key: key);
+  
+  final String? title;
   @override
   _AccountScreenState createState() => _AccountScreenState();
 }

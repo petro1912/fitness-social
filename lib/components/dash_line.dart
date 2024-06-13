@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class DashLine extends StatelessWidget {
   final Color color;
   final bool vertical;
-  final double size;
+  final double? size;
 
   const DashLine({
     this.color = Colors.black,
@@ -15,7 +15,7 @@ class DashLine extends StatelessWidget {
   Widget build(BuildContext context) {
     final dashStroke = 2.0;
     final dashSize = 6.0;
-    final int dashs = (size / 10).round();
+    final int dashs = (size! / 10).round();
 
     if (vertical)
       return Column(

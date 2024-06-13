@@ -1,5 +1,12 @@
 class Diet {
-  Diet({this.name, this.img, this.kcal, this.ingredients, this.condiments});
+  Diet({
+    required this.name, 
+    required this.img, 
+    required this.kcal, 
+    required this.ingredients, 
+    required this.condiments
+  });
+  
   final String img;
   final String name;
   final List ingredients;

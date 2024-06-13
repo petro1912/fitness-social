@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:photo_manager/photo_manager.dart';
 
 class GalleryPage extends StatefulWidget {
-  GalleryPage({Key key}) : super(key: key);
+  GalleryPage({Key? key}) : super(key: key);
 
   _GalleryState createState() => _GalleryState();
 }
@@ -26,10 +26,10 @@ class _GalleryState extends State<GalleryPage> {
   }
 
   Future<void> selectPhoto(AssetEntity entity) async {
-    File assetFile = await entity.file;
+    File? assetFile = await entity.file;
     Widget routeWidget;
 
-    routeWidget = DiaryScreen(editMode: true, dailyImg: assetFile.path);
+    routeWidget = DiaryScreen(editMode: true, dailyImg: assetFile!.path);
 
     Navigator.pushReplacement(
       context,
@@ -70,9 +70,9 @@ class _GalleryState extends State<GalleryPage> {
 
 class AssetThumbnail extends StatelessWidget {
   const AssetThumbnail({
-    Key key,
-    @required this.asset,
-    @required this.selectPhoto,
+    Key? key,
+    required this.asset,
+    required this.selectPhoto,
   }) : super(key: key);
 
   final AssetEntity asset;
@@ -80,8 +80,8 @@ class AssetThumbnail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<Uint8List>(
-      future: asset.thumbData,
+    return FutureBuilder<Uint8List?>(
+      future: asset.thumbnailData,
       builder: (_, snapshot) {
         final bytes = snapshot.data;
         if (bytes == null)

@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 
 class RoundedIcon extends StatelessWidget {
-  RoundedIcon({Key key, this.image, this.size, this.color, this.borderSize})
+  RoundedIcon({
+    Key? key, 
+    required this.image, 
+    required this.size, 
+    required this.color, 
+    required this.borderSize
+  })
       : super(key: key);
   final String image;
   final Color color;

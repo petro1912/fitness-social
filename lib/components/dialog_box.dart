@@ -218,7 +218,7 @@ class DialogBox {
           SizedBox(height: 30),
           Divider(),
           SizedBox(height: 20),
-          SecondaryBlockButton(label: 'Get Update', action: () => {}),
+          SecondaryBlockButton(label: 'Get Update'),
           SizedBox(height: 20),
         ],
       ),
@@ -249,11 +249,13 @@ class DialogBox {
   }
 
   static Dialog confirm(BuildContext context,
-      {String title,
-      String yes,
-      String no,
-      Function yesAction,
-      Function noAction}) {
+    {
+      required String title,
+      required String yes,
+      required String no,
+      VoidCallback? yesAction,
+      VoidCallback? noAction
+    }) {
     return create(
       child: Column(
         children: [
@@ -290,7 +292,7 @@ class DialogBox {
     );
   }
 
-  static Dialog create({Widget child}) {
+  static Dialog create({required Widget child}) {
     return Dialog(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),

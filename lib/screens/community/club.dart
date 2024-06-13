@@ -4,8 +4,6 @@ import 'package:fitness/components/triangle.dart';
 import 'package:fitness/constants.dart';
 import 'package:fitness/model/club.dart';
 import 'package:fitness/model/member.dart';
-import 'package:fitness/screens/community/club_join.dart';
-import 'package:fitness/utils/navigation_util.dart';
 import 'package:flutter/material.dart';
 
 class CommunityClubScreen extends StatefulWidget {
@@ -13,10 +11,10 @@ class CommunityClubScreen extends StatefulWidget {
 }
 
 class _CommunityClubScreenState extends State<CommunityClubScreen> {
-  Club club;
+  late Club club;
   List<MemberChat> memberList = [];
   List<ChatMessage> messageList = [];
-  String message;
+  late String message;
 
   void initState() {
     super.initState();
@@ -25,7 +23,9 @@ class _CommunityClubScreenState extends State<CommunityClubScreen> {
         members: 23,
         img: 'exercise-photo1',
         description:
-            'Few Description for this club Few Description for this club Description for this club ... ');
+            'Few Description for this club Few Description for this club Description for this club ... '
+    );
+
     memberList = [
       MemberChat(name: 'Group Chat', img: 'exercise-photo2', count: 24),
       MemberChat(name: 'Ahmed Dosari', img: 'exercise-photo3'),
@@ -170,7 +170,7 @@ class _CommunityClubScreenState extends State<CommunityClubScreen> {
                       color: primaryColor,
                     ),
                     child: WhiteText(
-                      message.messages[0],
+                      message.messages![0],
                       14,
                     ),
                   ),
@@ -201,7 +201,7 @@ class _CommunityClubScreenState extends State<CommunityClubScreen> {
       children: [
         SizedBox(height: 10),
         Row(
-          children: [SizedBox(width: 54), PrimaryText(message.name, 12)],
+          children: [SizedBox(width: 54), PrimaryText(message.name!, 12)],
         ),
         SizedBox(height: 4),
         Row(
@@ -210,7 +210,7 @@ class _CommunityClubScreenState extends State<CommunityClubScreen> {
             SizedBox(width: 15),
             message.img != null
                 ? Avatar(image: message.img, size: 36)
-                : TextAvatar(name: message.name, size: 36),
+                : TextAvatar(name: message.name!, size: 36),
             Row(
               crossAxisAlignment: CrossAxisAlignment.end,
               mainAxisSize: MainAxisSize.min,
@@ -238,7 +238,7 @@ class _CommunityClubScreenState extends State<CommunityClubScreen> {
                     color: greyIconColor,
                   ),
                   child: Text(
-                    message.messages[0],
+                    message.messages![0],
                     maxLines: 100,
                   ),
                 ),
@@ -292,7 +292,7 @@ class _CommunityClubScreenState extends State<CommunityClubScreen> {
                         SizedBox(
                           height: 60,
                           child: Text(
-                            club.description,
+                            club.description!,
                             style: TextStyle(
                               fontSize: 12,
                               color: greyTextColor,

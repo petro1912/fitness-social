@@ -1,10 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:fitness/components/main_responsive_scaffold.dart';
-import 'package:fitness/components/main_scaffold.dart';
-import 'package:fitness/components/rounded_raised_button.dart';
 import 'package:fitness/components/search_member.dart';
 import 'package:fitness/constants.dart';
-import 'package:fitness/data/string.dart';
 import 'package:fitness/screens/store/products.dart';
 import 'package:fitness/screens/workout/fitness_input.dart';
 import 'package:fitness/utils/navigation_util.dart';
@@ -16,7 +13,7 @@ class StoreScreen extends StatefulWidget {
 
 class _StoreScreenState extends State<StoreScreen> {
   int _currentClubIndex = 0, _currentGymIndex = 0;
-  List clubItems, gymItems;
+  late List clubItems, gymItems;
   void initState() {
     super.initState();
   }

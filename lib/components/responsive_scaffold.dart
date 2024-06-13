@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class ResponsiveScaffold extends StatelessWidget {
-  ResponsiveScaffold({Key key, this.child}) : super(key: key);
+  ResponsiveScaffold({
+    Key? key, 
+    required this.child
+  }) : super(key: key);
   final Widget child;
 
   @override

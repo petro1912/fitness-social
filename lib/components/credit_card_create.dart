@@ -4,16 +4,16 @@ import 'package:fitness/constants.dart';
 import 'package:flutter/material.dart';
 
 class CreditCardCreate extends StatefulWidget {
-  CreditCardCreate({Key key, this.cardNumber, this.expired, this.cvv})
+  CreditCardCreate({Key? key, this.cardNumber, this.expired, this.cvv})
       : super(key: key);
 
-  final String cardNumber, expired, cvv;
+  final String? cardNumber, expired, cvv;
 
   _CreditTextState createState() => _CreditTextState();
 }
 
 class _CreditTextState extends State<CreditCardCreate> {
-  String cardNumber, expired, cvv;
+  late String cardNumber, expired, cvv;
 
   void initState() {
     super.initState();

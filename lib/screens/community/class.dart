@@ -1,4 +1,3 @@
-import 'package:fitness/components/color_dot.dart';
 import 'package:fitness/components/image_slider.dart';
 import 'package:fitness/components/main_responsive_scaffold.dart';
 import 'package:fitness/components/requirements.dart';
@@ -9,16 +8,16 @@ import 'package:fitness/components/nav_second_bar.dart';
 import 'package:flutter/material.dart';
 
 class CommunityClassScreen extends StatefulWidget {
-  CommunityClassScreen({Key key, this.active}) : super(key: key);
+  CommunityClassScreen({Key? key, this.active = false}) : super(key: key);
   final bool active;
   _CommunityClasssScreenState createState() => _CommunityClasssScreenState();
 }
 
 class _CommunityClasssScreenState extends State<CommunityClassScreen> {
-  Class cls;
+  late Class _cls;
   void initState() {
     super.initState();
-    cls = Class(
+    _cls = Class(
       name: 'Boxing Class',
       date: '17-Dec-2020',
       period: '7 AM - 8 AM',
@@ -35,20 +34,20 @@ class _CommunityClasssScreenState extends State<CommunityClassScreen> {
 
   Widget build(BuildContext context) {
     return MainResponsiveScaffold(
-      title: cls.name,
+      title: _cls.name,
       pageIndex: 2,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ImageSlider(
-            images: cls.images,
+            images: _cls.images!,
             dotColor: primaryColor,
-            titleText: BlackText(cls.name, 24, true),
+            titleText: BlackText(_cls.name, 24, true),
             bulletBottom: true,
           ),
           Padding(
             padding: mainHrPadding,
-            child: PrimaryText(cls.type, 12, true),
+            child: PrimaryText(_cls.type!, 12, true),
           ),
           SizedBox(height: 20),
           Container(
@@ -63,9 +62,9 @@ class _CommunityClasssScreenState extends State<CommunityClassScreen> {
                         image: getIcon('calendar'),
                       ),
                       SizedBox(width: 20),
-                      BlackText(cls.date, 14, true),
+                      BlackText(_cls.date!, 14, true),
                       Expanded(child: SizedBox()),
-                      GreyText(cls.period, 11, true),
+                      GreyText(_cls.period!, 11, true),
                     ],
                   ),
                 ),
@@ -73,7 +72,7 @@ class _CommunityClasssScreenState extends State<CommunityClassScreen> {
                 Container(
                   padding: EdgeInsets.symmetric(vertical: 12),
                   child: Text(
-                    cls.description,
+                    _cls.description!,
                     style: TextStyle(fontSize: 11, color: greyTextColor),
                   ),
                 ),

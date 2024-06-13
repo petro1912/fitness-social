@@ -1,7 +1,6 @@
 import 'package:fitness/components/avatar.dart';
 import 'package:fitness/constants.dart';
 import 'package:fitness/model/member.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ActivateAttendance extends StatefulWidget {
@@ -38,7 +37,7 @@ class _ActivateAttendanceState extends State<ActivateAttendance> {
             Expanded(
               child: SizedBox(),
             ),
-            member.isFavorite != null && member.isFavorite
+            member.isFavorite
                 ? Image(image: getIcon('star'))
                 : SizedBox(),
             SizedBox(width: 30),

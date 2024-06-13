@@ -1,5 +1,8 @@
 class RequireItem {
   final String field;
   final bool require;
-  RequireItem({this.field, this.require});
+  RequireItem({
+    required this.field, 
+    required this.require
+  });
 }

@@ -8,8 +8,8 @@ class FeedbackScreen extends StatefulWidget {
 }
 
 class _FeedbackScreenState extends State<FeedbackScreen> {
-  String message;
-  int faceIdx;
+  late String message;
+  late int faceIdx;
   void initState() {
     super.initState();
   }
@@ -92,6 +92,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
             SizedBox(height: 20),
             PrimaryBlockButton(
               label: 'Submit',
+              action: () => {}
             ),
             SizedBox(height: 40),
           ],

@@ -18,7 +18,7 @@ class CommunityItemsScreen extends StatefulWidget {
 }
 
 class _CommunityItemsScreenState extends State<CommunityItemsScreen> {
-  Community comm;
+  late Community comm;
   List<DashboardItem> items = [];
 
   @override

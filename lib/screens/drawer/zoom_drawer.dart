@@ -3,33 +3,32 @@ library flutter_zoom_drawer;
 import 'dart:math' show pi;
 import 'dart:ui' as ui show window;
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class ZoomDrawerController {
   /// callback function to open the drawer
-  Function open;
+  late Function open;
 
   /// callback function to close the drawer
-  Function close;
+  late Function close;
 
   /// callback function to toggle the drawer
-  Function toggle;
+  late Function toggle;
 
   /// callback function to determine the status of the drawer
-  Function isOpen;
+  late Function isOpen;
 
   /// Drawer state notifier
   /// opening, closing, open, closed
-  ValueNotifier<DrawerState> stateNotifier;
+  ValueNotifier<DrawerState>? stateNotifier;
 }
 
 class ZoomDrawer extends StatefulWidget {
   ZoomDrawer({
     this.style = DrawerStyle.DefaultStyle,
-    this.controller,
-    this.menuScreen,
-    this.mainScreen,
+    required this.controller,
+    required this.menuScreen,
+    required this.mainScreen,
     this.mainScreenScale = 0.3,
     this.slideWidth = 275.0,
     this.borderRadius = 16.0,
@@ -40,7 +39,7 @@ class ZoomDrawer extends StatefulWidget {
     this.closeCurve,
     this.duration,
     this.disableGesture = false,
-    this.isRtl,
+    this.isRtl = false,
   }) : assert(angle <= 0.0 && angle >= -30.0);
 
   /// Layout style
@@ -74,13 +73,13 @@ class ZoomDrawer extends StatefulWidget {
   final bool showShadow;
 
   /// Drawer slide out curve
-  final Curve openCurve;
+  final Curve? openCurve;
 
   /// Drawer slide in curve
-  final Curve closeCurve;
+  final Curve? closeCurve;
 
   /// Drawer Duration
-  final Duration duration;
+  final Duration? duration;
 
   /// Disable swipe gesture
   final bool disableGesture;
@@ -118,11 +117,11 @@ class _ZoomDrawerState extends State<ZoomDrawer>
       Interval(0.0, 1.0, curve: Curves.easeOut); // Curves.bounceOut
 
   /// check the slide direction
-  int _rtlSlide;
+  late int _rtlSlide;
 
-  bool _rtl;
+  late bool _rtl;
 
-  AnimationController _animationController;
+  late AnimationController _animationController;
   DrawerState _state = DrawerState.closed;
 
   double get _percentOpen => _animationController.value;
@@ -153,7 +152,7 @@ class _ZoomDrawerState extends State<ZoomDrawer>
       _state == DrawerState.open /* || _state == DrawerState.opening*/;
 
   /// Drawer state
-  ValueNotifier<DrawerState> stateNotifier;
+  late ValueNotifier<DrawerState> stateNotifier;
 
   @override
   void initState() {
@@ -190,14 +189,12 @@ class _ZoomDrawerState extends State<ZoomDrawer>
       });
 
     /// assign controller function to the widget methods
-    if (widget.controller != null) {
-      widget.controller.open = open;
-      widget.controller.close = close;
-      widget.controller.toggle = toggle;
-      widget.controller.isOpen = isOpen;
-      widget.controller.stateNotifier = stateNotifier;
-    }
-
+    widget.controller.open = open;
+    widget.controller.close = close;
+    widget.controller.toggle = toggle;
+    widget.controller.isOpen = isOpen;
+    widget.controller.stateNotifier = stateNotifier;
+  
     _rtl = widget.isRtl ?? ZoomDrawer.isRTL();
     _rtlSlide = _rtl ? -1 : 1;
   }
@@ -233,7 +230,7 @@ class _ZoomDrawerState extends State<ZoomDrawer>
   /// * [slide] is the sliding amount of the drawer
   ///
   Widget _zoomAndSlideContent(Widget container,
-      {double angle, double scale, double slide = 0}) {
+      {double? angle, double? scale, double slide = 0}) {
     var slidePercent, scalePercent;
 
     /// determine current slide percent based on the MenuStatus
@@ -367,7 +364,7 @@ class _ZoomDrawerState extends State<ZoomDrawer>
           AnimatedBuilder(
             animation: _animationController,
             builder: (_, w) => _zoomAndSlideContent(
-              w,
+              w!,
               angle: (widget.angle == 0.0) ? 0.0 : widget.angle - 8,
               scale: .9,
               slide: slidePercent * 2,
@@ -381,7 +378,7 @@ class _ZoomDrawerState extends State<ZoomDrawer>
           AnimatedBuilder(
             animation: _animationController,
             builder: (_, w) => _zoomAndSlideContent(
-              w,
+              w!,
               angle: (widget.angle == 0.0) ? 0.0 : widget.angle - 4.0,
               scale: .95,
               slide: slidePercent,
@@ -395,7 +392,7 @@ class _ZoomDrawerState extends State<ZoomDrawer>
         /// Displaying the main screen
         AnimatedBuilder(
           animation: _animationController,
-          builder: (_, w) => _zoomAndSlideContent(w),
+          builder: (_, w) => _zoomAndSlideContent(w!),
           child: GestureDetector(
             child: widget.mainScreen,
             onTap: () {

@@ -2,7 +2,10 @@ import 'package:fitness/constants.dart';
 import 'package:flutter/material.dart';
 
 class RadioGroup extends StatefulWidget {
-  RadioGroup({Key key, this.groupItems}) : super(key: key);
+  RadioGroup({
+    Key? key, 
+    required this.groupItems
+  }) : super(key: key);
   final List<GroupItem> groupItems;
   @override
   RadioGroupWidget createState() => RadioGroupWidget();
@@ -12,7 +15,11 @@ class GroupItem {
   final String name;
   final int index;
   final String icon;
-  GroupItem({this.name, this.index, this.icon});
+  GroupItem({
+    required this.name, 
+    this.index = 0, 
+    required this.icon
+  });
 }
 
 class RadioGroupWidget extends State<RadioGroup> {

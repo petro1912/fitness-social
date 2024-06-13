@@ -13,7 +13,7 @@ class GoalActionRunScreen extends StatefulWidget {
 }
 
 class _GoalActionRunScreenState extends State<GoalActionRunScreen> {
-  GoalActionDetail goalActionDetail;
+  late GoalActionDetail goalActionDetail;
   @override
   void initState() {
     super.initState();

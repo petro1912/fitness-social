@@ -1,5 +1,3 @@
-import 'package:fitness/components/color_dot.dart';
-import 'package:fitness/components/community_search.dart';
 import 'package:fitness/components/image_slider.dart';
 import 'package:fitness/components/main_responsive_scaffold.dart';
 import 'package:fitness/components/requirements.dart';
@@ -11,17 +9,21 @@ import 'package:fitness/screens/community/activate_attendance.dart';
 import 'package:flutter/material.dart';
 
 class CommunityActivateScreen extends StatefulWidget {
-  CommunityActivateScreen({Key key, this.active}) : super(key: key);
+  CommunityActivateScreen({
+    Key? key, 
+    this.active = false
+  }) : super(key: key);
   final bool active;
   _CommunityActivatesScreenState createState() =>
       _CommunityActivatesScreenState();
 }
 
 class _CommunityActivatesScreenState extends State<CommunityActivateScreen> {
-  Activate activate;
+  late Activate _activate;
+
   void initState() {
     super.initState();
-    activate = Activate(
+    _activate = Activate(
       name: 'Community Name',
       date: '17-Dec-2020',
       description:
@@ -45,7 +47,7 @@ class _CommunityActivatesScreenState extends State<CommunityActivateScreen> {
       child: Column(
         children: [
           ImageSlider(
-            images: activate.images,
+            images: _activate.images!,
             dotColor: primaryColor,
             titleText: BlackText('Running in the morning', 24, true),
             bulletBottom: true,
@@ -63,7 +65,7 @@ class _CommunityActivatesScreenState extends State<CommunityActivateScreen> {
                         image: getIcon('calendar'),
                       ),
                       SizedBox(width: 20),
-                      BlackText('17-Dec-2020', 14, true),
+                      BlackText(_activate.date, 14, true),
                       Expanded(child: SizedBox()),
                       GreyText('7 AM - 8 AM', 11, true),
                     ],
@@ -72,9 +74,7 @@ class _CommunityActivatesScreenState extends State<CommunityActivateScreen> {
                 Divider(),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 8),
-                  child: GreyText(
-                      'Brief description for this activity .. Brief description for this activity .. Brief description for this activity .. Brief description for this activity .. Brief description for this activity .. Brief description for this activity .. ',
-                      11),
+                  child: GreyText(_activate.description, 11),
                 ),
                 RequirementsBlock(items: [
                   RequireItem(field: 'Running Sneakers', require: true),

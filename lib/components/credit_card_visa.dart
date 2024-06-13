@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 
 class CreditCardVisa extends StatelessWidget {
   CreditCardVisa({
-    Key key,
+    Key? key,
     this.cardNumber,
     this.holderName,
     this.expired,
     this.cvv,
   }) : super(key: key);
 
-  final String cardNumber, holderName, expired, cvv;
+  final String? cardNumber, holderName, expired, cvv;
 
   Widget build(BuildContext context) {
     return Container(

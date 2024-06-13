@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 
 class RRCard extends StatelessWidget {
-  RRCard({Key key, this.color, this.padding, this.radius, this.child})
+  RRCard({
+    Key? key, 
+    this.color = Colors.white, 
+    this.padding = EdgeInsets.zero, 
+    this.radius = 10, 
+    required this.child
+  })
       : super(key: key);
   final double radius;
   final Color color;
@@ -11,10 +17,10 @@ class RRCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: padding ?? EdgeInsets.zero,
+      padding: padding,
       decoration: BoxDecoration(
-        color: color ?? Colors.white,
-        borderRadius: BorderRadius.circular(radius ?? 10),
+        color: color,
+        borderRadius: BorderRadius.circular(radius),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.1),

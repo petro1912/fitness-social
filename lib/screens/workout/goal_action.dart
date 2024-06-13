@@ -10,7 +10,7 @@ class GoalActionScreen extends StatefulWidget {
 }
 
 class _GoalActionScreenState extends State<GoalActionScreen> {
-  List<GoalAction> goalActionList = [];
+  late List<GoalAction> goalActionList = [];
   @override
   void initState() {
     super.initState();

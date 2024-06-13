@@ -1,28 +1,29 @@
 import 'package:flutter/material.dart';
 
 class TrianglePainter extends CustomPainter {
-  final Color color;
+  final Color? color;
   final PaintingStyle paintingStyle;
   final double size;
   final bool isLeft;
 
-  TrianglePainter(
-      {this.color,
+  TrianglePainter({
+      this.color,
       this.isLeft = false,
       this.size = 10,
-      this.paintingStyle = PaintingStyle.fill});
+      this.paintingStyle = PaintingStyle.fill
+  });
 
   @override
   void paint(Canvas canvas, Size _) {
     Paint paint = Paint()
-      ..color = color
+      ..color = color!
       ..style = paintingStyle;
 
     canvas.drawPath(getTrianglePath(size), paint);
   }
 
   Path getTrianglePath(double size) {
-    if (isLeft != null && isLeft)
+    if (isLeft)
       return Path()
         ..moveTo(0, size)
         ..lineTo(size, 0)

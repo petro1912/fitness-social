@@ -2,16 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:fitness/constants.dart';
 
 class NavSecondBar extends StatelessWidget {
-  NavSecondBar({this.title, this.prefixIcon, this.titleActive, this.action});
+  NavSecondBar({
+    required this.title, 
+    required this.prefixIcon, 
+    this.titleActive = false, 
+    this.action
+  });
   final String title;
   final String prefixIcon;
   final bool titleActive;
-  final Function action;
+  final GestureTapCallback? action;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => this.action == null ? {} : this.action(),
+      onTap: this.action,
       child: Container(
         height: 60,
         color: secondaryColor.withOpacity(.15),
@@ -22,7 +27,7 @@ class NavSecondBar extends StatelessWidget {
           children: [
             Image(image: getIcon(this.prefixIcon ?? 'user')),
             SizedBox(width: 20),
-            titleActive == null || !titleActive
+            !titleActive
                 ? BlackText(this.title ?? '', 14, true)
                 : SecondaryText(this.title ?? '', 14, true),
             Expanded(child: SizedBox()),

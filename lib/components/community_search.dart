@@ -2,8 +2,8 @@ import 'package:fitness/constants.dart';
 import 'package:flutter/material.dart';
 
 class SearchCommunity extends StatefulWidget {
-  final Function action;
-  SearchCommunity({Key key, this.action}) : super(key: key);
+  final VoidCallback? action;
+  SearchCommunity({Key? key, this.action}) : super(key: key);
   _SearchCommunityState createState() => _SearchCommunityState();
 }
 
@@ -19,7 +19,7 @@ class _SearchCommunityState extends State<SearchCommunity> {
         children: [
           BlackText('JOIN A COMMUNITY', 28, true),
           SizedBox(height: 30),
-          PrimaryBlockButton(label: 'Search', action: widget.action),
+          PrimaryBlockButton(label: 'Search', action: widget.action!),
           SizedBox(height: 30),
         ],
       ),

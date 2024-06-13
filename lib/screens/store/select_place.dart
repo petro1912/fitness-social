@@ -1,9 +1,7 @@
-import 'dart:typed_data';
 import 'dart:ui' as ui;
 import 'dart:ui';
 
 import 'package:fitness/components/main_scaffold.dart';
-import 'package:fitness/components/rounded_raised_button.dart';
 import 'package:fitness/constants.dart';
 import 'package:fitness/screens/store/payment.dart';
 import 'package:fitness/utils/navigation_util.dart';
@@ -13,8 +11,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:async';
 
 class SelectPlaceScreen extends StatefulWidget {
-  SelectPlaceScreen({Key key, this.title}) : super(key: key);
-  final String title;
+  SelectPlaceScreen({Key? key, this.title}) : super(key: key);
+  final String? title;
 
   _SelectPlaceScreenState createState() => _SelectPlaceScreenState();
 }
@@ -23,7 +21,7 @@ const LatLng _kMapCenter = LatLng(52.4478, -3.5402);
 
 class _SelectPlaceScreenState extends State<SelectPlaceScreen> {
   Completer<GoogleMapController> _controller = Completer();
-  BitmapDescriptor _markerIcon;
+  late BitmapDescriptor _markerIcon;
 
   static final CameraPosition _kGooglePlex = CameraPosition(
     target: _kMapCenter,
@@ -41,19 +39,12 @@ class _SelectPlaceScreenState extends State<SelectPlaceScreen> {
   }
 
   Marker _createMarker() {
-    if (_markerIcon != null) {
-      return Marker(
-        markerId: MarkerId("marker_1"),
-        position: _kMapCenter,
-        icon: _markerIcon,
-      );
-    } else {
-      return Marker(
-        markerId: MarkerId("marker_1"),
-        position: _kMapCenter,
-      );
+    return Marker(
+      markerId: MarkerId("marker_1"),
+      position: _kMapCenter,
+      icon: _markerIcon,
+    );
     }
-  }
 
   void paintTappedImage() async {
     final ui.PictureRecorder recorder = ui.PictureRecorder();
@@ -94,7 +85,7 @@ class _SelectPlaceScreenState extends State<SelectPlaceScreen> {
     final pngByteData = await img.toByteData(format: ImageByteFormat.png);
     setState(() {
       _markerIcon =
-          BitmapDescriptor.fromBytes(Uint8List.view(pngByteData.buffer));
+          BitmapDescriptor.fromBytes(Uint8List.view(pngByteData!.buffer));
     });
   }
 
@@ -162,9 +153,7 @@ class _SelectPlaceScreenState extends State<SelectPlaceScreen> {
   }
 
   Future<void> _createMarkerImageFromAsset(BuildContext context) async {
-    if (_markerIcon == null) {
-      getBytesFromAsset('assets/icons/marker.png', 120).then(_updateBitmap);
-    }
+    
   }
 
   Future<Uint8List> getBytesFromAsset(String path, int width) async {
@@ -172,7 +161,7 @@ class _SelectPlaceScreenState extends State<SelectPlaceScreen> {
     ui.Codec codec = await ui.instantiateImageCodec(data.buffer.asUint8List(),
         targetWidth: width);
     ui.FrameInfo fi = await codec.getNextFrame();
-    return (await fi.image.toByteData(format: ui.ImageByteFormat.png))
+    return (await fi.image.toByteData(format: ui.ImageByteFormat.png))!
         .buffer
         .asUint8List();
   }

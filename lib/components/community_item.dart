@@ -5,12 +5,15 @@ import 'package:flutter/material.dart';
 
 class CommunityItem extends StatelessWidget {
   final Community comm;
-  final Function action;
-  CommunityItem({this.comm, this.action});
+  final Function? action;
+  CommunityItem({
+    required this.comm, 
+    this.action
+  });
 
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => action == null ? {} : action(context),
+      onTap: () => action!(context),
       child: Padding(
         padding: mainHrPadding,
         child: Column(
@@ -41,7 +44,7 @@ class CommunityItem extends StatelessWidget {
                           Row(children: [
                             BlackText(comm.name),
                             SizedBox(width: 6),
-                            comm.isFavorite != null && comm.isFavorite
+                            comm.isFavorite
                                 ? Image(
                                     image: getIcon('comm_badge'),
                                     width: 15,

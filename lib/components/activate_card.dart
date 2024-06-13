@@ -4,15 +4,15 @@ import 'package:flutter/material.dart';
 
 class ActivateCard extends StatefulWidget {
   final String title, description, date, img;
+  final GestureTapCallback? action;
   final bool isFavorite;
-  final Function action;
   ActivateCard({
-    Key key,
-    this.title,
-    this.description,
-    this.img,
-    this.date,
-    this.isFavorite,
+    Key? key,
+    required this.title,
+    required this.description,
+    required this.img,
+    required this.date,
+    this.isFavorite = false,
     this.action,
   }) : super(key: key);
   _ActivateCardState createState() => _ActivateCardState();
@@ -22,7 +22,7 @@ class _ActivateCardState extends State<ActivateCard> {
   Widget build(BuildContext context) {
     // GoalAction action = goalActionList[index];
     return InkWell(
-      onTap: () => widget.action == null ? {} : widget.action(),
+      onTap: widget.action,
       child: Container(
         margin: EdgeInsets.all(10),
         height: 100,

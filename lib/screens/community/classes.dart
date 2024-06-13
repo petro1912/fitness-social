@@ -4,7 +4,6 @@ import 'package:fitness/components/main_responsive_scaffold.dart';
 import 'package:fitness/components/tabbar.dart';
 import 'package:fitness/constants.dart';
 import 'package:fitness/model/class.dart';
-import 'package:fitness/model/class.dart';
 import 'package:fitness/model/tabbar_item.dart';
 import 'package:fitness/screens/community/class.dart';
 // import 'package:fitness/screens/community/other_class.dart';
@@ -103,9 +102,9 @@ class _CommunityClassesScreenState extends State<CommunityClassesScreen> {
                     children: [
                       BlackText(cls.name, 14, true),
                       SizedBox(height: 2),
-                      PrimaryText(cls.type, 9, true),
+                      PrimaryText(cls.type!, 9, true),
                       SizedBox(height: 6),
-                      GreyText(cls.description, 8),
+                      GreyText(cls.description!, 8),
                     ],
                   ),
                 ),
@@ -116,8 +115,8 @@ class _CommunityClassesScreenState extends State<CommunityClassesScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    GreyText(cls.next, 9, true),
-                    SecondaryText(cls.when, 10, true),
+                    GreyText(cls.next!, 9, true),
+                    SecondaryText(cls.when!, 10, true),
                   ],
                 ),
               ),
@@ -164,7 +163,7 @@ class _CommunityClassesScreenState extends State<CommunityClassesScreen> {
         itemCount: allClassList.length,
         physics: BouncingScrollPhysics(),
         itemBuilder: (_, index) => ClubCard(
-          img: allClassList[index].img,
+          img: allClassList[index].img!,
           title: allClassList[index].name,
           subtitle: '${allClassList[index].next} ${allClassList[index].when}',
           action: () => navClassItem(context, false),

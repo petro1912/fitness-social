@@ -7,7 +7,7 @@ import 'package:fitness/utils/navigation_util.dart';
 import 'package:flutter/material.dart';
 
 class NavbarItem {
-  NavbarItem({this.icon, this.label, this.screen});
+  NavbarItem({required this.icon, required this.label, required this.screen});
   final String icon;
   final String label;
   final Widget screen;
@@ -32,7 +32,7 @@ List navbarItems = [
 ];
 
 class BottomMenu extends StatefulWidget {
-  BottomMenu({Key key, this.activeIndex}) : super(key: key);
+  BottomMenu({Key? key, required this.activeIndex}) : super(key: key);
   final int activeIndex;
   _BottomMenuState createState() => _BottomMenuState();
 }

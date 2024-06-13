@@ -2,8 +2,8 @@ import 'package:fitness/constants.dart';
 import 'package:flutter/material.dart';
 
 class CountSelector extends StatefulWidget {
-  CountSelector({Key key, this.onChanged}) : super(key: key);
-  final Function onChanged;
+  CountSelector({Key? key, this.onChanged}) : super(key: key);
+  final Function? onChanged;
   _CountSelectorState createState() => _CountSelectorState();
 }
 
@@ -15,7 +15,8 @@ class _CountSelectorState extends State<CountSelector> {
     setState(() {
       _count = cnt;
     });
-    if (widget.onChanged != null) widget.onChanged(cnt);
+    if (widget.onChanged != null)
+      widget.onChanged!(cnt);
   }
 
   Widget build(BuildContext context) {

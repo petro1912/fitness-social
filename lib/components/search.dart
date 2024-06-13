@@ -2,8 +2,11 @@ import 'package:fitness/constants.dart';
 import 'package:flutter/material.dart';
 
 class SearchBox extends StatefulWidget {
-  SearchBox({this.searchAction, this.hint});
-  final Function searchAction;
+  SearchBox({
+    this.searchAction, 
+    required this.hint
+  });
+  final Function? searchAction;
   final String hint;
 
   _SearchBoxState createState() => _SearchBoxState();
@@ -11,7 +14,7 @@ class SearchBox extends StatefulWidget {
 
 class _SearchBoxState extends State<SearchBox> {
   void search(String text) {
-    if (widget.searchAction != null) widget.searchAction(text);
+    // widget.searchAction(text);
   }
 
   @override

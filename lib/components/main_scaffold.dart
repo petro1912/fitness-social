@@ -4,7 +4,13 @@ import 'package:fitness/constants.dart';
 import 'package:flutter/material.dart';
 
 class MainScaffold extends StatelessWidget {
-  MainScaffold({Key key, this.title, this.isMain, this.pageIndex, this.child})
+  MainScaffold({
+    Key? key, 
+    required this.title, 
+    this.isMain = false, 
+    this.pageIndex = 0, 
+    required this.child
+  })
       : super(key: key);
   final Widget child;
   final String title;
@@ -31,7 +37,7 @@ class MainScaffold extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: BottomMenu(activeIndex: pageIndex ?? 0),
+      bottomNavigationBar: BottomMenu(activeIndex: pageIndex),
     );
   }
 }

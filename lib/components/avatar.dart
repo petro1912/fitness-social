@@ -3,10 +3,15 @@ import 'package:fitness/constants.dart';
 import 'package:flutter/material.dart';
 
 class Avatar extends StatelessWidget {
-  Avatar({Key key, this.image, this.size, this.active}) : super(key: key);
-  final String image;
+  Avatar({
+    Key? key, 
+    this.image, 
+    required this.size, 
+    this.active = false
+  }) : super(key: key);
+  final String? image;
   final double size;
-  final bool active;
+  final bool? active;
 
   Widget build(BuildContext context) {
     return Container(
@@ -16,13 +21,13 @@ class Avatar extends StatelessWidget {
         color: textColor,
         shape: BoxShape.circle,
         image: DecorationImage(
-          image: getAssetImage(image),
+          image: getAssetImage(image!),
           fit: BoxFit.cover,
           alignment: Alignment.topCenter,
         ),
         border: Border.all(
-          color: active != null && active ? primaryColor : Colors.transparent,
-          width: active != null && active ? 0 : 3,
+          color: active! ? primaryColor : Colors.transparent,
+          width: active! ? 0 : 3,
         ),
       ),
     );
@@ -30,11 +35,17 @@ class Avatar extends StatelessWidget {
 }
 
 class TextAvatar extends StatelessWidget {
-  TextAvatar({Key key, this.color, this.name, this.size, this.active})
+  TextAvatar({
+    Key? key, 
+    this.color, 
+    required this.name, 
+    required this.size, 
+    this.active = false,
+    })
       : super(key: key);
   final String name;
   final double size;
-  final Color color;
+  final Color? color;
   final bool active;
 
   Widget build(BuildContext context) {
@@ -47,8 +58,8 @@ class TextAvatar extends StatelessWidget {
         color: color ?? Colors.amber,
         shape: BoxShape.circle,
         border: Border.all(
-          color: active != null && active ? primaryColor : Colors.transparent,
-          width: active != null && active ? 0 : 3,
+          color: active ? primaryColor : Colors.transparent,
+          width: active ? 0 : 3,
         ),
       ),
       child: WhiteText(avImg, 24, true),
@@ -57,10 +68,17 @@ class TextAvatar extends StatelessWidget {
 }
 
 class ChatAvatar extends StatelessWidget {
-  ChatAvatar(
-      {Key key, this.size, this.image, this.name, this.count, this.active})
+  ChatAvatar({
+    Key? key, 
+    this.size = 60, 
+    this.image, 
+    required this.name, 
+    required this.count, 
+    required this.active
+  })
       : super(key: key);
-  final String image, name;
+  final String? image;
+  final String name;
   final double size;
   final int count;
   final bool active;
@@ -73,15 +91,15 @@ class ChatAvatar extends StatelessWidget {
           alignment: Alignment.topRight,
           children: [
             this.image != null
-                ? Avatar(size: size ?? 60, image: image, active: active)
+                ? Avatar(size: size, image: image, active: active)
                 : TextAvatar(
                     color: primaryColor,
                     size: 60,
                     name: name,
                     active: active,
                   ),
-            count != null && count > 0
-                ? Badge(
+            count > 0
+                ? CircleBadge(
                     color: count > 10 ? pinkColor : secondaryColor,
                     size: 20,
                     value: count,

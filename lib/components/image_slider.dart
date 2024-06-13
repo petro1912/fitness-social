@@ -8,16 +8,21 @@ class ImageSlider extends StatefulWidget {
   final Color dotColor;
   final bool bulletBottom;
 
-  ImageSlider({this.images, this.titleText, this.dotColor, this.bulletBottom});
+  ImageSlider({
+    required this.images, 
+    required this.titleText, 
+    this.dotColor = secondaryColor, 
+    this.bulletBottom = true
+  });
   _ImageSliderState createState() => _ImageSliderState();
 }
 
 class _ImageSliderState extends State<ImageSlider> {
   int _currentImageIndex = 0;
   List images = [];
-  Widget titleText;
-  Color dotColor;
-  bool bulletBottom;
+  late Widget titleText;
+  late Color dotColor;
+  late bool bulletBottom;
 
   void initState() {
     super.initState();
@@ -46,7 +51,7 @@ class _ImageSliderState extends State<ImageSlider> {
   }
 
   Widget _buildCarouselBullets() {
-    var dotColor = widget.dotColor ?? secondaryColor;
+    var dotColor = widget.dotColor;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: List.generate(
@@ -96,7 +101,7 @@ class _ImageSliderState extends State<ImageSlider> {
           margin: EdgeInsets.only(top: 12),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: bulletBottom != null && bulletBottom
+            crossAxisAlignment: bulletBottom
                 ? CrossAxisAlignment.end
                 : CrossAxisAlignment.center,
             children: [

@@ -1,6 +1,5 @@
 import 'package:fitness/components/community_item.dart';
 import 'package:fitness/components/community_join.dart';
-import 'package:fitness/components/community_search.dart';
 import 'package:fitness/components/main_responsive_scaffold.dart';
 import 'package:fitness/components/search_member.dart';
 import 'package:fitness/constants.dart';

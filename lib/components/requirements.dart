@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 
 class RequirementsBlock extends StatelessWidget {
   final List<RequireItem> items;
-  RequirementsBlock({this.items});
+  RequirementsBlock({
+    required this.items
+  });
 
   Widget _buildItem(index) {
     var item = items[index];

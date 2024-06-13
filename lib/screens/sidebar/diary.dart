@@ -2,17 +2,13 @@ import 'dart:io';
 
 import 'package:fitness/components/gallery.dart';
 import 'package:fitness/components/main_responsive_scaffold.dart';
-import 'package:fitness/components/main_scaffold.dart';
-import 'package:fitness/components/swiper.dart';
 import 'package:fitness/constants.dart';
 import 'package:fitness/model/diary.dart';
 import 'package:fitness/utils/navigation_util.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
 
 class DiaryScreen extends StatefulWidget {
-  DiaryScreen({Key key, this.editMode, this.dailyImg}) : super(key: key);
+  DiaryScreen({Key? key, this.editMode = false, this.dailyImg = ""}) : super(key: key);
   final bool editMode;
   final String dailyImg;
   _DiaryScreenState createState() => _DiaryScreenState();
@@ -21,9 +17,9 @@ class DiaryScreen extends StatefulWidget {
 class _DiaryScreenState extends State<DiaryScreen> {
   int _currentIndex = 0;
   bool recording = false;
-  List<Diary> weekDiary;
-  int weight;
-  String dailyImg;
+  late List<Diary> weekDiary;
+  late int weight;
+  late String dailyImg;
 
   void initState() {
     super.initState();
@@ -35,7 +31,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
         Diary(img: 'club-item3', weight: 81, bmi: 28),
         Diary(img: 'club-item2', weight: 80, bmi: 29),
       ];
-      recording = widget.editMode != null && widget.editMode;
+      recording = widget.editMode;
       dailyImg = widget.dailyImg;
     });
   }
@@ -46,34 +42,34 @@ class _DiaryScreenState extends State<DiaryScreen> {
     });
   }
 
-  Widget _buildWeeksPhoto(BuildContext context, int index) {
+  Widget _buildWeeksPhoto(Diary diary) {
     return ClipRRect(
       borderRadius: new BorderRadius.all(new Radius.circular(10)),
       child: Image(
-        image: getAssetImage(weekDiary[index].img),
+        image: getAssetImage(diary.img),
         fit: BoxFit.fill,
       ),
     );
   }
 
-  Widget _buildWeeksWeight(BuildContext context, int index) {
+  Widget _buildWeeksWeight(Diary diary) {
     return ClipRRect(
       borderRadius: new BorderRadius.all(new Radius.circular(10)),
       child: Container(
         color: primaryColor,
         alignment: Alignment.center,
-        child: WhiteText('${weekDiary[index].weight} kg'),
+        child: WhiteText('${diary.weight} kg'),
       ),
     );
   }
 
-  Widget _buildWeeksBMI(BuildContext context, int index) {
+  Widget _buildWeeksBMI(Diary diary) {
     return ClipRRect(
       borderRadius: new BorderRadius.all(new Radius.circular(10)),
       child: Container(
         color: secondaryColor,
         alignment: Alignment.center,
-        child: WhiteText('${weekDiary[index].bmi}'),
+        child: WhiteText('${diary.bmi}'),
       ),
     );
   }
@@ -82,40 +78,52 @@ class _DiaryScreenState extends State<DiaryScreen> {
     return Column(
       children: [
         SizedBox(height: 20),
-        SwiperSlider(
-          index: _currentIndex,
-          onIndexChanged: onIndexChanged,
-          itemWidth: 200,
-          itemHeight: 200,
-          itemCount: weekDiary.length,
-          itemBuilder: _buildWeeksPhoto,
-        ),
+        // SizedBox(
+        //   height: 200,
+        //   child: OverlappedCarousel(
+        //     widgets: weekDiary
+        //               .map((item) => _buildWeeksPhoto(item))
+        //               .toList(), //List of widgets
+        //     currentIndex: 2,
+        //     onClicked: onIndexChanged,
+        //     obscure: 0.4,
+        //     skewAngle: 0.25,
+        //   ),
+        // ),
         SizedBox(height: 10),
         Divider(),
         SizedBox(height: 10),
         BlackText('This Week\'s Weight', 14),
         SizedBox(height: 10),
-        SwiperSlider(
-          index: _currentIndex,
-          onIndexChanged: onIndexChanged,
-          itemWidth: 80,
-          itemHeight: 40,
-          itemCount: weekDiary.length,
-          itemBuilder: _buildWeeksWeight,
-        ),
+        // SizedBox(
+        //   height: 40,
+        //   child: OverlappedCarousel(
+        //     widgets: weekDiary
+        //               .map((item) => _buildWeeksWeight(item))
+        //               .toList(), //List of widgets
+        //     currentIndex: 2,
+        //     onClicked: onIndexChanged,
+        //     obscure: 0.4,
+        //     skewAngle: 0.25,
+        //   ),
+        // ),
         SizedBox(height: 10),
         Divider(),
         SizedBox(height: 10),
         BlackText('BMI', 14),
         SizedBox(height: 10),
-        SwiperSlider(
-          index: _currentIndex,
-          onIndexChanged: onIndexChanged,
-          itemWidth: 80,
-          itemHeight: 40,
-          itemCount: weekDiary.length,
-          itemBuilder: _buildWeeksBMI,
-        ),
+        // SizedBox(
+        //   height: 40,
+        //   child: OverlappedCarousel(
+        //     widgets: weekDiary
+        //               .map((item) => _buildWeeksBMI(item))
+        //               .toList(), //List of widgets
+        //     currentIndex: 2,
+        //     onClicked: onIndexChanged,
+        //     obscure: 0.4,
+        //     skewAngle: 0.25,
+        //   ),
+        // ),
       ],
     );
   }

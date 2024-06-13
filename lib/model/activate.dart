@@ -1,13 +1,14 @@
 class Activate {
-  final String name, description, date, img;
+  final String name, description, date;
+  final String? img;
   final bool isFavorite;
-  final List<String> images;
+  final List<String>? images;
 
   Activate({
-    this.name,
-    this.description,
-    this.date,
-    this.isFavorite,
+    required this.name,
+    required this.description,
+    required this.date,
+    required this.isFavorite,
     this.img,
     this.images,
   });

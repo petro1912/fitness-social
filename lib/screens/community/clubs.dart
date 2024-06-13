@@ -9,7 +9,6 @@ import 'package:fitness/screens/community/club.dart';
 import 'package:fitness/screens/community/club_join.dart';
 import 'package:fitness/utils/navigation_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class CommunityClubsScreen extends StatefulWidget {
   _CommunityClubsScreenState createState() => _CommunityClubsScreenState();

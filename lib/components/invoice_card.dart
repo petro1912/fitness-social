@@ -4,12 +4,13 @@ import 'package:fitness/constants.dart';
 import 'package:flutter/material.dart';
 
 class InvoiceCard extends StatelessWidget {
-  InvoiceCard(
-      {Key key,
-      this.mainChild,
-      this.totalChild,
-      this.height = 200,
-      this.divPostion = .7})
+  InvoiceCard({
+    Key? key,
+    required this.mainChild,
+    required this.totalChild,
+    this.height = 200,
+    this.divPostion = .7
+  })
       : super(key: key);
   final Widget mainChild, totalChild;
   final double divPostion, height;

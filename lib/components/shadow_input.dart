@@ -1,12 +1,16 @@
 import 'package:fitness/constants.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ShadowInput extends StatelessWidget {
   final Function onChanged;
   final String hint;
   final int lines;
-  ShadowInput({Key key, this.onChanged, this.hint, this.lines})
+  ShadowInput({
+    Key? key, 
+    required this.onChanged, 
+    required this.hint, 
+    this.lines = 1
+  })
       : super(key: key);
 
   @override
@@ -32,10 +36,10 @@ class ShadowInput extends StatelessWidget {
           border: InputBorder.none,
           focusedBorder: InputBorder.none,
         ),
-        onChanged: onChanged,
+        onChanged: (str) => onChanged(str),
         style: TextStyle(color: textColor),
-        minLines: lines ?? 1,
-        maxLines: lines ?? 1,
+        minLines: lines,
+        maxLines: lines,
       ),
     );
   }

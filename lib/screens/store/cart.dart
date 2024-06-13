@@ -2,7 +2,6 @@ import 'package:fitness/components/color_dot.dart';
 import 'package:fitness/components/count_selector.dart';
 import 'package:fitness/components/main_scaffold.dart';
 import 'package:fitness/components/price_text.dart';
-import 'package:fitness/components/rounded_raised_button.dart';
 import 'package:fitness/constants.dart';
 import 'package:fitness/model/product.dart';
 import 'package:fitness/screens/store/product_detail.dart';
@@ -11,8 +10,8 @@ import 'package:fitness/utils/navigation_util.dart';
 import 'package:flutter/material.dart';
 
 class CartScreen extends StatefulWidget {
-  CartScreen({Key key, this.title}) : super(key: key);
-  final String title;
+  CartScreen({Key? key, this.title}) : super(key: key);
+  final String? title;
 
   _CartScreenState createState() => _CartScreenState();
 }
@@ -84,7 +83,7 @@ class _CartScreenState extends State<CartScreen> {
                     color: grayColor,
                     borderRadius: BorderRadius.circular(10),
                     image: DecorationImage(
-                      image: AssetImage(product.img),
+                      image: AssetImage(product.img!),
                       fit: BoxFit.cover,
                     ),
                   ),

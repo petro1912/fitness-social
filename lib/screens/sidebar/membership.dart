@@ -6,7 +6,6 @@ import 'package:fitness/components/rounded_raised_button.dart';
 import 'package:fitness/constants.dart';
 import 'package:fitness/model/goal_action.dart';
 import 'package:fitness/screens/workout/goal_action_detail.dart';
-import 'package:fitness/screens/workout/workout_payment.dart';
 import 'package:fitness/utils/navigation_util.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +14,8 @@ class MembershipScreen extends StatefulWidget {
 }
 
 class _MembershipScreenState extends State<MembershipScreen> {
-  GoalActionDetail goalActionDetail;
+  late GoalActionDetail goalActionDetail;
+  
   @override
   void initState() {
     super.initState();

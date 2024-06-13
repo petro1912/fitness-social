@@ -2,36 +2,22 @@ import 'package:fitness/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
-Widget _home;
-Function _customFunction;
-String _imagePath, _logoText;
-int _duration;
-AnimatedSplashType _runfor;
-
 enum AnimatedSplashType { StaticDuration, BackgroundProcess }
 
-Map<dynamic, Widget> _outputAndHome = {};
-
 class AnimatedSplash extends StatefulWidget {
-  AnimatedSplash(
-      {String logoText,
-      String imagePath,
-      @required Widget home,
-      Function customFunction,
-      int duration,
-      AnimatedSplashType type,
-      Map<dynamic, Widget> outputAndHome}) {
-    assert(duration != null);
-    assert(home != null);
+  AnimatedSplash({
+    required this.logoText,
+    this.imagePath,
+    required this.home,
+    required this.duration,
+    required this.runfor,
+  });
 
-    _home = home;
-    _duration = duration;
-    _customFunction = customFunction;
-    _imagePath = imagePath;
-    _logoText = logoText;
-    _runfor = type;
-    _outputAndHome = outputAndHome;
-  }
+  final Widget home;
+  final String? imagePath;
+  final String logoText;
+  final int duration;
+  final AnimatedSplashType runfor;
 
   @override
   _AnimatedSplashState createState() => _AnimatedSplashState();
@@ -39,13 +25,12 @@ class AnimatedSplash extends StatefulWidget {
 
 class _AnimatedSplashState extends State<AnimatedSplash>
     with SingleTickerProviderStateMixin {
-  AnimationController _animationController;
-  Animation _animation;
+  late AnimationController _animationController;
+  late Animation<double> _animation;
 
   @override
   void initState() {
     super.initState();
-    if (_duration < 1000) _duration = 2000;
     _animationController = new AnimationController(
         vsync: this, duration: Duration(milliseconds: 800));
     _animation = Tween(begin: 0.0, end: 1.0).animate(
@@ -70,17 +55,16 @@ class _AnimatedSplashState extends State<AnimatedSplash>
 
   @override
   Widget build(BuildContext context) {
-    _runfor == AnimatedSplashType.BackgroundProcess
+    widget.runfor == AnimatedSplashType.BackgroundProcess
         ? Future.delayed(Duration.zero).then((value) {
-            var res = _customFunction();
-            Future.delayed(Duration(milliseconds: _duration)).then((value) {
+            Future.delayed(Duration(milliseconds: widget.duration)).then((value) {
               Navigator.of(context).pushReplacement(CupertinoPageRoute(
-                  builder: (BuildContext context) => _outputAndHome[res]));
+                  builder: (BuildContext context) => widget.home));
             });
           })
-        : Future.delayed(Duration(milliseconds: _duration)).then((value) {
+        : Future.delayed(Duration(milliseconds: widget.duration)).then((value) {
             Navigator.of(context).pushReplacement(
-                CupertinoPageRoute(builder: (BuildContext context) => _home));
+                CupertinoPageRoute(builder: (BuildContext context) => widget.home));
           });
     Size size = MediaQuery.of(context).size;
     return Scaffold(
@@ -91,12 +75,12 @@ class _AnimatedSplashState extends State<AnimatedSplash>
           width: size.width,
           height: size.height,
           alignment: Alignment.center,
-          child: _imagePath != null
+          child: widget.imagePath != null
               ? Image.asset(
-                  _imagePath,
+                  widget.imagePath!,
                   fit: BoxFit.fill,
                 )
-              : PrimaryText(_logoText, 32, true),
+              : PrimaryText(widget.logoText, 32, true),
         ),
       ),
     );

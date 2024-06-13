@@ -11,7 +11,7 @@ class CommunityClubJoinScreen extends StatefulWidget {
 }
 
 class _CommunityClubJoinScreenState extends State<CommunityClubJoinScreen> {
-  Club club;
+  late Club club;
   List<Member> memberList = [];
 
   void initState() {
@@ -88,17 +88,17 @@ class _CommunityClubJoinScreenState extends State<CommunityClubJoinScreen> {
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 20),
                     alignment: Alignment.center,
-                    child: GreyText(club.description, 12, false, true),
+                    child: GreyText(club.description!, 12, false, true),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: List.generate(
-                      club.icons.length,
+                      club.icons!.length,
                       (idx) => Padding(
                         padding: EdgeInsets.all(4),
                         child: Image(
-                          image: getAssetImage(club.icons[idx]),
+                          image: getAssetImage(club.icons![idx]),
                         ),
                       ),
                     ),

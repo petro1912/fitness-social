@@ -3,15 +3,15 @@ import 'package:flutter/cupertino.dart';
 
 class ColorDot extends StatelessWidget {
   ColorDot({
-    Key key,
-    this.size,
-    this.color,
+    Key? key,
+    required this.size,
+    required this.color,
     this.child,
   }) : super(key: key);
 
   final double size;
   final Color color;
-  final Widget child;
+  final Widget? child;
 
   @override
   Widget build(BuildContext context) {
@@ -29,17 +29,19 @@ class ColorDot extends StatelessWidget {
 
 class DoubleColorDot extends StatelessWidget {
   DoubleColorDot({
-    Key key,
-    this.size,
+    Key? key,
+    required this.size,
     this.spacing,
-    this.color,
+    required this.color,
     this.borderWidth,
     this.child,
   }) : super(key: key);
 
-  final double size, spacing, borderWidth;
+  final double size;
+  final double? spacing;
+  final double? borderWidth;
   final Color color;
-  final Widget child;
+  final Widget? child;
 
   @override
   Widget build(BuildContext context) {

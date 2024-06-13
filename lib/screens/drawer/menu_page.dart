@@ -5,21 +5,20 @@ import 'package:fitness/screens/drawer/app_menu.dart';
 import 'package:fitness/screens/drawer/drawer_screen.dart';
 import 'package:fitness/screens/sidebar/profile.dart';
 import 'package:fitness/utils/navigation_util.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class MenuScreen extends StatefulWidget {
   final List<MenuItem> mainMenu;
-  final Function(int) callback;
+  final Function(int)? callback;
   final int current;
 
   MenuScreen(
     this.mainMenu, {
-    Key key,
+    Key? key,
     this.callback,
-    this.current,
+    this.current = 0,
   });
 
   @override
@@ -82,7 +81,7 @@ class _MenuScreenState extends State<MenuScreen> {
                         .map((item) => MenuItemWidget(
                               key: Key(item.index.toString()),
                               item: item,
-                              callback: widget.callback,
+                              callback: widget.callback!,
                               widthBox: widthBox,
                               style: style,
                               selected: index == item.index,
@@ -103,19 +102,19 @@ class _MenuScreenState extends State<MenuScreen> {
 class MenuItemWidget extends StatelessWidget {
   final MenuItem item;
   final Widget widthBox;
-  final TextStyle style;
+  final TextStyle? style;
   final Function callback;
   final bool selected;
 
   final white = Colors.white;
 
   const MenuItemWidget({
-    Key key,
-    this.item,
-    this.widthBox,
+    Key? key,
+    required this.item,
+    required this.widthBox,
     this.style,
-    this.callback,
-    this.selected,
+    required this.callback,
+    this.selected = false,
   }) : super(key: key);
 
   @override

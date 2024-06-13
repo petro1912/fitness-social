@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 class CreditCardInput extends StatefulWidget {
   CreditCardInput({
-    Key key,
+    Key? key,
     this.cardNumber,
     this.expired,
     this.cvv,
@@ -14,14 +14,14 @@ class CreditCardInput extends StatefulWidget {
     this.cvvChanged,
   }) : super(key: key);
 
-  final String cardNumber, expired, cvv;
-  final Function numberChanged, expiredChanged, cvvChanged;
+  final String? cardNumber, expired, cvv;
+  final Function? numberChanged, expiredChanged, cvvChanged;
 
   _CreditTextState createState() => _CreditTextState();
 }
 
 class _CreditTextState extends State<CreditCardInput> {
-  String cardNumber, expired, cvv;
+  late String cardNumber, expired, cvv;
 
   void initState() {
     super.initState();
@@ -33,15 +33,15 @@ class _CreditTextState extends State<CreditCardInput> {
   }
 
   void numberChanged(text) {
-    if (widget.numberChanged != null) widget.numberChanged(text);
+    widget.numberChanged!(text);
   }
 
   void expiredChanged(text) {
-    if (widget.expiredChanged != null) widget.expiredChanged(text);
+    widget.expiredChanged!(text);
   }
 
   void cvvChanged(text) {
-    if (widget.cvvChanged != null) widget.cvvChanged(text);
+    widget.cvvChanged!(text);
   }
 
   Widget build(BuildContext context) {

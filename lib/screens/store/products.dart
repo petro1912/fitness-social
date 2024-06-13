@@ -7,8 +7,8 @@ import 'package:fitness/utils/navigation_util.dart';
 import 'package:flutter/material.dart';
 
 class ProductsScreen extends StatefulWidget {
-  ProductsScreen({Key key, this.title}) : super(key: key);
-  final String title;
+  ProductsScreen({Key? key, this.title}) : super(key: key);
+  final String? title;
 
   _ProductsScreenState createState() => _ProductsScreenState();
 }
@@ -80,7 +80,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                     color: grayColor,
                     borderRadius: BorderRadius.circular(10),
                     image: DecorationImage(
-                      image: AssetImage(product.img),
+                      image: AssetImage(product.img!),
                       fit: BoxFit.cover,
                     ),
                   ),

@@ -162,7 +162,7 @@ class _CommunityActivatesScreenState extends State<CommunityActivatesScreen> {
         itemCount: allActivateList.length,
         physics: BouncingScrollPhysics(),
         itemBuilder: (_, index) => ActivateCard(
-          img: allActivateList[index].img,
+          img: allActivateList[index].img!,
           title: allActivateList[index].name,
           description: allActivateList[index].description,
           date: allActivateList[index].date,

@@ -10,9 +10,9 @@ class FitnessInputScreen extends StatefulWidget {
 }
 
 class _FitnessInputScreenState extends State<FitnessInputScreen> {
-  int height;
-  int weight;
-  int day, month, year;
+  late int height;
+  late int weight;
+  late int day, month, year;
 
   void chooseGoal(BuildContext context) {
     navPush(context, ChooseGoalScreen());

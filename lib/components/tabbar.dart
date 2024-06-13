@@ -7,7 +7,12 @@ class Tabbar extends StatefulWidget {
   final double height;
   final bool small;
 
-  Tabbar({Key key, this.items, this.small, this.height}) : super(key: key);
+  Tabbar({
+    Key? key, 
+    required this.items, 
+    this.small = false, 
+    required this.height
+  }) : super(key: key);
   _TabbarState createState() => _TabbarState();
 }
 
@@ -23,7 +28,7 @@ class _TabbarState extends State<Tabbar> {
     super.initState();
     _controller.addListener(
       () => setState(() {
-        selectedIndex = _controller.page.toInt();
+        selectedIndex = _controller.page!.toInt();
       }),
     );
   }

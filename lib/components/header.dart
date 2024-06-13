@@ -3,16 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:fitness/screens/drawer/zoom_drawer.dart';
 
 class Header extends StatelessWidget {
-  const Header({Key key, this.title, this.isMain, this.actionIcon, this.action})
+  const Header({
+    Key? key, 
+    required this.title, 
+    this.isMain = false, 
+    this.actionIcon, 
+    this.action
+  })
       : super(key: key);
   final String title;
   final bool isMain;
-  final Widget actionIcon;
-  final Function action;
+  final Widget? actionIcon;
+  final GestureTapCallback? action;
 
   @override
   Widget build(BuildContext context) {
-    var icon = (isMain != null && isMain) ? 'tab-icon' : 'arrow-left';
+    var icon = (isMain) ? 'tab-icon' : 'arrow-left';
     return Container(
       height: 72,
       margin: mainHrPadding,
@@ -25,7 +31,7 @@ class Header extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              if (isMain != null && isMain) {
+              if (isMain) {
                 ZoomDrawer.of(context).toggle();
               } else
                 Navigator.pop(context);
@@ -46,7 +52,7 @@ class Header extends StatelessWidget {
             alignment: Alignment.centerRight,
             child: actionIcon != null
                 ? InkWell(
-                    onTap: () => action != null ? action() : {},
+                    onTap: () => action!,
                     child: SizedBox(
                       width: 48,
                       height: 48,

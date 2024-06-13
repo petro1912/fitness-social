@@ -2,5 +2,10 @@ class Diary {
   String img;
   int bmi;
   int weight;
-  Diary({this.img, this.bmi, this.weight});
+  
+  Diary({
+    required this.img, 
+    required this.bmi, 
+    required this.weight
+  });
 }

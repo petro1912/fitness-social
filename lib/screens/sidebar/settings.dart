@@ -1,7 +1,6 @@
 import 'package:fitness/components/main_scaffold.dart';
 import 'package:fitness/components/toggler.dart';
 import 'package:fitness/constants.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -9,10 +8,10 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  bool allowEncourageMsg;
-  bool allowLocation;
-  bool allowNotification;
-  bool allowCamera;
+  late bool allowEncourageMsg;
+  late bool allowLocation;
+  late bool allowNotification;
+  late bool allowCamera;
 
   void initState() {
     setState(() {

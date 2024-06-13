@@ -7,5 +7,11 @@ class DashboardItem {
   final String unit;
   final Widget screen;
 
-  DashboardItem({this.name, this.icon, this.value, this.unit, this.screen});
+  DashboardItem({
+    required this.name, 
+    required this.icon, 
+    required this.value, 
+    required this.unit, 
+    required this.screen
+  });
 }
